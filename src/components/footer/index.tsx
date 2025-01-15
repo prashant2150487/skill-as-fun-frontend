@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h2 className="text-2xl font-bold mb-4">EduTech Pro</h2>
+            <h2 className="text-2xl font-bold mb-4">Skill as fun</h2>
             <p className="mb-4">
               Empowering learners worldwide with cutting-edge educational
               technology solutions.
@@ -26,7 +26,7 @@ export default function Footer() {
                 <li key={item}>
                   <Link
                     href={`/${item.toLowerCase().replace(" ", "-")}`}
-                    className="hover:underline"
+                    className="text-black"
                   >
                     {item}
                   </Link>
@@ -41,7 +41,7 @@ export default function Footer() {
             <p>123 Learning Street</p>
             <p>Education City, ED 12345</p>
             <p>Phone: (123) 456-7890</p>
-            <p>Email: info@edutechpro.com</p>
+            <p>Email: info@skillasfun.com</p>
           </div>
 
           {/* Newsletter Signup */}
@@ -80,7 +80,7 @@ export default function Footer() {
             ))}
           </div>
           <div className="text-sm">
-            © {new Date().getFullYear()} EduTech Pro. All rights reserved.
+            © {new Date().getFullYear()} Skill ad fun. All rights reserved.
           </div>
         </div>
       </div>
