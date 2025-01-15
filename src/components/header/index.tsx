@@ -23,7 +23,7 @@ const Header: FC = () => {
             <a href="/prog  " className="text-black text-xl">
               Programs
             </a>
-            <button className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm">
+            <button className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white">
               <span>Register Now! </span>
               <ArrowUpRight />
             </button>

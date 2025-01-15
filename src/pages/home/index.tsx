@@ -7,7 +7,6 @@ import TestimonialCards from "./TestimonialCard";
 const Home = () => {
   return (
     <DefaultLayout>
-      <p>jnjkn</p>
       <HeroSection />
       <QuoteScroll />
       <TestimonialCards />
