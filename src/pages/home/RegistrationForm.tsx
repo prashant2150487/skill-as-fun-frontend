@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 
 export default function HeroSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-background bg-slate-500">
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
         <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2 ">
           <div className="flex space-y-4">
@@ -26,12 +26,14 @@ export default function HeroSection() {
               </p>
             </div>
           </div>
-          <Card className="w-full max-w-md mx-auto md:ml-auto">
-            <CardHeader>
-              <CardTitle>Register Now</CardTitle>
-              <CardDescription>
-                Create your account in just a few steps.
-              </CardDescription>
+          <Card className="w-full max-w-lg mx-auto  md:ml-auto shadow-2xl">
+            <CardHeader className="py-12 relative">
+              <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal ml-16">
+                Register Now
+              </CardTitle>
+              <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal -rotate-12 absolute top-12 left-64 bg-white">
+                Today
+              </CardTitle>
             </CardHeader>
             <CardContent>
               <form>
@@ -39,17 +41,25 @@ export default function HeroSection() {
                   <div className="flex flex-col space-y-1.5">
                     {/* <Label htmlFor="name">Fu</Label> */}
                     <Input
+                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
                       placeholder="Full Name of your child"
                       type="text"
                       required
                     />
-                    <Input placeholder="Guardian Name" type="text" required />
                     <Input
+                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
+                      placeholder="Guardian Name"
+                      type="text"
+                      required
+                    />
+                    <Input
+                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
                       placeholder="Whatsapp number"
                       type="number"
                       required
                     />
                     <Input
+                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
                       placeholder="Enter your email"
                       type="email"
                       required
