@@ -1,4 +1,7 @@
-
+import React from "react";
+import img1 from "../../assets/homePageImages/stu1.png";
+import img2 from "../../assets/homePageImages/stu2.png";
+import img3 from "../../assets/homePageImages/stu3.png";
 interface TestimonialCardProps {
   imageSrc: string;
   quote: string;
@@ -6,7 +9,6 @@ interface TestimonialCardProps {
   studentClass: string;
   studentSchool: string;
 }
-
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
   imageSrc,
   quote,
@@ -14,13 +16,14 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   studentClass,
   studentSchool,
 }) => (
-  <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-md">
-    <div className="w-32 h-32 mb-4 overflow-hidden rounded-full">
+<div className="flex flex-col items-center w-[366px] bg-white gap-0 rounded-lg border-2 border-[#000000] m-auto p-4">
+
+    <div className="mb-4 overflow-hidden ">
       <img
         src={imageSrc}
         alt={`${studentName}'s portrait`}
-        width={128}
-        height={128}
+        // width={307}
+        // height={222}
         className="object-cover w-full h-full"
       />
     </div>
@@ -36,8 +39,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 export default function TestimonialCards() {
   const testimonials = [
     {
-      imageSrc:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffree-png-vectors%2Fstudent-girl&psig=AOvVaw3adRcBB6N4EDIH4Oz50FKk&ust=1736875124926000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdhZqa84oDFQAAAAAdAAAAABAE",
+      imageSrc: img1,
       quote:
         "He understood exactly what I was going through and helped me craft a standout application. Thanks to him, I'm now at my dream school, Harvard!",
       studentName: "Rudransh Sehrawat",
@@ -45,8 +47,7 @@ export default function TestimonialCards() {
       studentSchool: "Amity International School, Noida",
     },
     {
-      imageSrc:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffree-png-vectors%2Fstudent-girl&psig=AOvVaw3adRcBB6N4EDIH4Oz50FKk&ust=1736875124926000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdhZqa84oDFQAAAAAdAAAAABAE",
+      imageSrc: img2,
       quote:
         "He understood exactly what I was going through and helped me craft a standout application. Thanks to him, I'm now at my dream school, Harvard!",
       studentName: "Ananya Sharma",
@@ -54,8 +55,7 @@ export default function TestimonialCards() {
       studentSchool: "Delhi Public School, R.K. Puram",
     },
     {
-      imageSrc:
-        "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngtree.com%2Ffree-png-vectors%2Fstudent-girl&psig=AOvVaw3adRcBB6N4EDIH4Oz50FKk&ust=1736875124926000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCMjdhZqa84oDFQAAAAAdAAAAABAE",
+      imageSrc: img3,
       quote:
         "He understood exactly what I was going through and helped me craft a standout application. Thanks to him, I'm now at my dream school, Harvard!",
       studentName: "Arjun Patel",
@@ -65,8 +65,8 @@ export default function TestimonialCards() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="container  px-4 py-8 g-0">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} {...testimonial} />
         ))}
