@@ -38,13 +38,17 @@ const faqData = [
 
 export default function FAQ() {
   return (
-    <div className="w-full max-w-3xl mx-auto p-6">
-      <h2 className="text-3xl font-bold mb-6 text-center">
+    <div className="w-full max-w-4xl mx-auto px-6 py-20">
+      <h1 className="mb-6 text-center font-normal">
         Frequently Asked Questions
-      </h2>
-      <Accordion type="single" collapsible className="w-full">
+      </h1>
+      <Accordion type="single" collapsible className="w-full mt-14">
         {faqData.map((faq, index) => (
-          <AccordionItem key={index} value={`item-${index}`}>
+          <AccordionItem
+            key={index}
+            value={`item-${index}`}
+            className="border border-gray-500 mt-4 px-5 py-2 rounded-2xl bg-white"
+          >
             <AccordionTrigger className="text-left">
               {faq.question}
             </AccordionTrigger>

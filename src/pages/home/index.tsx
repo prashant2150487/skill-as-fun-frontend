@@ -1,4 +1,5 @@
 import DefaultLayout from "../../components/layouts/DefaultLayout";
+import CtaSection from "./CtaSection";
 import FAQ from "./Faq";
 import QuoteScroll from "./MovingContainer";
 import HeroSection from "./RegistrationForm";
@@ -11,6 +12,7 @@ const Home = () => {
       <QuoteScroll />
       <TestimonialCards />
       <FAQ />
+      <CtaSection />
     </DefaultLayout>
   );
 };
