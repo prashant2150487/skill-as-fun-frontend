@@ -11,7 +11,6 @@ import { X } from "lucide-react";
 import { toast } from "sonner";
 
 export default function HeroSection() {
-  
   const handleSubmit = () => {
     toast.success("Your form has been submitted", {
       // description: "Sunday, December 03, 2023 at 9:00 AM",
@@ -21,6 +20,7 @@ export default function HeroSection() {
       },
     });
   };
+  
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
