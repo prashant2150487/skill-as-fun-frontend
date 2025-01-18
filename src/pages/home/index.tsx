@@ -9,9 +9,10 @@ const Home = () => {
   return (
     <DefaultLayout>
       <HeroSection />
-      <QuoteScroll />
+
       <TestimonialCards />
       <FAQ />
+      <QuoteScroll />
       <CtaSection />
     </DefaultLayout>
   );

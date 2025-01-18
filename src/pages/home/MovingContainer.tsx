@@ -1,64 +1,57 @@
 const items = [
   {
-    quote: "This is an amazing service!",
-    name: "John Doe",
-    title: "Software Engineer",
+    name: "Trusted by 100+ Students from 10+ schools",
   },
   {
-    quote: "Highly recommend to everyone.",
-    name: "Jane Smith",
-    title: "Product Manager",
+    name: "Trusted by 100+ Students from 10+ schools",
   },
   {
-    quote: "Fantastic experience overall.",
-    name: "Alice Brown",
-    title: "Designer",
+    name: "Trusted by 100+ Students from 10+ schools",
   },
 ];
 
 const QuoteScroll = () => {
   return (
     <div className="overflow-hidden relative">
-      <div className="flex animate-scroll">
+      <div className="flex animate-scroll text-white">
         {items.map((item, index) => (
           <div
-            key={index}
-            className="min-w-max p-4 m-2 bg-gray-200 rounded-xl shadow-lg"
+            key={index + "set1"}
+            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
           >
-            <p className="text-sm text-center italic">"{item.quote}"</p>
-            <p className="text-center font-bold">{item.name}</p>
-            <p className="text-center text-sm text-gray-600">{item.title}</p>
-          </div>
-        ))}
-        {/* Duplicate the items for continuous scroll */}
-        {items.map((item, index) => (
-          <div
-            key={index + items.length}
-            className="min-w-max p-4 m-2 bg-gray-200 rounded-xl shadow-lg"
-          >
-            <p className="text-sm text-center italic">"{item.quote}"</p>
-            <p className="text-center font-bold">{item.name}</p>
-            <p className="text-center text-sm text-gray-600">{item.title}</p>
+            <p className="text-center text-2xl font-bold">{item.name}</p>
           </div>
         ))}
         {items.map((item, index) => (
           <div
-            key={index + items.length}
-            className="min-w-max p-4 m-2 bg-gray-200 rounded-xl shadow-lg"
+            key={index + "set2"}
+            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
           >
-            <p className="text-sm text-center italic">"{item.quote}"</p>
-            <p className="text-center font-bold">{item.name}</p>
-            <p className="text-center text-sm text-gray-600">{item.title}</p>
+            <p className="text-center text-2xl font-bold">{item.name}</p>
           </div>
         ))}
         {items.map((item, index) => (
           <div
-            key={index + items.length}
-            className="min-w-max p-4 m-2 bg-gray-200 rounded-xl shadow-lg"
+            key={index + "set3"}
+            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
           >
-            <p className="text-sm text-center italic">"{item.quote}"</p>
-            <p className="text-center font-bold">{item.name}</p>
-            <p className="text-center text-sm text-gray-600">{item.title}</p>
+            <p className="text-center text-2xl font-bold">{item.name}</p>
+          </div>
+        ))}
+        {items.map((item, index) => (
+          <div
+            key={index + "set4"}
+            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+          >
+            <p className="text-center text-2xl font-bold">{item.name}</p>
+          </div>
+        ))}
+        {items.map((item, index) => (
+          <div
+            key={index + "set5"}
+            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+          >
+            <p className="text-center text-2xl font-bold">{item.name}</p>
           </div>
         ))}
       </div>
