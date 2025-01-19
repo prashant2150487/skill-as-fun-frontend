@@ -39,7 +39,7 @@ export default function HeroSection() {
           <div className="flex space-y-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-center md:text-left">
-                From Spells to Scripts: SkillWizard Turns Play into Programming
+                From Spells to Scripts: Skill as fun Turns Play into Programming
                 Power!
               </h1>
               <p className="max-w-[600px] text-bla md:text-xl dark:text-zinc-400 text-center md:text-left">
@@ -48,14 +48,16 @@ export default function HeroSection() {
               </p>
             </div>
           </div>
-          <Card className="w-full max-w-lg mx-auto  md:ml-auto shadow-2xl">
-            <CardHeader className="py-12 relative">
-              <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal ml-20">
-                Register Now
-              </CardTitle>
-              <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal -rotate-12 absolute top-16 left-72 bg-white">
-                Today
-              </CardTitle>
+          <Card className="w-full max-w-md mx-auto  md:ml-auto shadow-2xl">
+            <CardHeader className="py-12 relative ">
+              <div className="max-w-fit flex flex-col items-center justify-center row-gap-10">
+                <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal">
+                  Register Now
+                </CardTitle>
+                <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal -rotate-12 bg-white -mr-52">
+                  Today
+                </CardTitle>
+              </div>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit}>
