@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
 
 const CtaSection = () => {
+  
   return (
     <div className="w-full h-96 flex flex-col justify-center items-center">
       <div>

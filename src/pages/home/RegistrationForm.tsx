@@ -11,18 +11,29 @@ import { X } from "lucide-react";
 import { toast } from "sonner";
 
 export default function HeroSection() {
+  const now = new Date();
+  const formattedDate = now.toLocaleString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  });
+  console.log(formattedDate);
   const handleSubmit = () => {
     toast.success("Your form has been submitted", {
-      // description: "Sunday, December 03, 2023 at 9:00 AM",
+      description: formattedDate,
       action: {
         label: <X />,
         onClick: () => console.log("a"),
       },
     });
   };
-  
+
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-background">
+    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
         <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2 ">
           <div className="flex space-y-4">

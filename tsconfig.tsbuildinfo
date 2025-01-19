@@ -1,0 +1,26 @@
+{
+    "root": [
+        "./src/App.tsx",
+        "./src/main.tsx",
+        "./src/vite-env.d.ts",
+        "./src/components/footer/index.tsx",
+        "./src/components/header/index.tsx",
+        "./src/components/layouts/DefaultLayout.tsx",
+        "./src/components/ui/accordion.tsx",
+        "./src/components/ui/button.tsx",
+        "./src/components/ui/card.tsx",
+        "./src/components/ui/input.tsx",
+        "./src/components/ui/label.tsx",
+        "./src/components/ui/sonner.tsx",
+        "./src/lib/utils.ts",
+        "./src/pages/home/CtaSection.tsx",
+        "./src/pages/home/FallingObjectAnimation.tsx",
+        "./src/pages/home/Faq.tsx",
+        "./src/pages/home/MovingContainer.tsx",
+        "./src/pages/home/RegistrationForm.tsx",
+        "./src/pages/home/TestimonialCard.tsx",
+        "./src/pages/home/index.tsx"
+    ],
+    "errors": true,
+    "version": "5.6.3"
+}
