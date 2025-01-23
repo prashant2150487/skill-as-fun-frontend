@@ -1,55 +1,96 @@
 import { Button } from "@/components/ui/button";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { X } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import axios from "axios";
+
+// Zod schema for form validation
+const signupSchema = z.object({
+  childName: z
+    .string()
+    .min(2, { message: "Name must be at least 2 characters long" }),
+  guardianName: z
+    .string()
+    .min(2, { message: "Guardian name must be at least 2 characters long" }),
+  whatsUpNo: z
+    .string()
+    .min(10, { message: "Whatsapp number must be at least 10 digits long" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+});
+
+type SignupFormData = z.infer<typeof signupSchema>;
 
 export default function HeroSection() {
-  const now = new Date();
-  const formattedDate = now.toLocaleString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true,
+  const form = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+    defaultValues: {
+      childName: "",
+      guardianName: "",
+      whatsUpNo: "",
+      email: "",
+    },
   });
-  console.log(formattedDate);
-  const handleSubmit = () => {
-    toast.success("Your form has been submitted", {
-      description: formattedDate,
-      action: {
-        label: <X />,
-        onClick: () => console.log("a"),
-      },
-    });
+
+  const onSubmit = async (data: SignupFormData) => {
+    try {
+      // Log the submitted data
+      console.log(data);
+  
+      // Make the POST request to the server
+      const response = await axios.post("https://skill-as-fun-back-end.vercel.app/api/auth/signup", data);
+  
+      // Log the server response
+      console.log("Server response:", response);
+  
+      // Show success toast only when the request is successful
+      toast.success("Your form has been submitted!", {
+        description: `Submitted at: ${new Date().toLocaleString()}`, // Provide a meaningful timestamp
+        action: {
+          label: "Dismiss",
+          onClick: () => console.log("Toast dismissed"),
+        },
+      });
+    } catch (error: any) {
+      // Log the error for debugging
+      console.error("Error during form submission:", error.response?.data || error.message);
+  
+      // Show error toast with a user-friendly message
+      toast.error("Failed to submit the form. Please try again.");
+    }
   };
+  
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
-        <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2 ">
+        <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2">
+          {/* Left Section */}
           <div className="flex space-y-4">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none text-center md:text-left">
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center md:text-left">
                 From Spells to Scripts: Skill as fun Turns Play into Programming
                 Power!
               </h1>
-              <p className="max-w-[600px] text-bla md:text-xl dark:text-zinc-400 text-center md:text-left">
+              <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left">
                 Master coding fundamentals with SkillWizard's fun, hands-on
                 programs designed just for kids.
               </p>
             </div>
           </div>
-          <Card className="w-full max-w-md mx-auto  md:ml-auto shadow-2xl">
-            <CardHeader className="py-12 relative ">
+
+          {/* Right Section: Registration Form */}
+          <Card className="w-full max-w-md mx-auto md:ml-auto shadow-2xl">
+            <CardHeader className="py-12 relative">
               <div className="max-w-fit flex flex-col items-center justify-center row-gap-10">
                 <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal">
                   Register Now
@@ -60,46 +101,91 @@ export default function HeroSection() {
               </div>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit}>
-                <div className="grid w-full items-center gap-4">
-                  <div className="flex flex-col space-y-1.5">
-                    {/* <Label htmlFor="name">Fu</Label> */}
-                    <Input
-                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
-                      placeholder="Full Name of your child"
-                      type="text"
-                      required
-                    />
-                    <Input
-                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
-                      placeholder="Guardian Name"
-                      type="text"
-                      required
-                    />
-                    <Input
-                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
-                      placeholder="Whatsapp number"
-                      type="number"
-                      required
-                    />
-                    <Input
-                      className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
-                      placeholder="Enter your email"
-                      type="email"
-                      required
-                    />
-                  </div>
-                </div>
-              </form>
+              <Form {...form}>
+                <form
+                  onSubmit={form.handleSubmit(onSubmit)}
+                  className="space-y-6 max-w-md mx-auto"
+                >
+                  {/* Child Name */}
+                  <FormField
+                    control={form.control}
+                    name="childName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Full Name of your child"
+                            {...field}
+                            className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Guardian Name */}
+                  <FormField
+                    control={form.control}
+                    name="guardianName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Guardian Name"
+                            {...field}
+                            className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Whatsapp Number */}
+                  <FormField
+                    control={form.control}
+                    name="whatsUpNo"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Whatsapp Number"
+                            {...field}
+                            className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Email */}
+                  <FormField
+                    control={form.control}
+                    name="email"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder="Enter your email"
+                            type="email"
+                            {...field}
+                            className="border border-[#4039E9] rounded-full px-5 h-12 placeholder-[#9D9D9D]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  {/* Submit Button */}
+                  <Button type="submit" className="w-full py-7 bg-[#2E31A6]">
+                    Schedule Demo Now!
+                  </Button>
+                </form>
+              </Form>
             </CardContent>
-            <CardFooter>
-              <Button
-                className="w-full py-7 bg-[#2E31A6]"
-                onClick={handleSubmit}
-              >
-                Schedule Demo Now!
-              </Button>
-            </CardFooter>
           </Card>
         </div>
       </div>
