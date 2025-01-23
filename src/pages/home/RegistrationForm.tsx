@@ -50,7 +50,7 @@ export default function HeroSection() {
       const response = await axios.post("https://skill-as-fun-back-end.vercel.app/api/auth/signup", data);
   
       // Log the server response
-      console.log("Server response:", response);
+      // console.log("Server response:", response);
   
       // Show success toast only when the request is successful
       toast.success("Your form has been submitted!", {
