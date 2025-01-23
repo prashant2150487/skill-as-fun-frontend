@@ -43,7 +43,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   studentClass,
   studentSchool,
 }) => (
-  <div className="flex flex-col items-center w-[366px] bg-white gap-0 rounded-3xl border border-[#000000] px-4 py-7">
+  <div className="flex flex-col items-center w-[366px] bg-white gap-0 rounded-3xl border border-[#000000] px-4 py-7 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
     <div className="mb-4 overflow-hidden">
       <img
         src={imageSrc}
@@ -51,7 +51,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         className="object-cover w-full h-full"
       />
     </div>
-    <p className="mb-4 text-left text-gray-700">&quot;{quote}&quot;</p>
+    <p className="mb-4 text-lg font-normal text-[#000000] ">&quot;{quote}&quot;</p>
     <div className="text-left w-full">
       <h3 className="font-normal text-left max-w-fit">
         {studentName}
@@ -65,8 +65,8 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
 export default function TestimonialCards() {
   return (
-    <div className="container py-8 g-0 mx-auto  ">
-      <div className="flex justify-center gap-2 flex-col items-center md:flex-row">
+    <div className="container py-8 g-0 mx-auto ">
+      <div className="flex justify-center gap-4  md:gap-8 flex-col items-center md:flex-row">
         {testimonials.map((testimonial, index) => (
           <TestimonialCard key={index} {...testimonial} />
         ))}
