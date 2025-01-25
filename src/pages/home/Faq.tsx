@@ -7,32 +7,31 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-// FAQ data
 const faqData = [
   {
-    question: "Why is this free?",
+    question: "What age groups do you support?",
     answer:
-      " Our mission is to break down the jargon and educate millenials with conversations about money and we feel charging our attendees contradicts that mission",
+      "We offer programming courses for students aged 7-16, with carefully curated curriculum tailored to different skill levels from absolute beginners to intermediate coders.",
   },
   {
-    question: "Do I need to attend every session?",
+    question: "Do I need prior coding experience?",
     answer:
-      "Some key features of React include: Virtual DOM for better performance, JSX for easier component writing, component-based architecture, unidirectional data flow, and strong community support.",
+      "Not at all! Our programs are designed to welcome complete beginners. We start from the fundamentals and progressively build complex skills through interactive, fun learning modules.",
   },
   {
-    question: "Will replays be available if I miss the sessions?",
+    question: "What programming languages will I learn?",
     answer:
-      "JSX is a syntax extension for JavaScript. It was written to be used with React. JSX code looks similar to HTML, and it allows you to write HTML-like code in your JavaScript files.",
+      "We focus on beginner-friendly languages like Python and Scratch, gradually introducing JavaScript and HTML/CSS. Our goal is to build a strong computational thinking foundation.",
   },
   {
-    question: "What is your code of conduct?",
+    question: "How are online classes structured?",
     answer:
-      "The Virtual DOM is a programming concept where an ideal, or 'virtual', representation of a UI is kept in memory and synced with the 'real' DOM by a library such as ReactDOM. This process is called reconciliation.",
+      "Our live online classes combine interactive tutorials, hands-on coding projects, real-time instructor support, and collaborative learning experiences to keep students engaged.",
   },
   {
-    question: "How do I join the day of the event?",
+    question: "Will I receive a certificate?",
     answer:
-      "Hooks are functions that let you 'hook into' React state and lifecycle features from function components. They allow you to use state and other React features without writing a class.",
+      "Yes! Students receive digital certificates upon completing each course level, acknowledging their programming skills and progress in their coding journey.",
   },
 ];
 

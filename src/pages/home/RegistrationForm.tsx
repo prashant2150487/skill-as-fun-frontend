@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader} from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -61,18 +61,18 @@ export default function HeroSection() {
   
 
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32 xl:py-40 bg-background">
+    <section className="w-full py-12 md:py-20 lg:py-20 xl:py-30 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
         <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2">
           {/* Left Section */}
           <div className="flex space-y-4">
             <div className="space-y-2 flex flex-col justify-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center md:text-left">
-                From Spells to Scripts: Skill as fun Turns Play into Programming
+                From Spells to Scripts: Skill as fun Turns Play into <span className="text-blue-900">Programming </span> 
                 Power!
               </h1>
               <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left">
-                Master coding fundamentals with SkillWizard's fun, hands-on
+                Master coding fundamentals with us as fun, hands-on
                 programs designed just for kids.
               </p>
             </div>
@@ -80,15 +80,15 @@ export default function HeroSection() {
 
           {/* Right Section: Registration Form */}
           <Card className="w-full max-w-md mx-auto md:ml-auto shadow-2xl">
-            <CardHeader className="py-12 relative">
-              <div className="max-w-fit flex flex-col items-center justify-center row-gap-10">
+            <CardHeader className="py-5 relative">
+              {/* <div className="max-w-fit flex flex-col items-center justify-center row-gap-10">
                 <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal">
                   Register Now
                 </CardTitle>
                 <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal -rotate-12 bg-white -mr-52">
                   Today
                 </CardTitle>
-              </div>
+              </div> */}
             </CardHeader>
             <CardContent>
               <Form {...form}>

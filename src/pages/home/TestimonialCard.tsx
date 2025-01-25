@@ -14,7 +14,7 @@ const testimonials = [
   {
     imageSrc: img1,
     quote:
-      "He understood exactly what I was going through and helped me craft a standout application. Thanks to him, I'm now at my dream school, Harvard!",
+      "SkillAsFun transformed coding from a mystery to my superpower! I learned to create games and apps that I never thought I could build before.",
     studentName: "Rudransh Sehrawat",
     studentClass: "Class 7",
     studentSchool: "Amity International School, Noida",
@@ -22,7 +22,7 @@ const testimonials = [
   {
     imageSrc: img2,
     quote:
-      "He understood exactly what I was going through and helped me craft a standout application. Thanks to him, I'm now at my dream school, Harvard!",
+      "I used to think programming was complicated, but SkillAsFun made it fun and easy. Now I'm creating my own interactive projects!",
     studentName: "Ananya Sharma",
     studentClass: "Class 8",
     studentSchool: "Delhi Public School, R.K. Puram",
@@ -30,7 +30,7 @@ const testimonials = [
   {
     imageSrc: img3,
     quote:
-      "He understood exactly what I was going through and helped me craft a standout application. Thanks to him, I'm now at my dream school, Harvard!",
+      "From zero to coding hero! SkillAsFun helped me understand programming concepts and build real-world applications that amaze my friends.",
     studentName: "Arjun Patel",
     studentClass: "Class 9",
     studentSchool: "The Shri Ram School, Gurgaon",

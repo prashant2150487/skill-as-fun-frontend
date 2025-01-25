@@ -1,12 +1,18 @@
 const items = [
   {
-    name: "Trusted by 100+ Students from 10+ schools",
+    name: "100+ Young Programmers Trained Successfully",
   },
   {
-    name: "Trusted by 100+ Students from 10+ schools",
+    name: "10+ Schools Partner with SkillAsFun",
   },
   {
-    name: "Trusted by 100+ Students from 10+ schools",
+    name: "Interactive Live Coding Sessions",
+  },
+  {
+    name: "Project-Based Learning Model",
+  },
+  {
+    name: "Personalized Learning Approach",
   },
 ];
 
@@ -17,41 +23,41 @@ const QuoteScroll = () => {
         {items.map((item, index) => (
           <div
             key={index + "set1"}
-            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+            className="min-w-max py-8 px-8 bg-[#2331A6]"
           >
-            <p className="text-center text-2xl font-bold">{item.name}</p>
+            <p className="text-center text-xl font-bold">{item.name}</p>
           </div>
         ))}
         {items.map((item, index) => (
           <div
             key={index + "set2"}
-            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+            className="min-w-max py-8 px-8 bg-[#2331A6]"
           >
-            <p className="text-center text-2xl font-bold">{item.name}</p>
+            <p className="text-center text-xl font-bold">{item.name}</p>
           </div>
         ))}
         {items.map((item, index) => (
           <div
             key={index + "set3"}
-            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+            className="min-w-max py-8 px-8 bg-[#2331A6]"
           >
-            <p className="text-center text-2xl font-bold">{item.name}</p>
+            <p className="text-center text-xl font-bold">{item.name}</p>
           </div>
         ))}
         {items.map((item, index) => (
           <div
             key={index + "set4"}
-            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+            className="min-w-max py-8 px-8 bg-[#2331A6]"
           >
-            <p className="text-center text-2xl font-bold">{item.name}</p>
+            <p className="text-center text-xl font-bold">{item.name}</p>
           </div>
         ))}
         {items.map((item, index) => (
           <div
             key={index + "set5"}
-            className="min-w-max py-8 px-8 bg-[#2331A6]  shadow-lg"
+            className="min-w-max py-8 px-8 bg-[#2331A6]"
           >
-            <p className="text-center text-2xl font-bold">{item.name}</p>
+            <p className="text-center text-xl font-bold">{item.name}</p>
           </div>
         ))}
       </div>
