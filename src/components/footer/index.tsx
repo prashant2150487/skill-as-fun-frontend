@@ -24,7 +24,7 @@ export default function Footer() {
                 <li key={item}>
                   <a
                     href={`/${item.toLowerCase().replace(" ", "-")}`}
-                    className="text-black"
+                    className="text-black pointer-events-none"
                   >
                     {item}
                   </a>
@@ -56,6 +56,7 @@ export default function Footer() {
               
               <Button
                 type="submit"
+                disabled
                 className="bg-teal-500 hover:bg-teal-600 rounded-r-full flex align -item hight:78px
                  "
               >
@@ -72,7 +73,7 @@ export default function Footer() {
               <a
                 key={index}
                 href="#"
-                className="hover:text-teal-300 transition-colors"
+                className="hover:text-teal-300 transition-colors pointer-events-none"
               >
                 <Icon className="h-6 w-6" />
               </a>

@@ -43,30 +43,20 @@ export default function HeroSection() {
 
   const onSubmit = async (data: SignupFormData) => {
     try {
-      // Log the submitted data
-      console.log(data);
-  
-      // Make the POST request to the server
-      const response = await axios.post("https://skill-as-fun-back-end.vercel.app/api/auth/signup", data);
-  
-      // Log the server response
-      // console.log("Server response:", response);
-  
-      // Show success toast only when the request is successful
-      toast.success("Your form has been submitted!", {
-        description: `Submitted at: ${new Date().toLocaleString()}`, // Provide a meaningful timestamp
+      const response:any = await axios.post("https://skill-as-fun-back-end.vercel.app/api/auth/signup", data);
+      form.reset();
+      toast.success(response?.data?.message, {
+        description: `Submitted at: ${new Date().toLocaleString()}`,
         action: {
           label: "Dismiss",
           onClick: () => console.log("Toast dismissed"),
         },
       });
     } catch (error: any) {
-      // Log the error for debugging
       console.error("Error during form submission:", error.response?.data || error.message);
-  
-      // Show error toast with a user-friendly message
       toast.error("Failed to submit the form. Please try again.");
     }
+    
   };
   
 
@@ -76,7 +66,7 @@ export default function HeroSection() {
         <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2">
           {/* Left Section */}
           <div className="flex space-y-4">
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col justify-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center md:text-left">
                 From Spells to Scripts: Skill as fun Turns Play into Programming
                 Power!
