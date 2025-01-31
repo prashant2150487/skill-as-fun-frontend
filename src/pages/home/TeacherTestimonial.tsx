@@ -6,14 +6,14 @@ const testimonials = [
     name: "Prashant Sachan ",
     role: "SDE-III (IIT Kharagpur)",
     content:
-      "Teaching at EduTech Pro has been incredibly rewarding. The platform allows me to reach students globally and make a real impact.",
+      "Teaching at SkillAsFun has been incredibly rewarding. The platform allows me to reach students globally and make a real impact.",
     avatar: "/placeholder.svg?height=40&width=40",
   },
   {
-    name: "Prof. David Chen",
+    name: "Prof. Arapan",
     role: "Computer Science Educator",
     content:
-      "The innovative tools provided by EduTech Pro have revolutionized how I teach coding. It's a joy to see students progress so quickly.",
+      "The innovative tools provided by SkillAsFun have revolutionized how I teach coding. It's a joy to see students progress so quickly.",
     avatar: "/placeholder.svg?height=40&width=40",
   },
   {

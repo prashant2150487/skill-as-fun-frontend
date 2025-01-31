@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <h2 className="text-2xl font-bold mb-4">Skill as fun</h2>
+            <h2 className="text-2xl font-bold mb-4">SkillAsFun</h2>
             <p className="mb-4">
               Empowering learners worldwide with cutting-edge educational
               technology solutions.
@@ -80,7 +80,7 @@ export default function Footer() {
             ))}
           </div>
           <div className="text-sm">
-            © {new Date().getFullYear()} Skill ad fun. All rights reserved.
+            © {new Date().getFullYear()} SkillAsFun. All rights reserved.
           </div>
         </div>
       </div>
