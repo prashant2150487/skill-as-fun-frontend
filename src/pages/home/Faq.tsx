@@ -1,60 +1,48 @@
-"use client";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
-const faqData = [
+const faqs = [
   {
-    question: "What age groups do you support?",
+    question: "What age groups do you cater to?",
     answer:
-      "We offer programming courses for students aged 7-16, with carefully curated curriculum tailored to different skill levels from absolute beginners to intermediate coders.",
+      "We offer courses for students from 6th grade through undergraduate level, covering a wide range of educational needs and interests.",
   },
   {
-    question: "Do I need prior coding experience?",
+    question: "How are the online classes conducted?",
     answer:
-      "Not at all! Our programs are designed to welcome complete beginners. We start from the fundamentals and progressively build complex skills through interactive, fun learning modules.",
+      "Our classes are conducted through a state-of-the-art virtual classroom platform, allowing for real-time interaction between students and teachers, screen sharing, and collaborative tools.",
   },
   {
-    question: "What programming languages will I learn?",
+    question: "Can I try a class before committing to a full course?",
     answer:
-      "We focus on beginner-friendly languages like Python and Scratch, gradually introducing JavaScript and HTML/CSS. Our goal is to build a strong computational thinking foundation.",
+      "Yes, we offer trial classes for most of our courses. This allows you to experience our teaching style and ensure it's a good fit for your learning needs.",
   },
   {
-    question: "How are online classes structured?",
+    question: "How do you ensure the quality of your teachers?",
     answer:
-      "Our live online classes combine interactive tutorials, hands-on coding projects, real-time instructor support, and collaborative learning experiences to keep students engaged.",
+      "All our teachers go through a rigorous selection process, including background checks, teaching demonstrations, and ongoing professional development to ensure they provide the highest quality education.",
   },
   {
-    question: "Will I receive a certificate?",
+    question: "Do you offer any certifications upon course completion?",
     answer:
-      "Yes! Students receive digital certificates upon completing each course level, acknowledging their programming skills and progress in their coding journey.",
+      "Yes, upon successful completion of our courses, students receive a certificate of achievement that can be a valuable addition to their academic portfolio.",
   },
-];
+]
 
 export default function FAQ() {
   return (
-    <div className="w-full max-w-4xl mx-auto px-6 py-20">
-      <h1 className="mb-6 text-center font-normal">
-        Frequently Asked Questions
-      </h1>
-      <Accordion type="single" collapsible className="w-full mt-14">
-        {faqData.map((faq, index) => (
-          <AccordionItem
-            key={index}
-            value={`item-${index}`}
-            className="border border-gray-500 mt-4 px-5 py-2 rounded-2xl bg-white"
-          >
-            <AccordionTrigger className="text-left">
-              {faq.question}
-            </AccordionTrigger>
-            <AccordionContent>{faq.answer}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  );
+    <section className="py-20">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
+          {faqs.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`}>
+              <AccordionTrigger>{faq.question}</AccordionTrigger>
+              <AccordionContent>{faq.answer}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  )
 }
+
