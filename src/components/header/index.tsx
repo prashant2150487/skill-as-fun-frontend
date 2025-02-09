@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { Link } from "react-router-dom";
 
 const Header: FC = () => {
   return (
@@ -19,16 +20,25 @@ const Header: FC = () => {
             <img src={logo} alt="logo" className="size-14 md:size-20" />
           </a>
           <div className="hidden  md:flex items-center gap-x-4 md:gap-x-14">
-            <a href="/about" className="text-black text-xl pointer-events-none" >
+            <a href="/about" className="text-black text-xl pointer-events-none">
               About
             </a>
-            <a href="/prog  " className="text-black text-xl pointer-events-none">
+            <a
+              href="/prog  "
+              className="text-black text-xl pointer-events-none"
+            >
               Programs
             </a>
-            <button disabled className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white ">
-              <span>Register Now! </span>
+            <button
+              disabled
+              className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white "
+            >
+              Register Now!
               <ArrowUpRight />
             </button>
+            <Button className="px-6" asChild>
+              <Link to="/signup">Sign Up</Link>
+            </Button>
           </div>
 
           <DropdownMenu>

@@ -46,19 +46,17 @@ export default function Footer() {
             <p className="mb-2">
               Subscribe to our newsletter for the latest updates.
             </p>
-            <form className="flex items-center justify-center" >
+            <form className="flex items-center justify-center">
               <Input
                 type="email"
                 placeholder="Enter your email"
-                
                 className="focus:ring-2 focus:ring-teal-300 text-gray-900 border-none rounded-l-full shadow-gray-500"
               />
-              
+
               <Button
                 type="submit"
                 disabled
-                className="bg-teal-500 hover:bg-teal-600 rounded-r-full flex align -item hight:78px
-                 "
+                className="bg-teal-500 hover:bg-teal-600 rounded-r-full flex align -item hight:78px"
               >
                 <Send className="h-4 w-4" />
               </Button>
