@@ -52,21 +52,25 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
+        // {
+        //   title: "History",
+        //   url: "#",
+        // },
+        // {
+        //   title: "Starred",
+        //   url: "#",
+        // },
         {
-          title: "History",
+          title: "Teacher Dashboard",
           url: "#",
         },
         {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
+          title: "Student Dashboard",
           url: "#",
         },
       ],
