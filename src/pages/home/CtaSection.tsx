@@ -4,9 +4,9 @@ import { ArrowUpRight } from "lucide-react";
 const CtaSection = () => {
   
   return (
-    <div className="w-full h-96 flex flex-col justify-center items-center">
+    <div className="w-full h-96 flex flex-col justify-center items-center px-4">
       <div>
-        <h1>Shape their tomorrow, start today!</h1>
+        <h1 className="font-bold text-5xl">Shape their tomorrow, start today!</h1>
         <p className="mt-1">
           Start early and equip your child with the tools and confidence to
           navigate tomorrow's challenges with ease.
