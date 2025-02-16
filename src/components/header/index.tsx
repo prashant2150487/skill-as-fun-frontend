@@ -1,4 +1,4 @@
-import { ArrowUpRight, Menu } from "lucide-react";
+import {Menu } from "lucide-react";
 import { FC } from "react";
 import logo from "../../assets/logoMobiile.svg";
 import desktopLogo from "../../assets/logoDesktop.png"
@@ -28,14 +28,14 @@ const Header: FC = () => {
             <a href="/prog" className="text-black text-xl pointer-events-none">
               Programs
             </a>
-            <button
+            {/* <button
               disabled
               className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white "
             >
               Register Now!
               <ArrowUpRight />
-            </button>
-            <Button className="px-6" asChild>
+            </button> */}
+            <Button className="px-6" disabled>
               <Link to="/signup">Sign Up</Link>
             </Button>
           </div>

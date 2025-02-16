@@ -31,9 +31,9 @@ export const Signup = () => {
     console.log("Google signup clicked");
   };
   return (
-    <div className="bg-gray-700 min-h-svh flex items-center justify-center ">
+    <div className="bg-gray-700 min-h-svh flex items-end sm:items-center justify-center ">
       <div>
-        <Card className="w-full max-w-lg mx-auto">
+        <Card className="w-full mx-auto">
           <CardHeader>
             <CardTitle>Sign Up</CardTitle>
             <CardDescription>
