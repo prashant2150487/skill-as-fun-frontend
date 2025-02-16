@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Card, CardContent, CardHeader} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   Form,
   FormControl,
@@ -43,7 +43,7 @@ export default function HeroSection() {
 
   const onSubmit = async (data: SignupFormData) => {
     try {
-      const response:any = await axios.post("https://skill-as-fun-back-end.vercel.app/api/auth/signup", data);
+      const response: any = await axios.post("https://skill-as-fun-back-end.vercel.app/api/auth/signup", data);
       form.reset();
       toast.success(response?.data?.message, {
         description: `Submitted at: ${new Date().toLocaleString()}`,
@@ -56,9 +56,9 @@ export default function HeroSection() {
       console.error("Error during form submission:", error.response?.data || error.message);
       toast.error("Failed to submit the form. Please try again.");
     }
-    
+
   };
-  
+
 
   return (
     <section className="w-full py-12 md:py-20 lg:py-20 xl:py-30 bg-background">
@@ -68,8 +68,7 @@ export default function HeroSection() {
           <div className="flex space-y-4">
             <div className="space-y-2 flex flex-col justify-center">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center md:text-left">
-                From Spells to Scripts: Skill as fun Turns Play into <span className="text-blue-900">Programming </span> 
-                Power!
+                From Spells to Scripts: Where Fun Fuels Future-Ready <span className="text-blue-900">Future-Ready </span>Skills!
               </h1>
               <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left">
                 Master coding fundamentals with us as fun, hands-on
