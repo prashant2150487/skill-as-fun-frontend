@@ -12,7 +12,7 @@ const DefaultLayout: React.FC<LayoutProps> = ({ children }) => {
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
-      <Toaster position="top-right"/>
+      <Toaster position="top-right" />
     </div>
   );
 };

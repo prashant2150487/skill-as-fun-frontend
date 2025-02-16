@@ -25,14 +25,7 @@ const Header: FC = () => {
             <a href="/about" className="text-black text-xl pointer-events-none">
               About
             </a>
-<<<<<<< HEAD
-            <a
-              href="/prog  "
-              className="text-black text-xl pointer-events-none"
-            >
-=======
             <a href="/prog" className="text-black text-xl pointer-events-none">
->>>>>>> 709e4fab5df837931829ddd340039c381e3a6ab2
               Programs
             </a>
             <button
