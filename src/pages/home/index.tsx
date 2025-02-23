@@ -4,6 +4,7 @@ import FAQ from "./Faq";
 import Features from "./Features";
 import Hero from "./Hero";
 import QuoteScroll from "./MovingContainer";
+import OurCourse from "./OurCourse";
 import HeroSection from "./RegistrationForm";
 import TeacherTestimonials from "./TeacherTestimonial";
 import TestimonialCards from "./TestimonialCard";
@@ -18,7 +19,7 @@ const Home = () => {
       <WhyChooseUs />
       <TeacherTestimonials/>
       <TestimonialCards />
-      
+      <OurCourse/>
       <FAQ />
       <QuoteScroll />
       <CtaSection />
