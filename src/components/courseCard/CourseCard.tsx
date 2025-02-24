@@ -8,6 +8,7 @@ import {
 } from "../ui/card";
 import { Book, Calculator, Code, Layout, Music } from "lucide-react";
 import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 
 type Course = {
   id: number;
@@ -87,13 +88,26 @@ function CourseCard({ course }: { course: Course }) {
         </div>
       </CardHeader>
       <CardContent className="p-6">
-        <CardDescription className="text-sm mb-4">
-          {course.description}
-        </CardDescription>
+        <CardDescription className="text-sm mb-4">{course.description}</CardDescription>
+        <Dialog>
+          <DialogTrigger asChild>
             <Button variant="outline" className="w-full">
               View Modules
             </Button>
-            
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{course.title} Modules</DialogTitle>
+            </DialogHeader>
+            <ul className="list-disc pl-6">
+              {course.modules.map((module, index) => (
+                <li key={index} className="mb-2">
+                  {module}
+                </li>
+              ))}
+            </ul>
+          </DialogContent>
+        </Dialog>
       </CardContent>
     </Card>
   );
