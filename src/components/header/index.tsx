@@ -24,8 +24,8 @@ const Header: FC = () => {
             <a href="/about" className="text-black text-xl pointer-events-none" >
               About
             </a>
-            <a href="/prog" className="text-black text-xl pointer-events-none">
-              Programs
+            <a href="/courses" className="text-black text-xl">
+              Courses
             </a>
             <button disabled className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white ">
               <span>Register Now! </span>
@@ -45,7 +45,7 @@ const Header: FC = () => {
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuLabel className="font-normal">
-                Program
+                Our Courses
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuLabel className="font-normal">
