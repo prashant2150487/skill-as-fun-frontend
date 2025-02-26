@@ -1,3 +1,4 @@
+import DefaultLayout from "@/components/layouts/DefaultLayout";
 import About from "@/pages/about/About";
 import Courses from "@/pages/Courses";
 import Dashboard from "@/pages/dashboard";
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/courses",
-    element: <Courses />,
+    element: (
+      <DefaultLayout>
+        <Courses />
+      </DefaultLayout>
+    ),
   },
 ]);
 
