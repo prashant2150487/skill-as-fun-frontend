@@ -10,15 +10,15 @@ const testimonials = [
     avatar: "/placeholder.svg?height=40&width=40",
   },
   {
-    name: "Prof. Arapan",
+    name: "Arapan",
     role: "Computer Science Educator",
     content:
       "The innovative tools provided by SkillAsFun have revolutionized how I teach coding. It's a joy to see students progress so quickly.",
     avatar: "/placeholder.svg?height=40&width=40",
   },
   {
-    name: "Ms. Aisha Patel",
-    role: "Music Theory Expert",
+    name: "Dhruv Anand ",
+    role: "Music Theory Expert (Prayag sangeet Samiti, Allahabad)",
     content:
       "EduTech Pro's approach to music education is unique. I'm able to blend traditional methods with modern technology seamlessly.",
     avatar: "/placeholder.svg?height=40&width=40",
