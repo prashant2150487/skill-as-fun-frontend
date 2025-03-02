@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: "/courses",
+    path: "/course/:courseId",
     element: (
       <DefaultLayout>
         <Courses />

@@ -8,7 +8,8 @@ import {
 } from "../ui/card";
 import { Book, Calculator, Code, Layout, Music } from "lucide-react";
 import { Button } from "../ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
+
+import { Link } from "react-router-dom";
 
 type Course = {
   id: number;
@@ -16,6 +17,7 @@ type Course = {
   description: string;
   modules: string[];
   icon: keyof typeof courseIcons;
+  linkNavigation: string;
 };
 const courseIcons = {
   Math: Calculator,
@@ -29,40 +31,57 @@ export default function CourseCards() {
     {
       id: 1,
       title: "Math",
-      description: "Develop a strong foundation in mathematics, covering essential topics like Algebra, Geometry, and Calculus. This course will enhance your problem-solving skills and logical thinking, making it easier to tackle real-world mathematical challenges.",
+      description:
+        "Develop a strong foundation in mathematics, covering essential topics like Algebra, Geometry, and Calculus. This course will enhance your problem-solving skills and logical thinking, making it easier to tackle real-world mathematical challenges.",
       modules: ["Algebra", "Geometry", "Calculus"],
       icon: "Math",
+      linkNavigation: "/course/math",
     },
     {
       id: 2,
       title: "Python",
-      description: "Master Python programming from the ground up. Learn the basics, dive into Object-Oriented Programming, and explore Data Structures to build scalable and efficient applications. Ideal for beginners and experienced coders alike.",
+      description:
+        "Master Python programming from the ground up. Learn the basics, dive into Object-Oriented Programming, and explore Data Structures to build scalable and efficient applications. Ideal for beginners and experienced coders alike.",
       modules: ["Basics", "OOP", "Data Structures"],
       icon: "Python",
+      linkNavigation: "/course/python",
     },
     {
       id: 3,
       title: "Vedic Math",
-      description: "Unlock the secrets of ancient Indian mathematics and speed up calculations using Vedic techniques. This course covers mental math tricks, Vedic Squares, and divisibility rules to help you solve complex problems in seconds.",
+      description:
+        "Unlock the secrets of ancient Indian mathematics and speed up calculations using Vedic techniques. This course covers mental math tricks, Vedic Squares, and divisibility rules to help you solve complex problems in seconds.",
       modules: ["Mental Calculation", "Vedic Squares", "Divisibility"],
       icon: "Vedic Math",
+      linkNavigation: "/course/vedicMath",
     },
     {
       id: 4,
-      title: "Music",
-      description: "Explore the fascinating world of music. From understanding music theory to learning instrument basics and composing your own tunes, this course is designed for aspiring musicians and enthusiasts who want to enhance their musical creativity.",
-      modules: ["Music Theory", "Instrument Basics", "Composition"],
+      title: "Guitar Course",
+      description:
+        "Learn to play the guitar from the basics to advanced techniques. This course covers fundamental music theory, chords, strumming patterns, and performance skills to help you play your favorite songs and compose your own music.",
+      modules: [
+        "Introduction to Guitar",
+        "Basic Music Theory",
+        "Playing Chords",
+        "Melodies & Picking Techniques",
+        "Strumming & Rhythm",
+        "Barre & Power Chords",
+        "Performance & Next Steps",
+      ],
       icon: "Music",
+      linkNavigation: "/course/guitar",
     },
     {
       id: 5,
       title: "Frontend Development",
-      description: "Learn how to build modern and responsive web interfaces using HTML, CSS, JavaScript, and React. This course will guide you through designing stunning websites, optimizing performance, and creating interactive user experiences.",
+      description:
+        "Learn how to build modern and responsive web interfaces using HTML, CSS, JavaScript, and React. This course will guide you through designing stunning websites, optimizing performance, and creating interactive user experiences.",
       modules: ["HTML & CSS", "JavaScript", "React"],
       icon: "Frontend Development",
+      linkNavigation: "/course/frontend",
     },
   ]);
-
 
   return (
     <div className="container mx-auto p-4">
@@ -88,26 +107,14 @@ function CourseCard({ course }: { course: Course }) {
         </div>
       </CardHeader>
       <CardContent className="p-6">
-        <CardDescription className="text-sm mb-4">{course.description}</CardDescription>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button variant="outline" className="w-full">
-              View Modules
-            </Button>
-          </DialogTrigger>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{course.title} Modules</DialogTitle>
-            </DialogHeader>
-            <ul className="list-disc pl-6">
-              {course.modules.map((module, index) => (
-                <li key={index} className="mb-2">
-                  {module}
-                </li>
-              ))}
-            </ul>
-          </DialogContent>
-        </Dialog>
+        <CardDescription className="text-sm mb-4">
+          {course.description}
+        </CardDescription>
+        <Link to={course?.linkNavigation}>
+          <Button variant="outline" className="w-full">
+            View Modules
+          </Button>
+        </Link>
       </CardContent>
     </Card>
   );
