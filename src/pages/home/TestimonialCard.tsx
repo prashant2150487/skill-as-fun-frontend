@@ -82,7 +82,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
   studentClass,
   studentSchool,
 }) => (
-  <div className="flex flex-col items-center w-full sm:max-w-sm bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden">
+  <div className="flex flex-col items-center w-full h-full sm:max-w-sm bg-white rounded-3xl border border-gray-200 shadow-lg overflow-hidden">
     <div className="w-full pt-[75%] relative">
       <img
         src={imageSrc}
@@ -91,9 +91,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
       />
     </div>
 
-    <div className="p-4 sm:p-5 w-full">
+    <div className="p-4 sm:p-5 w-full relative">
       <div className="mb-4">
-        <p className="text-sm sm:text-base lg:text-lg italic text-gray-800 font-light leading-relaxed line-clamp-4">
+        <p className="text-sm sm:text-base lg:text-lg xl:text-xl italic text-gray-800 font-light leading-relaxed line-clamp-4">
           "{quote}"
         </p>
       </div>
