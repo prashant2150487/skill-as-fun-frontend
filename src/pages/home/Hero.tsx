@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button"
 
 export default function Hero() {
+  const handleScroll = () => {
+    const element = document.querySelector("#our-courses")
+    if (element) element.scrollIntoView({ behavior: "smooth" })
+  }
   return (
     <section className="bg-gradient-to-r from-purple-500 to-indigo-600 text-white py-20">
       <div className="container mx-auto px-4 text-center">
@@ -9,7 +13,7 @@ export default function Hero() {
           Expert tutoring in Coding, Math, Music, and Vedic Mathematics for students from 6th grade to undergraduate
           level.
         </p>
-        <Button size="lg" variant="secondary">
+        <Button size="lg" variant="secondary" onClick={handleScroll}>
           Start Learning Today
         </Button>
       </div>

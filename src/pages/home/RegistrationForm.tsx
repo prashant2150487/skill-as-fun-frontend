@@ -47,7 +47,7 @@ export default function HeroSection() {
   const onSubmit = async (data: SignupFormData) => {
     try {
       setLoading(true);
-      const response: any = await axios.post(
+      const response: unknown = await axios.post(
         "https://skill-as-fun-back-end.vercel.app/api/auth/signup",
         data
       );
@@ -67,7 +67,7 @@ export default function HeroSection() {
       setLoading(false);
       toast.error("Failed to submit the form. Please try again.");
     } finally {
-      // setLoading(false);
+      setLoading(false);
     }
   };
   if (loading) {
@@ -84,12 +84,12 @@ export default function HeroSection() {
         <div className="grid gap-1 grid-cols-1 md:justify-between md:grid-cols-2 lg:gap-2">
           {/* Left Section */}
           <div className="flex space-y-4">
-            <div className="space-y-2 flex flex-col justify-center">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl text-center md:text-left">
+            <div className="space-y-4 flex flex-col justify-center pb-3">
+              <h1 className="text-4xl text-left font-bold tracking-tighter sm:text-5xl xl:text-6xl md:text-left">
                 From Spells to Scripts: Where Fun Fuels Future-Ready{" "}
                 <span className="text-blue-900">Future-Ready </span>Skills!
               </h1>
-              <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left">
+              <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left ">
                 Master coding fundamentals with us as fun, hands-on programs
                 designed just for kids.
               </p>
@@ -97,7 +97,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Section: Registration Form */}
-          <Card className="w-full max-w-md mx-auto md:ml-auto shadow-2xl">
+          <Card className="w-full max-w-md ml-auto shadow-2xl">
             <CardHeader className="py-5 relative">
               {/* <div className="max-w-fit flex flex-col items-center justify-center row-gap-10">
                 <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal">
