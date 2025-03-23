@@ -5,8 +5,10 @@ import img3 from "../../assets/studentProfile/sarthak.jpeg";
 import img4 from "../../assets/studentProfile/akshaj.jpeg";
 import img5 from "../../assets/studentProfile/Tanvi.jpeg";
 import img6 from "../../assets/studentProfile/anaisha.jpeg";
-import Autoplay from "embla-carousel-autoplay"
+import img7 from "../../assets/studentProfile/arshit.jpeg";
+import img8 from "../../assets/studentProfile/medhansh.jpeg";
 
+import Autoplay from "embla-carousel-autoplay";
 
 import {
   Carousel,
@@ -73,6 +75,22 @@ const testimonials = [
     studentClass: "Class 6",
     studentSchool: "Delhi Public School, Noida",
   },
+  {
+    imageSrc: img7,
+    quote:
+      "Coding was intimidating at first, but SkillAsFun made it so easy! Now, I can create apps and websites that bring my ideas to life.",
+    studentName: "Arshit Sachan",
+    studentClass: "Class 6",
+    studentSchool: "The Millennium School, Noida",
+  },
+  {
+    imageSrc: img8,
+    quote:
+      "Coding was intimidating at first, but SkillAsFun made it so easy! Now, I can create apps and websites that bring my ideas to life.",
+    studentName: "Medhansh Nagpal",
+    studentClass: "Class 8",
+    studentSchool: "Ahlcon InternatAhlcon International School, Delhi",
+  },
 ];
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
@@ -103,7 +121,9 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
           {studentName}
           <span className="font-normal text-gray-700">, {studentClass}</span>
         </h3>
-        <p className="text-xs sm:text-sm truncate text-gray-600">{studentSchool}</p>
+        <p className="text-xs sm:text-sm truncate text-gray-600">
+          {studentSchool}
+        </p>
       </div>
     </div>
   </div>
@@ -112,7 +132,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 export default function TestimonialCards() {
   return (
     <>
-      <div className="mx-auto px-4 sm:px-6 lg:px-16 py-8">
+      <div className="mx-auto px-0 sm:px-6 lg:px-16 py-8 container bg-white">
         <Carousel
           className="w-full"
           plugins={[
@@ -127,8 +147,11 @@ export default function TestimonialCards() {
         >
           <CarouselContent className="ml-0 md:-ml-4">
             {testimonials.map((testimonial, index) => (
-              <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4">
-                <TestimonialCard  {...testimonial} />
+              <CarouselItem
+                key={index}
+                className="pl-2 md:pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/3 xl:basis-1/4"
+              >
+                <TestimonialCard {...testimonial} />
               </CarouselItem>
             ))}
           </CarouselContent>

@@ -24,7 +24,7 @@ const Header: FC = () => {
             <a href="/about" className="text-black text-xl pointer-events-none" >
               About
             </a>
-            <a href="/courses" className="text-black text-xl">
+            <a href="/courses" className="text-black text-xl pointer-events-none">
               Courses
             </a>
             <button disabled className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white ">
