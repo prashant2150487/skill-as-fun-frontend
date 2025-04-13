@@ -20,7 +20,7 @@ const Header: FC = () => {
             <img src={desktopLogo} alt="logo" className="hidden md:flex" />
             <img src={logo} alt="logo" className="size-14 md:size-20 md:hidden" />
           </a>
-          <div className="hidden  md:flex items-center gap-x-4 md:gap-x-14">
+          <div className="hidden md:flex items-center gap-x-4 md:gap-x-14 cursor-pointer">
             <a href="/about" className="text-black text-xl" >
               About
             </a>
