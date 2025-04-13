@@ -21,7 +21,7 @@ const Header: FC = () => {
             <img src={logo} alt="logo" className="size-14 md:size-20 md:hidden" />
           </a>
           <div className="hidden  md:flex items-center gap-x-4 md:gap-x-14">
-            <a href="/about" className="text-black text-xl pointer-events-none" >
+            <a href="/about" className="text-black text-xl" >
               About
             </a>
             <a href="/courses" className="text-black text-xl pointer-events-none">

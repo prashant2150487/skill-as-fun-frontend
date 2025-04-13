@@ -33,23 +33,23 @@ export default function AboutPage() {
           <div className="flex flex-col items-center space-y-4 text-center relative z-10">
             <div className="inline-flex items-center justify-center p-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <Sparkles className="h-6 w-6 text-yellow-300 mr-2" />
-              <span className="text-sm font-medium">Transforming Education Since 2015</span>
+              <span className="text-sm font-medium">Transforming Education Since 2024</span>
             </div>
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl md:text-6xl/none bg-clip-text text-transparent bg-gradient-to-r from-white to-blue-100">
-                About EduTech Innovations
+                About SkillAsFun
               </h1>
               <p className="mx-auto max-w-[700px] text-blue-100 md:text-xl">
                 Transforming education through innovative technology solutions
               </p>
             </div>
             <div className="space-x-4 mt-8">
-              <Button size="lg" className="bg-white text-indigo-600 hover:bg-blue-100 hover:text-indigo-700" asChild>
+              <Button size="lg" className="bg-white text-indigo-600 hover:bg-blue-100 hover:text-indigo-700 pointer-events-none" asChild>
                 <Link to="/contact">Contact Us</Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20" asChild>
+              {/* <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/20 pointer-events-none" asChild>
                 <Link to="/solutions">Our Solutions</Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 Empowering learners through accessible, engaging, and effective educational technology
               </h2>
               <p className="text-gray-600 dark:text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                At EduTech Innovations, we believe that quality education should be accessible to everyone, regardless
+                At SkillAsFun, we believe that quality education should be accessible to everyone, regardless
                 of their background or circumstances. Our mission is to develop and deliver cutting-edge educational
                 technology solutions that break down barriers to learning, engage students in meaningful ways, and
                 produce measurable results.
@@ -130,7 +130,7 @@ export default function AboutPage() {
                   src="/placeholder.svg?height=400&width=400"
                   width={400}
                   height={400}
-                  alt="Founders of EduTech Innovations"
+                  alt="Founders of SkillAsFun"
                   className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                 />
               </div>
@@ -141,8 +141,8 @@ export default function AboutPage() {
                   From Classroom to Company
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300">
-                  EduTech Innovations began in 2015 when three passionate educators—Dr. Sarah Chen, Michael Rodriguez,
-                  and Dr. James Wilson—became frustrated with the limitations of existing educational technology. They
+                  SkillAsFun began in 2024 when three passionate educators— Prashant Sachan, Arpan Sachan,
+                  and Mahesh Kumar frustrated with the limitations of existing educational technology. They
                   saw firsthand how technology could transform learning when designed with real classroom needs in mind,
                   but too often, the available tools fell short.
                 </p>
@@ -150,16 +150,16 @@ export default function AboutPage() {
                   What started as a small project to create better assessment tools for their own classrooms quickly
                   gained attention from colleagues and administrators. Encouraged by the positive feedback and seeing
                   the impact on student engagement and outcomes, the trio decided to formalize their efforts and founded
-                  EduTech Innovations.
+                  SkillAsFun.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300">
-                  In our first year, we launched our flagship learning management system, EduConnect, which was adopted
+                  In our first year, we launched our flagship learning management system, SkillAsFun, which was adopted
                   by 12 schools in our local district. By year three, we had expanded our product line to include
                   adaptive learning tools, virtual science labs, and a comprehensive analytics platform for educators.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300">
-                  Today, EduTech Innovations serves over 500 educational institutions across 28 countries, with a team
-                  of 120 dedicated professionals who share our founding vision: that technology, when thoughtfully
+                  Today, SkillAsFun serves over 5 educational institutions across 1 countries, with a team
+                  of 10 dedicated professionals who share our founding vision: that technology, when thoughtfully
                   designed and implemented, can transform education for the better.
                 </p>
               </div>
@@ -326,7 +326,7 @@ export default function AboutPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-pink-200 to-rose-200 rounded-full blur-3xl opacity-30 -z-10"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-rose-200 to-pink-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="inline-flex items-center justify-center p-2 bg-pink-100 dark:bg-pink-900/30 backdrop-blur-sm rounded-full mb-4">
               <Users className="h-5 w-5 text-pink-600 dark:text-pink-400 mr-2" />
@@ -363,24 +363,24 @@ export default function AboutPage() {
                 bio: "Educational psychologist with a Ph.D. in Learning Sciences. James ensures our products are grounded in research and designed to maximize learning outcomes.",
                 gradient: "from-purple-500 to-indigo-500",
               },
-              {
-                name: "Dr. Maya Patel",
-                role: "Chief Research Officer",
-                bio: "With a background in cognitive science and data analytics, Maya leads our research initiatives and ensures our products are evidence-based and effective.",
-                gradient: "from-amber-500 to-orange-500",
-              },
-              {
-                name: "David Kim",
-                role: "Chief Product Officer",
-                bio: "Former UX designer for educational applications, David ensures our products are intuitive, accessible, and deliver exceptional user experiences for all learners.",
-                gradient: "from-emerald-500 to-green-500",
-              },
-              {
-                name: "Elena Gonzalez",
-                role: "Chief Customer Success Officer",
-                bio: "With extensive experience in educational consulting, Elena leads our implementation and support teams, ensuring our clients achieve their educational goals with our technology.",
-                gradient: "from-violet-500 to-purple-500",
-              },
+              // {
+              //   name: "Dr. Maya Patel",
+              //   role: "Chief Research Officer",
+              //   bio: "With a background in cognitive science and data analytics, Maya leads our research initiatives and ensures our products are evidence-based and effective.",
+              //   gradient: "from-amber-500 to-orange-500",
+              // },
+              // {
+              //   name: "David Kim",
+              //   role: "Chief Product Officer",
+              //   bio: "Former UX designer for educational applications, David ensures our products are intuitive, accessible, and deliver exceptional user experiences for all learners.",
+              //   gradient: "from-emerald-500 to-green-500",
+              // },
+              // {
+              //   name: "Elena Gonzalez",
+              //   role: "Chief Customer Success Officer",
+              //   bio: "With extensive experience in educational consulting, Elena leads our implementation and support teams, ensuring our clients achieve their educational goals with our technology.",
+              //   gradient: "from-violet-500 to-purple-500",
+              // },
             ].map((member, index) => (
               <Card
                 key={index}
@@ -416,7 +416,7 @@ export default function AboutPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-amber-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-amber-200 to-yellow-200 rounded-full blur-3xl opacity-30 -z-10"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-yellow-200 to-amber-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="inline-flex items-center justify-center p-2 bg-amber-100 dark:bg-amber-900/30 backdrop-blur-sm rounded-full mb-4">
               <Award className="h-5 w-5 text-amber-600 dark:text-amber-400 mr-2" />
@@ -498,7 +498,7 @@ export default function AboutPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-emerald-50 to-green-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-emerald-200 to-green-200 rounded-full blur-3xl opacity-30 -z-10"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-green-200 to-emerald-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="inline-flex items-center justify-center p-2 bg-emerald-100 dark:bg-emerald-900/30 backdrop-blur-sm rounded-full mb-4">
               <MessageSquare className="h-5 w-5 text-emerald-600 dark:text-emerald-400 mr-2" />
@@ -517,7 +517,7 @@ export default function AboutPage() {
             {[
               {
                 quote:
-                  "EduTech Innovations has transformed how we approach teaching and learning. Their adaptive platform has helped us personalize education for each student, resulting in significant improvements in engagement and achievement.",
+                  "SkillAsFun has transformed how we approach teaching and learning. Their adaptive platform has helped us personalize education for each student, resulting in significant improvements in engagement and achievement.",
                 name: "Dr. Jennifer Martinez",
                 role: "Principal, Westlake High School",
                 gradient: "from-emerald-500 to-green-500",
@@ -585,7 +585,7 @@ export default function AboutPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-violet-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-violet-200 to-purple-200 rounded-full blur-3xl opacity-30 -z-10"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-purple-200 to-violet-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="inline-flex items-center justify-center p-2 bg-violet-100 dark:bg-violet-900/30 backdrop-blur-sm rounded-full mb-4">
               <Building className="h-5 w-5 text-violet-600 dark:text-violet-400 mr-2" />
@@ -636,7 +636,7 @@ export default function AboutPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-br from-blue-200 to-indigo-200 rounded-full blur-3xl opacity-30 -z-10"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-gradient-to-tr from-indigo-200 to-blue-200 rounded-full blur-3xl opacity-30 -z-10"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
             <div className="space-y-6">
               <div className="inline-flex items-center justify-center p-2 bg-blue-100 dark:bg-blue-900/30 backdrop-blur-sm rounded-full">
@@ -789,7 +789,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[url('/placeholder.svg?height=100&width=100')] bg-repeat opacity-5"></div>
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-white rounded-full blur-3xl opacity-10"></div>
         <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-white rounded-full blur-3xl opacity-10"></div>
-        <div className="container px-4 md:px-6 relative z-10">
+        <div className="container px-4 md:px-6 relative z-10 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="inline-flex items-center justify-center p-2 bg-white/10 backdrop-blur-sm rounded-full mb-4">
               <Sparkles className="h-5 w-5 text-yellow-300 mr-2" />
