@@ -11,10 +11,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import { toast } from "sonner";
 import axios from "axios";
 import { useState } from "react";
 import HarshLoader from "react-spinners/BeatLoader";
+import { toast } from "sonner";
 
 // Zod schema for form validation
 const signupSchema = z.object({
@@ -47,7 +47,7 @@ export default function HeroSection() {
   const onSubmit = async (data: SignupFormData) => {
     try {
       setLoading(true);
-      const response: unknown = await axios.post(
+      const response= await axios.post<{message: string}>(
         "https://skill-as-fun-back-end.vercel.app/api/auth/signup",
         data
       );
