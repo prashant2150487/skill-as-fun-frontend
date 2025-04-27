@@ -19,6 +19,7 @@ import {
   Star,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import founderImg from "@/assets/founder.webp";
 
 export default function AboutPage() {
   return (
@@ -147,11 +148,11 @@ export default function AboutPage() {
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000"></div>
                 <div className="relative">
                   <img
-                    src="/placeholder.svg?height=400&width=400"
-                    width={400}
-                    height={400}
+                    src={founderImg}
+                    // width={400}
+                    // height={400}
                     alt="Founders of SkillAsFun"
-                    className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
+                    className="mx-auto aspect-2/3 overflow-hidden rounded-xl object-cover object-center sm:w-full lg:order-last"
                   />
                 </div>
               </div>
