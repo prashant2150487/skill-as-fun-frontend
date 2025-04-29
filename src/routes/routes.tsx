@@ -1,5 +1,7 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import About from "@/pages/about/About";
+import Signin from "@/pages/auth/signin";
+import SignupPage from "@/pages/auth/signup";
 import Courses from "@/pages/Courses";
 import Dashboard from "@/pages/dashboard";
 import Home from "@/pages/home";
@@ -18,6 +20,15 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
   },
+  {
+    path: "/auth/signup",
+    element: <SignupPage />,
+  },
+  {
+    path: "/auth/login",
+    element:<Signin/>
+  },
+
   {
     path: "/course/:courseId",
     element: (
