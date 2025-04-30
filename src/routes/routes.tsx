@@ -28,19 +28,11 @@ const router = createBrowserRouter([
   {
     path: "/auth/signup",
 
-    element: (
-      <DefaultLayout>
-        <SignupPage/>
-      </DefaultLayout>
-    ),
+    element: <SignupPage />,
   },
   {
     path: "/auth/signin",
-    element: (
-      <DefaultLayout>
-        <Signin />
-      </DefaultLayout>
-    ),
+    element: <Signin />,
   },
   {
     path: "/course/:courseId",

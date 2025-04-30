@@ -8,9 +8,12 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { setUser } from "@/slices/userSlice";
 import axios from "axios";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 const Signin = () => {
   const navigate = useNavigate();
   const [fromData, setFromData] = useState({
@@ -23,6 +26,7 @@ const Signin = () => {
     password: "",
     confirmPassword: "",
   });
+  const dispatch=useDispatch();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFromData({
       ...fromData,
@@ -49,14 +53,7 @@ const Signin = () => {
       newError.password = "Password is required";
       isValid = false;
     }
-    if (!fromData.confirmPassword.trim()) {
-      newError.confirmPassword = "Confirm Password is required";
-      isValid = false;
-    }
-    if (fromData.password !== fromData.confirmPassword) {
-      newError.confirmPassword = "Password and Confirm Password do not match";
-      isValid = false;
-    }
+   
     setError(newError);
     return isValid;
   };
@@ -75,6 +72,8 @@ const Signin = () => {
         }
       );
       console.log(response.data, "Login successful!");
+      dispatch(setUser(response.data.user));
+      toast("Login successful!");
       navigate("/");
     } catch (error) {
       console.error("Error signing in:", error);
@@ -82,7 +81,7 @@ const Signin = () => {
     }
   };
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
+    <form onSubmit={handleSubmit} className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
       <Card className="w-full max-w-md bg-white shadow-lg rounded-lg">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-800">
@@ -95,23 +94,7 @@ const Signin = () => {
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-6">
-              {/* <div>
-                <Label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Name
-                </Label>
-                <Input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={fromData.name}
-                  onChange={handleChange}
-                  placeholder="Your Name"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div> */}
+              
               <div>
                 <Label
                   htmlFor="email"
@@ -134,7 +117,7 @@ const Signin = () => {
                   htmlFor="password"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Password
+                  Password  
                 </Label>
                 <Input
                   id="password"
@@ -146,23 +129,7 @@ const Signin = () => {
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
-              <div>
-                <Label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Confirm Password
-                </Label>
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  value={fromData.confirmPassword}
-                  onChange={handleChange}
-                  placeholder="Enter confirm password"
-                  className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                />
-              </div>
+             
             </div>
           </form>
         </CardContent>
@@ -175,7 +142,7 @@ const Signin = () => {
           </Button>
         </CardFooter>
       </Card>
-    </div>
+    </form>
   );
 };
 export default Signin;
