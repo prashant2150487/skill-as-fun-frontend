@@ -28,11 +28,12 @@ const Signin = () => {
       ...fromData,
       [e.target.name]: e.target.value,
     });
+    setError({
+      ...error,
+      [e.target.name]: "",
+    });
   };
-  setError({
-    ...error,
-    [e.target.name]: "",
-  });
+
   const validate = () => {
     const newError = {
       email: "",
@@ -92,7 +93,7 @@ const Signin = () => {
           </p>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-6">
               {/* <div>
                 <Label
@@ -167,7 +168,7 @@ const Signin = () => {
         </CardContent>
         <CardFooter>
           <Button
-            onClick={handleSubmit}
+            type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
           >
             Sign In

@@ -1,4 +1,3 @@
-"use client"
 
 import * as React from "react"
 import {
@@ -57,14 +56,7 @@ const data = {
       icon: SquareTerminal,
       isActive: true,
       items: [
-        // {
-        //   title: "History",
-        //   url: "#",
-        // },
-        // {
-        //   title: "Starred",
-        //   url: "#",
-        // },
+        
         {
           title: "Teacher Dashboard",
           url: "#",
@@ -77,7 +69,7 @@ const data = {
     },
     {
       title: "Users",
-      // url: "/users",
+      url: "/users",
       icon: Bot,
       items: [
         {
