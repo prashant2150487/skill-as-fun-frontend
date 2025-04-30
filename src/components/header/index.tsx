@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header: FC = () => {
   const location = useLocation();
@@ -50,7 +50,7 @@ const Header: FC = () => {
               disabled
               className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white "
             >
-              <span>Register Now! </span>
+              <Link to="/auth/signup">Signup</Link>
               <ArrowUpRight />
             </button>
           </div>
