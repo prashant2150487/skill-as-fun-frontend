@@ -1,6 +1,8 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import About from "@/pages/about/About";
 import AllUsers from "@/pages/allUsers";
+import Signin from "@/pages/auth/signin";
+import SignupPage from "@/pages/auth/signup";
 import Courses from "@/pages/Courses";
 import Dashboard from "@/pages/dashboard";
 import Home from "@/pages/home";
@@ -21,7 +23,24 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard/all-users",
-    element: <AllUsers/>,
+    element: <AllUsers />,
+  },
+  {
+    path: "/auth/signup",
+
+    element: (
+      <DefaultLayout>
+        <SignupPage/>
+      </DefaultLayout>
+    ),
+  },
+  {
+    path: "/auth/signin",
+    element: (
+      <DefaultLayout>
+        <Signin />
+      </DefaultLayout>
+    ),
   },
   {
     path: "/course/:courseId",
