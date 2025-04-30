@@ -1,7 +1,12 @@
+import DashboardLayout from "../dashboard"
 
 const AllUsers = () => {
   return (
-    <div>index</div>
+    <DashboardLayout>
+      <div className="bg-gray-700">
+        dwdwd
+      </div>
+    </DashboardLayout>
   )
 }
 
