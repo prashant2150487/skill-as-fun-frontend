@@ -1,20 +1,33 @@
-// src/api/axios.ts
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  InternalAxiosRequestConfig,
+  AxiosRequestHeaders,
+} from "axios";
 
-const axiosInstance = axios.create({
-  baseURL: 'https://your-api.com', // Replace with your API URL
+const axiosInstance: AxiosInstance = axios.create({
+  baseURL: "https://skill-as-fun-back-end.vercel.app/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-// Add interceptor with proper TypeScript typing
 axiosInstance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
-    const token = localStorage.getItem('token'); // or from Redux/Context
-    if (token && config.headers) {
+  (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
+    const token = localStorage.getItem("token");
+
+    if (!config.headers) {
+      config.headers = {} as AxiosRequestHeaders; 
+    }
+
+    if (token) {
       config.headers['Authorization'] = `Bearer ${token}`;
     }
+
     return config;
   },
-  (error) => {
+  (error: AxiosError) => {
+    console.error("Request error:", error.message);
     return Promise.reject(error);
   }
 );

@@ -37,7 +37,7 @@ const Signin = () => {
       [e.target.name]: "",
     });
   };
- 
+
   const validate = () => {
     const newError = {
       email: "",
@@ -92,7 +92,7 @@ const Signin = () => {
           </p>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-6">
               
               <div>
@@ -135,7 +135,7 @@ const Signin = () => {
         </CardContent>
         <CardFooter>
           <Button
-          type="submit"
+            type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
           >
             Sign In

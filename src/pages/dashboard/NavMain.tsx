@@ -1,5 +1,3 @@
-"use client";
-
 import { ChevronRight, type LucideIcon } from "lucide-react";
 
 import {
@@ -34,6 +32,7 @@ export function NavMain({
 }) {
   return (
     <SidebarGroup>
+      
       <SidebarGroupLabel>Main</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (

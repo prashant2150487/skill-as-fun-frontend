@@ -1,9 +1,7 @@
-"use client"
 
 import * as React from "react"
 import {
   AudioWaveform,
-  BookOpen,
   Bot,
   Command,
   Frame,
@@ -52,22 +50,27 @@ const data = {
   ],
   navMain: [
     {
-      title: "Dashboard",
+      title: "Users",
+      url: "",
+      icon: Bot,
+      items: [
+        {
+          title: "All Users",
+          url: "all-users",
+        },
+       
+      ],
+    },
+    {
+      title: "Quizzes",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
-        // {
-        //   title: "History",
-        //   url: "#",
-        // },
-        // {
-        //   title: "Starred",
-        //   url: "#",
-        // },
+        
         {
-          title: "Teacher Dashboard",
-          url: "#",
+          title: "All Quizzes",
+          url: "all-quizzes",
         },
         {
           title: "Student Dashboard",
@@ -75,41 +78,30 @@ const data = {
         },
       ],
     },
-    {
-      title: "Users",
-      // url: "/users",
-      icon: Bot,
-      items: [
-        {
-          title: "All Users",
-          url: "dashboard/all-users",
-        },
-       
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
+    
+    // {
+    //   title: "Documentation",
+    //   url: "#",
+    //   icon: BookOpen,
+    //   items: [
+    //     {
+    //       title: "Introduction",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Get Started",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Tutorials",
+    //       url: "#",
+    //     },
+    //     {
+    //       title: "Changelog",
+    //       url: "#",
+    //     },
+    //   ],
+    // },
     {
       title: "Settings",
       url: "#",
