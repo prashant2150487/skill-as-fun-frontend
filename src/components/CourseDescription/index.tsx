@@ -583,5 +583,4 @@ const courses = {
     },
   ],
 };
-
 export default CourseDescription;
