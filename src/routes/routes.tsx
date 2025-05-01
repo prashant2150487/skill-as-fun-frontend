@@ -4,7 +4,6 @@ import AllUsers from "@/pages/allUsers";
 import Signin from "@/pages/auth/signin";
 import SignupPage from "@/pages/auth/signup";
 import Courses from "@/pages/Courses";
-import Dashboard from "@/pages/dashboard";
 import Home from "@/pages/home";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 

@@ -17,7 +17,7 @@ axiosInstance.interceptors.request.use(
     const token = localStorage.getItem("token");
 
     if (!config.headers) {
-      config.headers = {} as AxiosRequestHeaders; // ✅ Fix here
+      config.headers = {} as AxiosRequestHeaders; 
     }
 
     if (token) {
