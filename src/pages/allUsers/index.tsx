@@ -13,17 +13,14 @@ interface User {
   statusColor?: string;
   whatsUpNo?: string;
 }
-
 const AllUsers = () => {
   const [allData, setAllData] = useState<User[]>([]);
   const [activeRow, setActiveRow] = useState<string | null>(null); // Track the active row
-
   const handleClick = (id: string) => {
     setActiveRow(id); // Toggle the dropdown for the clicked row
   };
   console.log(activeRow, "activeRow");
   console.log(allData, "allData");
-
   useEffect(() => {
     const userData = async () => {
       try {
@@ -37,7 +34,6 @@ const AllUsers = () => {
     };
     userData();
   }, []);
-
   return (
     <DashboardLayout>
       <div className="relative overflow-x-auto py-4 px-1 sm:rounded-lg">
