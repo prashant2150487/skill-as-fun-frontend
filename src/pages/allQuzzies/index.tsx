@@ -63,7 +63,7 @@ const AllQuzzies = () => {
               className="w-full mt-4 justify-start text-gray-500"
             >
               <Plus className="h-4 w-4 mr-2" />
-              Add New Section
+              Add New Quiz
             </Button>
             {quizzePopup && (
               <div className="flex shadow-md items-start justify-start px-5 py-5 ">
