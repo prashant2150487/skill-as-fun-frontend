@@ -50,7 +50,7 @@ const Header: FC = () => {
               disabled
               className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white "
             >
-              <Link to="/auth/signup">Signup</Link>
+              <Link to="/auth/signin">Signin</Link>
               <ArrowUpRight />
             </button>
           </div>
