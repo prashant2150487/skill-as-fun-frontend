@@ -11,10 +11,12 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 import { Link, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Header: FC = () => {
   const location = useLocation();
-  console.log(location);
+  const { isAuthenticated } = useSelector((state: RootState) => state.user);
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
       <nav className="bg-white py-1 md:py-2 border-gray-200 dark:bg-gray-800">
@@ -46,13 +48,15 @@ const Header: FC = () => {
             >
               Courses
             </a>
-            <button
-              disabled
-              className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white "
-            >
-              <Link to="/auth/signin">Signin</Link>
-              <ArrowUpRight />
-            </button>
+            {!isAuthenticated && (
+              <Link
+                to="/auth/signin"
+                className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white"
+              >
+                <span>Signin</span>
+                <ArrowUpRight />
+              </Link>
+            )}
           </div>
 
           <DropdownMenu>

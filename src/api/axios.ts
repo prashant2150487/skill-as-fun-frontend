@@ -14,7 +14,7 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("Token");
 
     if (!config.headers) {
       config.headers = {} as AxiosRequestHeaders; 

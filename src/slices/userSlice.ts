@@ -2,23 +2,34 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { User } from "../types/User";
 
 interface UserState {
-  userInfo: User | null;
+  user: User | null;
+  token: string;
+  isAuthenticated: boolean;
 }
 const initialState: UserState = {
-  userInfo: JSON.parse(localStorage.getItem("userInfo") || "null"),
+  user: {
+    id: "",
+    name: "",
+    email: "",
+  },
+  token: "",
+  isAuthenticated: false,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User>) => {
-      state.userInfo = action.payload;
-      localStorage.setItem("userInfo", JSON.stringify(action.payload));
+    setUser: (state, action: PayloadAction<UserState>) => {
+      state.user = action.payload.user;
+      state.token = action.payload.token || localStorage.getItem("Token") || "";
+      state.isAuthenticated = !!(action.payload.user && state.token);
     },
     logout: (state) => {
-      state.userInfo = null;
-      localStorage.removeItem("userInfo");
+      state.user = null;
+      state.token = "";
+      state.isAuthenticated = false;
+      localStorage.removeItem("Token");
     },
   },
 });

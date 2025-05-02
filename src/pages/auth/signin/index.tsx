@@ -1,3 +1,4 @@
+import axiosInstance from "@/api/axios";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,7 +10,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { setUser } from "@/slices/userSlice";
-import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -26,7 +26,7 @@ const Signin = () => {
     password: "",
     confirmPassword: "",
   });
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFromData({
       ...fromData,
@@ -53,35 +53,31 @@ const Signin = () => {
       newError.password = "Password is required";
       isValid = false;
     }
-   
+
     setError(newError);
     return isValid;
   };
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(fromData);
+  const handleSubmit = async () => {
     if (!validate()) {
       return;
     }
     try {
-      const response = await axios.post(
-        "https://skill-as-fun-back-end.vercel.app/api/auth/login",
-        {
-          email: fromData.email,
-          password: fromData.password,
-        }
-      );
+      const response = await axiosInstance.post("auth/login", {
+        email: fromData.email,
+        password: fromData.password,
+      });
       console.log(response.data, "Login successful!");
-      dispatch(setUser(response.data.user));
+      dispatch(setUser(response.data));
+      localStorage.setItem("Token", response.data?.token);
       toast("Login successful!");
       navigate("/");
     } catch (error) {
       console.error("Error signing in:", error);
-      alert("Error signing in. Please try again.");
+      toast.error("Error signing in. Please try again.");
     }
   };
   return (
-    <form onSubmit={handleSubmit} className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 p-4">
       <Card className="w-full max-w-md bg-white shadow-lg rounded-lg">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl font-bold text-gray-800">
@@ -92,9 +88,8 @@ const Signin = () => {
           </p>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form  className="space-y-4">
             <div className="space-y-6">
-              
               <div>
                 <Label
                   htmlFor="email"
@@ -117,7 +112,7 @@ const Signin = () => {
                   htmlFor="password"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Password  
+                  Password
                 </Label>
                 <Input
                   id="password"
@@ -129,20 +124,19 @@ const Signin = () => {
                   className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                 />
               </div>
-             
             </div>
           </form>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col items-center gap-4">
           <Button
-            type="submit"
+            onClick={handleSubmit}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
           >
             Sign In
           </Button>
         </CardFooter>
       </Card>
-    </form>
+    </div>
   );
 };
 export default Signin;
