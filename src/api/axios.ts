@@ -6,7 +6,7 @@ import axios, {
 } from "axios";
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: "https://skill-as-fun-back-end.vercel.app/api",
+  baseURL: "https://skill-as-fun-back-end.vercel.app/api/",
   headers: {
     "Content-Type": "application/json",
   },
