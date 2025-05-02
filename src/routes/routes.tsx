@@ -1,5 +1,6 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import About from "@/pages/about/About";
+import AllQuzzies from "@/pages/allQuzzies";
 import AllUsers from "@/pages/allUsers";
 import Signin from "@/pages/auth/signin";
 import SignupPage from "@/pages/auth/signup";
@@ -22,8 +23,11 @@ const router = createBrowserRouter([
     element: <AllUsers />,
   },
   {
+    path: "dashboard/all-quizzes",
+    element: <AllQuzzies/>,
+  },
+  {
     path: "/auth/signup",
-
     element: <SignupPage />,  
   },
   {
