@@ -1,7 +1,40 @@
+import axios from "axios";
 import DashboardLayout from "../dashboard";
-
+import { useEffect, useState } from "react";
+// import { Users } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  childName?: string;
+}
 const AllUsers = () => {
-  
+  const [allData, setAllData] = useState<User[]>([]);
+  const [EditData, setEditData] = useState(false);
+
+  const handleClick = () => {
+    if (!EditData) {
+      setEditData(true);
+    }
+  };
+
+  useEffect(() => {
+    const userData = async () => {
+      try {
+        const response = await axios.get(
+          "https://skill-as-fun-back-end.vercel.app/api/auth/getAllUsers"
+        );
+        console.log(response.data, "response data");
+        setAllData(response.data?.users);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+    userData();
+  }, []);
+  console.log(allData, "allData");
   return (
     <DashboardLayout>
       <div className="relative overflow-x-auto py-4 px-1 sm:rounded-lg">
@@ -31,7 +64,6 @@ const AllUsers = () => {
                 />
               </svg>
             </button>
-            {/* Dropdown menu */}
             <div
               id="dropdownAction"
               className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600"
@@ -134,33 +166,7 @@ const AllUsers = () => {
             </tr>
           </thead>
           <tbody>
-            {[
-              {
-                name: "Neil Sims",
-                email: "neil.sims@flowbite.com",
-                position: "React Developer",
-                status: "Online",
-                statusColor: "bg-green-500",
-                image: "/docs/images/people/profile-picture-1.jpg",
-              },
-              {
-                name: "Bonnie Green",
-                email: "bonnie@flowbite.com",
-                position: "Designer",
-                status: "Online",
-                statusColor: "bg-green-500",
-                image: "/docs/images/people/profile-picture-3.jpg",
-              },
-              {
-                name: "Jese Leos",
-                email: "jese@flowbite.com",
-                position: "Vue JS Developer",
-                status: "Online",
-                statusColor: "bg-green-500",
-                image: "/docs/images/people/profile-picture-2.jpg",
-              },
-              
-            ].map((user, index) => (
+            {allData.map((user, index) => (
               <tr
                 key={index}
                 className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
@@ -184,32 +190,54 @@ const AllUsers = () => {
                   scope="row"
                   className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                 >
-                  <img
-                    className="w-10 h-10 rounded-full"
-                    src={user.image}
-                    alt={`${user.name} image`}
-                  />
+                  <div className="w-10 h-10 rounded-full bg-gray-400 flex items-center justify-center text-white font-semibold">
+                    {user?.childName
+                      ?.split(" ")
+                      .map((word) => word[0])
+                      .join("")
+                      .toUpperCase() || "NA"}
+                  </div>
                   <div className="pl-3">
-                    <div className="text-base font-semibold">{user.name}</div>
-                    <div className="font-normal text-gray-500">{user.email}</div>
+                    <div className="text-base font-semibold">
+                      {user?.childName || user?.name}
+                    </div>
+                    <div className="font-normal text-gray-500">
+                      {user?.email}
+                    </div>
                   </div>
                 </th>
-                <td className="px-6 py-4">{user.position}</td>
+                <td className="px-6 py-4">{user?.role}</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div
                       className={`h-2.5 w-2.5 rounded-full ${user.statusColor} mr-2`}
-                    ></div>{" "}
+                    ></div>
                     {user.status}
                   </div>
                 </td>
                 <td className="px-6 py-4">
-                  <a
+                  {/* <a
                     href="#"
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                  >
-                    Edit user
-                  </a>
+                    className="font-medium"
+                  > */}
+                  <EllipsisVertical onClick={handleClick} />
+                  {/* </a> */}
+                  {EditData && (
+                    <div className=" w-[180px] flex flex-col items-start py-4 px-4 bg-white shadow-md gap-3">
+                      <h2 className="text-xl font-bold text-[#00000]">
+                        Action
+                      </h2>
+                      <h4 className="font-normal text-gray-500">
+                        Copy payment Id
+                      </h4>
+                      <h4 className="font-normal text-gray-500">
+                        View Customer
+                      </h4>
+                      <h4 className="font-normal text-gray-500">
+                        View Customer detail
+                      </h4>
+                    </div>
+                  )}
                 </td>
               </tr>
             ))}

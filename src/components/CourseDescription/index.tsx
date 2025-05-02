@@ -6,7 +6,6 @@ import {
   AccordionTrigger,
 } from "../ui/accordion";
 import { useState } from "react";
-
 const CourseDescription = () => {
   const [openModule, setOpenModule] = useState("module-0");
   const { courseId } = useParams<{

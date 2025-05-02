@@ -8,9 +8,7 @@ import {
 } from "../ui/card";
 import { Book, Calculator, Code, Layout, Music } from "lucide-react";
 import { Button } from "../ui/button";
-
 import { Link } from "react-router-dom";
-
 type Course = {
   id: number;
   title: string;
