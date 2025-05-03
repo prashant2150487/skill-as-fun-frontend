@@ -48,13 +48,20 @@ const Header: FC = () => {
             >
               Courses
             </a>
-            {!isAuthenticated && (
+            {!isAuthenticated ? (
               <Link
                 to="/auth/signin"
                 className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white"
               >
                 <span>Signin</span>
                 <ArrowUpRight />
+              </Link>
+            ) : (
+              <Link
+                to="/dashboard/all-users"
+                className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white"
+              >
+                <span>Dashboard</span>
               </Link>
             )}
           </div>
