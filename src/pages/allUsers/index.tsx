@@ -1,7 +1,8 @@
-import axios from "axios";
 import DashboardLayout from "../dashboard";
 import { useEffect, useState } from "react";
 import { EllipsisVertical } from "lucide-react";
+import axiosInstance from "@/api/axios";
+import { Separator } from "@/components/ui/separator";
 
 interface User {
   _id: string;
@@ -16,24 +17,36 @@ interface User {
 const AllUsers = () => {
   const [allData, setAllData] = useState<User[]>([]);
   const [activeRow, setActiveRow] = useState<string | null>(null); // Track the active row
+
+  console.log(activeRow, "activeRow");
+  console.log(allData, "allData");
+  const userData = async () => {
+    try {
+      const response = await axiosInstance.get("auth/getAllUsers");
+      setAllData(response.data?.users || []);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+  useEffect(() => {
+    
+    userData();
+  }, []);
   const handleClick = (id: string) => {
     setActiveRow(id); // Toggle the dropdown for the clicked row
   };
-  console.log(activeRow, "activeRow");
-  console.log(allData, "allData");
-  useEffect(() => {
-    const userData = async () => {
-      try {
-        const response = await axios.get(
-          "https://skill-as-fun-back-end.vercel.app/api/auth/getAllUsers"
-        );
-        setAllData(response.data?.users || []);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-    userData();
-  }, []);
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await axiosInstance.delete(`auth/deleteUser/${id}`);
+      // Optionally, you can update the state to remove the deleted user from the list
+      userData(); // Fetch updated user data
+
+      console.log(response.data, "response");
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
   return (
     <DashboardLayout>
       <div className="relative overflow-x-auto py-4 px-1 sm:rounded-lg">
@@ -52,10 +65,18 @@ const AllUsers = () => {
                   </label>
                 </div>
               </th>
-              <th scope="col" className="px-6 py-3">Name</th>
-              <th scope="col" className="px-6 py-3">Position</th>
-              <th scope="col" className="px-6 py-3">Contact Number</th>
-              <th scope="col" className="px-6 py-3">Action</th>
+              <th scope="col" className="px-6 py-3">
+                Name
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Position
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Contact Number
+              </th>
+              <th scope="col" className="px-6 py-3">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -71,7 +92,6 @@ const AllUsers = () => {
                       type="checkbox"
                       className="w-4 h-4  bg-gray-100 border-gray-300 rounded-sm"
                     />
-                   
                   </div>
                 </td>
                 <th
@@ -109,13 +129,15 @@ const AllUsers = () => {
                     className="cursor-pointer text-gray-500 hover:text-gray-700"
                   />
                   {activeRow === user._id && (
-                    <div
-                      className="absolute top-10 border right-40 mt-2 w-[180px] flex flex-col items-start py-4 px-4 bg-white shadow-md gap-3 rounded=sm z-10"
-                    >
-                      <h2 className="text-xl font-bold text-gray-800 cursor-pointer hover:text-gray-900">
+                    <div className="absolute top-10 border right-40 mt-2 w-[180px] flex flex-col items-start py-4 px-4 bg-white shadow-md gap-3 rounded=sm z-10">
+                      <h2 className="text-sm text-gray-800 cursor-pointer hover:text-gray-900">
                         Edit
                       </h2>
-                      <h4 className="font-normal text-gray-500 cursor-pointer hover:text-gray-700">
+                      <Separator className="w-full" />
+                      <h4
+                        className="font-normal text-gray-500 cursor-pointer hover:text-gray-700"
+                        onClick={() => handleDelete(user._id)}
+                      >
                         Delete
                       </h4>
                     </div>
