@@ -17,7 +17,6 @@ const AllQuzzies = () => {
   const handleClick = () => {
     setQuizzePopup(!quizzePopup);
   };
-
   useEffect(() => {
     const fetchAllQuzzies = async () => {
       try {
