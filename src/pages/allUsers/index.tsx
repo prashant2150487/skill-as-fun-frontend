@@ -1,8 +1,14 @@
 import DashboardLayout from "../dashboard";
 import { useEffect, useState } from "react";
-import { EllipsisVertical } from "lucide-react";
+import { Edit, EllipsisVertical, Trash } from "lucide-react";
 import axiosInstance from "@/api/axios";
 import { Separator } from "@/components/ui/separator";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface User {
   _id: string;
@@ -16,7 +22,7 @@ interface User {
 }
 const AllUsers = () => {
   const [allData, setAllData] = useState<User[]>([]);
-  const [activeRow, setActiveRow] = useState<string | null>(null); // Track the active row
+  const [activeRow] = useState<string | null>(null); // Track the active row
 
   console.log(activeRow, "activeRow");
   console.log(allData, "allData");
@@ -29,12 +35,11 @@ const AllUsers = () => {
     }
   };
   useEffect(() => {
-    
     userData();
   }, []);
-  const handleClick = (id: string) => {
-    setActiveRow(id); // Toggle the dropdown for the clicked row
-  };
+  // const handleClick = (id: string) => {
+  //   setActiveRow(id);
+  // };
   const handleDelete = async (id: string) => {
     try {
       const response = await axiosInstance.delete(`auth/deleteUser/${id}`);
@@ -69,7 +74,7 @@ const AllUsers = () => {
                 Name
               </th>
               <th scope="col" className="px-6 py-3">
-                Position
+                User Type
               </th>
               <th scope="col" className="px-6 py-3">
                 Contact Number
@@ -124,24 +129,30 @@ const AllUsers = () => {
                   </div>
                 </td>
                 <td className="px-6 py-4 relative">
-                  <EllipsisVertical
-                    onClick={() => handleClick(user._id)}
-                    className="cursor-pointer text-gray-500 hover:text-gray-700"
-                  />
-                  {activeRow === user._id && (
-                    <div className="absolute top-10 border right-40 mt-2 w-[180px] flex flex-col items-start py-4 px-4 bg-white shadow-md gap-3 rounded=sm z-10">
-                      <h2 className="text-sm text-gray-800 cursor-pointer hover:text-gray-900">
-                        Edit
-                      </h2>
-                      <Separator className="w-full" />
-                      <h4
-                        className="font-normal text-gray-500 cursor-pointer hover:text-gray-700"
+                  <DropdownMenu >
+                    <DropdownMenuTrigger asChild>
+                      <EllipsisVertical className="cursor-pointer text-gray-500 hover:text-gray-700" />
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      className="w-40 rounded-lg shadow-md bg-white"
+                      align="end"
+                      sideOffset={4}
+                    >
+                      <DropdownMenuItem
+                        className="cursor-pointer text-gray-800 hover:text-gray-900 flex items-center"
+                        onClick={() => console.log("Edit user:", user._id)}
+                      >
+                        <Edit /> Edit
+                      </DropdownMenuItem>
+                      <Separator className="my-1" />
+                      <DropdownMenuItem
+                        className="cursor-pointer text-red-600 hover:text-red-700 flex items-center"
                         onClick={() => handleDelete(user._id)}
                       >
-                        Delete
-                      </h4>
-                    </div>
-                  )}
+                        <Trash /> Delete
+                      </DropdownMenuItem>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </td>
               </tr>
             ))}

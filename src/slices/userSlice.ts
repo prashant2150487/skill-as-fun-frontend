@@ -20,10 +20,10 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<UserState>) => {
-      state.user = action.payload.user;
+    setUser: (state, action: PayloadAction<Partial<UserState>>) => {
+      state.user = action.payload.user || null;
       state.token = action.payload.token || localStorage.getItem("Token") || "";
-      state.isAuthenticated = !!(action.payload.user && state.token);
+      state.isAuthenticated = !!(state.user && state.token);
     },
     logout: (state) => {
       state.user = null;
