@@ -1,14 +1,15 @@
-
-import './App.css'
-import Routes from './routes/routes'
+import "./App.css";
+import useRehydrateUser from "./hooks/useRehydrateUser";
+import Routes from "./routes/routes";
 
 function App() {
-  
+  useRehydrateUser();
+
   return (
     <>
-     <Routes/>
+      <Routes />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

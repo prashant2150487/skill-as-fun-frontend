@@ -3,7 +3,6 @@ import * as React from "react"
 import {
   AudioWaveform,
   Bot,
-  Command,
   Frame,
   GalleryVerticalEnd,
   Map,
@@ -33,7 +32,7 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "SkillAsFUn",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
@@ -42,11 +41,7 @@ const data = {
       logo: AudioWaveform,
       plan: "Startup",
     },
-    {
-      name: "Evil Corp.",
-      logo: Command,
-      plan: "Free",
-    },
+    
   ],
   navMain: [
     {
@@ -156,7 +151,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser/>
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
