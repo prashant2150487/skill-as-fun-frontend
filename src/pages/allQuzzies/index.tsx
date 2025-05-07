@@ -44,6 +44,7 @@ const AllQuzzies = () => {
   });
   const [allOptions, setAllOptions] = useState([]);
   const [optionText, setOptionText] = useState("");
+  
   console.log(optionText, "sdfdf", allOptions, "allOptions");
   const fetchAllQuzzies = async () => {
     try {
@@ -86,18 +87,32 @@ const AllQuzzies = () => {
     setAllOptions([...allOptions, optionText]);
     setOptionText("");
   };
-  const handleDeleteOption=(index)=>{
+  const handleDeleteOption = (index:number) => {
     const updatedOptions = allOptions.filter((_, i) => i !== index);
     setAllOptions(updatedOptions);
-  }
+  };
+ const handleDeleteQuizze=async(quizID:string)=>{
+     try{
+      const responce =await axiosInstance.delete(`quizzes/${quizID}`)
+      fetchAllQuzzies()
+      console.log(responce.data,"responce")
+     }
+     catch(error){
+      console.log(error,"error")
+     }
+ }
+
+
+
   return (
     <>
       <DashboardLayout>
         <div className="flex min-h-screen bg-gray-50">
           <div className="w-80 border-r bg-white p-6">
-            <h2 className="text-xl font-medium mb-4">Content</h2>
+            <h2 className="text-xl font-medium mb-4">Quzzies</h2>
             <div className="flex flex-col gap-3">
               {allQuzzies.map((item: Quiz, index: number) => {
+                console.log(item, "item");
                 return (
                   <div
                     key={index}
@@ -107,9 +122,14 @@ const AllQuzzies = () => {
                       <span className="text-xs text-gray-500 mr-2">
                         {index + 1}.
                       </span>
-                      <div className=" flex flex-col items-start ">
-                        <span className="text-xs">{item?.title}</span>
-                        <span className="text-xs">{item?.category}</span>
+                      <div className="flex items-center justify-between">
+                        <div className=" flex flex-col items-start ">
+                          <span className="text-xs">{item?.title}</span>
+                          <span className="text-xs">{item?.category}</span>
+                        </div>
+                        <Trash2
+                        onClick={()=>handleDeleteQuizze(item.id)}
+                         />
                       </div>
                     </div>
                   </div>
@@ -246,7 +266,7 @@ const AllQuzzies = () => {
 
                     {/* Yes/No Options */}
                     <div className="grid  gap-4">
-                      {allOptions.map((item:string, index:number) => {
+                      {allOptions.map((item: string, index: number) => {
                         return (
                           <div
                             key={index}
@@ -254,17 +274,13 @@ const AllQuzzies = () => {
                           >
                             <div className="flex flex-1 items-center gap-3 border border-gray-300 shadow-md rounded-md p-2">
                               <div className="flex items-center border border-gray-300 rounded-md p-1 px-3  shadow-lg">
-                                <h3 className="text-base text-blue-500">{
-                                  String.fromCharCode(65 + index)
-                                  
-                                  }</h3>
+                                <h3 className="text-base text-blue-500">
+                                  {String.fromCharCode(65 + index)}
+                                </h3>
                               </div>
                               <h3>{item}</h3>
                             </div>
-                            <X 
-                          onClick={()=>handleDeleteOption(index)}
-                            
-                            />
+                            <X onClick={() => handleDeleteOption(index)} />
                           </div>
                         );
                       })}
