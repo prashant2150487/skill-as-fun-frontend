@@ -149,6 +149,7 @@ const AllQuzzies = () => {
           </div>
         </div>
       </DashboardLayout>
+      
     </>
   );
 };
