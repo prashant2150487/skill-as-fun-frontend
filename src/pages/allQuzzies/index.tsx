@@ -1,35 +1,13 @@
 import { Button } from "@/components/ui/button";
-import {
-  ChevronDown,
-  ChevronUp,
-  CircleHelp,
-  Copy,
-  Cross,
-  Eye,
-  HelpCircle,
-  Plus,
-  Trash2,
-} from "lucide-react";
+import { Eye, HelpCircle, Plus, Trash2 } from "lucide-react";
 
 import DashboardLayout from "../dashboard";
 import { useEffect, useState } from "react";
 import axiosInstance from "@/api/axios";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { X } from "lucide-react";
-import QuestionCard from "./questionCard";
+
 import AddQuzziePopup from "./AddQuzziePopup";
+import QuestionCard from "./QuestionCard";
 interface Quiz {
   id: string;
   title: string;
@@ -39,8 +17,9 @@ interface Quiz {
 const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
   const [quizzePopup, setQuizzePopup] = useState(false);
+  const [selectedQuiz, setSelectedQuiz] = useState<number>(0);
   const [addAllQuestion, setAddAllQuestion] = useState({
-    text:"",
+    text: "",
     options: [],
     correctIndex: 0,
   });
@@ -72,8 +51,8 @@ const AllQuzzies = () => {
     try {
       const response = await axiosInstance.post(
         `quizzes/${quizID}/addQuestion`,
-        { addAllQuestion } 
-      );  
+        { addAllQuestion }
+      );
       console.log(response.data, "efefeff");
     } catch (error) {
       console.log("error", error);
@@ -91,7 +70,8 @@ const AllQuzzies = () => {
                 return (
                   <div
                     key={index}
-                    className="border flex items-center justify-between  gap-3 rounded-md"
+                    onClick={()=>setSelectedQuiz(index)}
+                    className={`border flex items-center justify-between  gap-3 rounded-md cursor-pointer + ${allQuzzies?.length>0 && index===selectedQuiz ? "border-blue-300": ""} `}
                   >
                     <div className="p-3 flex items-start">
                       <span className="text-xs text-gray-500 mr-2">
@@ -100,7 +80,7 @@ const AllQuzzies = () => {
 
                       <div className="flex items-center justify-between">
                         <div className=" flex flex-col items-start ">
-                          <span className="text-xs">{item?.title}</span>
+                          <span className="text-xs font-semibold">{item?.title}</span>
                           <span className="text-xs">{item?.category}</span>
                         </div>
                       </div>
@@ -132,10 +112,12 @@ const AllQuzzies = () => {
             <div className="max-w-3xl mx-auto">
               {/* Form Title */}
               <div className="mb-6">
-                <Input
-                  className="text-2xl font-medium border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                  placeholder="Type here"
-                />
+                <p
+                  className="text-xl font-bold border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                >
+                  {allQuzzies[selectedQuiz]?.title}
+
+                </p>
                 <Input
                   className="text-sm text-gray-500 border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                   placeholder="+ Add Description"
