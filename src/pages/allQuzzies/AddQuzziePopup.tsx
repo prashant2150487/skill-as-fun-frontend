@@ -3,7 +3,6 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { X } from 'lucide-react'
 import React, { useState } from 'react'
-
 const AddQuzziePopup = ({setQuizzePopup,fetchAllQuzzies}) => {
     const [allInputs, setAllInputs] = useState({
         title: "",
@@ -14,7 +13,6 @@ const AddQuzziePopup = ({setQuizzePopup,fetchAllQuzzies}) => {
         const { name, value } = e.target;
         setAllInputs({ ...allInputs, [name]: value });
       };
-
       const createQuzie = async () => {
         try {
           const response = await axiosInstance.post(
@@ -33,13 +31,8 @@ const AddQuzziePopup = ({setQuizzePopup,fetchAllQuzzies}) => {
           console.error("Error creating quiz:", error);
         }
       };
-
-
-
-
   return (
    <>
-   
    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
                 <div className="w-full max-w-md px-6 py-5 bg-white rounded-2xl shadow-lg">
                   <div className="flex items-center justify-between ">
