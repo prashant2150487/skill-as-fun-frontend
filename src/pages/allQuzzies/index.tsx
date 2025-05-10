@@ -31,7 +31,7 @@ import { X } from "lucide-react";
 import QuestionCard from "./questionCard";
 import AddQuzziePopup from "./AddQuzziePopup";
 interface Quiz {
-  _id: string;
+  id: string;
   title: string;
   category: string;
   description: string;
@@ -39,9 +39,11 @@ interface Quiz {
 const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
   const [quizzePopup, setQuizzePopup] = useState(false);
-
-
-
+  const [addAllQuestion, setAddAllQuestion] = useState({
+    text:"",
+    options: [],
+    correctIndex: 0,
+  });
   const fetchAllQuzzies = async () => {
     try {
       const response = await axiosInstance.get("quizzes/getAllQuizzes");
@@ -54,23 +56,29 @@ const AllQuzzies = () => {
   useEffect(() => {
     fetchAllQuzzies();
   }, []);
-
-
   const handleClick = () => {
     setQuizzePopup(!quizzePopup);
   };
- 
-
   const handleDeleteQuizze = async (quizID: string) => {
     try {
       const responce = await axiosInstance.delete(`quizzes/${quizID}`);
       fetchAllQuzzies();
-      console.log(responce.data, "responce");
+      console.log(responce.data, "vjdbfdjfskjfsdj");
     } catch (error) {
       console.log(error, "error");
     }
   };
-
+  const handleQuestion = async (quizID: string) => {
+    try {
+      const response = await axiosInstance.post(
+        `quizzes/${quizID}/addQuestion`,
+        { addAllQuestion } 
+      );  
+      console.log(response.data, "efefeff");
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   return (
     <>
       <DashboardLayout>
@@ -83,20 +91,24 @@ const AllQuzzies = () => {
                 return (
                   <div
                     key={index}
-                    className="border flex flex-col gap-3 rounded-md"
+                    className="border flex items-center justify-between  gap-3 rounded-md"
                   >
                     <div className="p-3 flex items-start">
                       <span className="text-xs text-gray-500 mr-2">
                         {index + 1}.
                       </span>
+
                       <div className="flex items-center justify-between">
                         <div className=" flex flex-col items-start ">
                           <span className="text-xs">{item?.title}</span>
                           <span className="text-xs">{item?.category}</span>
                         </div>
-                        <Trash2 onClick={() => handleDeleteQuizze(item.id)} />
                       </div>
                     </div>
+                    <Trash2
+                      className="mr-2"
+                      onClick={() => handleDeleteQuizze(item.id)}
+                    />
                   </div>
                 );
               })}
@@ -110,9 +122,10 @@ const AllQuzzies = () => {
               Add New Quiz
             </Button>
             {quizzePopup && (
-            <AddQuzziePopup setQuizzePopup={setQuizzePopup}
-            fetchAllQuzzies={fetchAllQuzzies}
-            />
+              <AddQuzziePopup
+                setQuizzePopup={setQuizzePopup}
+                fetchAllQuzzies={fetchAllQuzzies}
+              />
             )}
           </div>
           <div className="flex-1 p-6">
@@ -139,18 +152,17 @@ const AllQuzzies = () => {
                   Preview
                 </Button>
               </div>
-              <QuestionCard/>
+              <QuestionCard />
               <div className="flex justify-start  p-4">
                 <Button
+                  onClick={handleQuestion}
                   variant="outline"
-                  
                   className="text-blue-500 gap-2"
                 >
                   <Plus className="h-4 w-4" />
                   Add New Question
                 </Button>
               </div>
-
             </div>
           </div>
         </div>
