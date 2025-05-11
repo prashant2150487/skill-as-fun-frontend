@@ -13,6 +13,7 @@ interface Quiz {
   title: string;
   category: string;
   description: string;
+  questions: any[];
 }
 const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
@@ -70,8 +71,12 @@ const AllQuzzies = () => {
                 return (
                   <div
                     key={index}
-                    onClick={()=>setSelectedQuiz(index)}
-                    className={`border flex items-center justify-between  gap-3 rounded-md cursor-pointer + ${allQuzzies?.length>0 && index===selectedQuiz ? "border-blue-300": ""} `}
+                    onClick={() => setSelectedQuiz(index)}
+                    className={`border flex items-center justify-between  gap-3 rounded-md cursor-pointer + ${
+                      allQuzzies?.length > 0 && index === selectedQuiz
+                        ? "border-blue-300"
+                        : ""
+                    } `}
                   >
                     <div className="p-3 flex items-start">
                       <span className="text-xs text-gray-500 mr-2">
@@ -80,7 +85,9 @@ const AllQuzzies = () => {
 
                       <div className="flex items-center justify-between">
                         <div className=" flex flex-col items-start ">
-                          <span className="text-xs font-semibold">{item?.title}</span>
+                          <span className="text-xs font-semibold">
+                            {item?.title}
+                          </span>
                           <span className="text-xs">{item?.category}</span>
                         </div>
                       </div>
@@ -112,16 +119,12 @@ const AllQuzzies = () => {
             <div className="max-w-3xl mx-auto">
               {/* Form Title */}
               <div className="mb-6">
-                <p
-                  className="text-xl font-bold border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                >
+                <p className="text-xl font-bold border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                   {allQuzzies[selectedQuiz]?.title}
-
                 </p>
-                <Input
-                  className="text-sm text-gray-500 border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                  placeholder="+ Add Description"
-                />
+                <p className="text-sm text-gray-500 border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0">
+                  {allQuzzies[selectedQuiz]?.category}
+                </p>
               </div>
               {/* Help and Preview */}
               <div className="flex justify-end mb-4 gap-2">
@@ -134,7 +137,16 @@ const AllQuzzies = () => {
                   Preview
                 </Button>
               </div>
-              <QuestionCard />
+              {allQuzzies[selectedQuiz]?.questions.map((item, index) => {
+                return (
+                  <QuestionCard
+                    key={index}
+                    question={item}
+                    index={index}
+                  />
+                );
+              })}
+
               <div className="flex justify-start  p-4">
                 <Button
                   onClick={handleQuestion}
@@ -149,7 +161,6 @@ const AllQuzzies = () => {
           </div>
         </div>
       </DashboardLayout>
-      
     </>
   );
 };
