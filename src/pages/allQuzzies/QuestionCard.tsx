@@ -14,11 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
 import React, { useState } from "react";
 
-<<<<<<< HEAD
-const QuestionCard = ({question}) => {
-=======
 const QuestionCard = ({question,index}) => {
->>>>>>> 46bf19e583dd7cae5a10897bd19808891ae34dd1
   const [allOptions, setAllOptions] = useState([]);
   const [optionText, setOptionText] = useState("");
 
