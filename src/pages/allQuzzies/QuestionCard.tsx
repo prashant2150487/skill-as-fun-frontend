@@ -14,7 +14,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
 import React, { useState } from "react";
 
+<<<<<<< HEAD
 const QuestionCard = ({question}) => {
+=======
+const QuestionCard = ({question,index}) => {
+>>>>>>> 46bf19e583dd7cae5a10897bd19808891ae34dd1
   const [allOptions, setAllOptions] = useState([]);
   const [optionText, setOptionText] = useState("");
 
@@ -35,7 +39,7 @@ const QuestionCard = ({question}) => {
           <div className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center gap-2">
               <CircleHelp className="h-5 w-5 text-blue-500" />
-              <span className="font-medium">1 </span>
+              <span className="font-medium">{index+1} </span>
             </div>
             <div className="flex items-center gap-2">
               <Select>
@@ -65,7 +69,7 @@ const QuestionCard = ({question}) => {
               <Label className="text-sm text-gray-500 mb-1 block">
                 Question
               </Label>
-              <Input placeholder="type here" className="mb-2" />
+              <Input placeholder={question?.text} className="mb-2" />
               <Label className="text-sm text-gray-500 mb-1 block">
                 Description (optional)
               </Label>
@@ -80,7 +84,7 @@ const QuestionCard = ({question}) => {
             </div>
 
             <div className="grid  gap-4">
-              {allOptions.map((item: string, index: number) => {
+              {question?.options.map((item: string, index: number) => {
                 return (
                   <div
                     key={index}
