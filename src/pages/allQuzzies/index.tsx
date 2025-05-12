@@ -122,11 +122,7 @@ const AllQuzzies = () => {
                   {allQuzzies[selectedQuiz]?.title}
                 </p>
                 <p className="text-sm text-gray-500 border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0">
-<<<<<<< HEAD
-                  {allQuzzies[selectedQuiz]?.description}
-=======
                   {allQuzzies[selectedQuiz]?.category}
->>>>>>> 46bf19e583dd7cae5a10897bd19808891ae34dd1
                 </p>
               </div>
               {/* Help and Preview */}
@@ -140,10 +136,6 @@ const AllQuzzies = () => {
                   Preview
                 </Button>
               </div>
-<<<<<<< HEAD
-              {allQuzzies[selectedQuiz]?.questions.map((item, index: number) => {
-                return <QuestionCard question={item}  key={index}/>;
-=======
               {allQuzzies[selectedQuiz]?.questions.map((item, index) => {
                 return (
                   <QuestionCard
@@ -152,7 +144,6 @@ const AllQuzzies = () => {
                     index={index}
                   />
                 );
->>>>>>> 46bf19e583dd7cae5a10897bd19808891ae34dd1
               })}
 
               <div className="flex justify-start  p-4">
