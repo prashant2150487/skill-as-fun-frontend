@@ -48,6 +48,16 @@ const Header: FC = () => {
             >
               Courses
             </a>
+            <a
+              href="/quzzies"
+              className="text-black text-xl pointer-events-none"
+            >
+              Quzzies
+            </a>
+            <a
+              href="/courses"
+              className="text-black text-xl pointer-events-none"
+            ></a>
             {!isAuthenticated ? (
               <Link
                 to="/auth/signin"
@@ -65,7 +75,6 @@ const Header: FC = () => {
               </Link>
             )}
           </div>
-
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button size="icon" variant="outline" className="md:hidden">

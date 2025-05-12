@@ -6,8 +6,8 @@ import Signin from "@/pages/auth/signin";
 import SignupPage from "@/pages/auth/signup";
 import Courses from "@/pages/Courses";
 import Home from "@/pages/home";
+import QuzziesQuestions from "@/pages/quzziesQuestions";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,7 +17,10 @@ const router = createBrowserRouter([
     path: "/about",
     element: <About />,
   },
-  
+  {
+    path:"/quzzies",
+    element:<QuzziesQuestions/>,
+  },
   {
     path: "dashboard/all-users",
     element: <AllUsers />,

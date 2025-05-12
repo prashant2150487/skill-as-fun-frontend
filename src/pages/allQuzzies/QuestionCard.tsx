@@ -14,7 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
 import React, { useState } from "react";
 
-const QuestionCard = () => {
+const QuestionCard = ({question}) => {
   const [allOptions, setAllOptions] = useState([]);
   const [optionText, setOptionText] = useState("");
 
@@ -60,7 +60,6 @@ const QuestionCard = () => {
               </div>
             </div>
           </div>
-
           <div className="p-4">
             <div className="mb-4">
               <Label className="text-sm text-gray-500 mb-1 block">
