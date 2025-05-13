@@ -49,10 +49,10 @@ const Header: FC = () => {
               Courses
             </a>
             <a
-              href="/quzzies"
-              className="text-black text-xl pointer-events-none"
+              href="/quizzes"
+              className="text-black text-xl"
             >
-              Quzzies
+              Quizzes
             </a>
             <a
               href="/courses"
