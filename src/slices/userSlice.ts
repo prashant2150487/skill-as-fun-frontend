@@ -11,6 +11,7 @@ const initialState: UserState = {
     id: "",
     name: "",
     email: "",
+    role:""
   },
   token: "",
   isAuthenticated: false,

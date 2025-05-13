@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { setUser } from "@/slices/userSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 const Signin = () => {
   const navigate = useNavigate();
@@ -88,7 +88,7 @@ const Signin = () => {
           </p>
         </CardHeader>
         <CardContent>
-          <form  className="space-y-4">
+          <form className="space-y-4">
             <div className="space-y-6">
               <div>
                 <Label
@@ -134,6 +134,12 @@ const Signin = () => {
           >
             Sign In
           </Button>
+          <Link
+            to="/auth/signup"
+            className=" w-fit ml-auto underline text-blue-600 font-semibold py-2 px-4 rounded-md transition duration-300 text-center"
+          >
+            Sign Up
+          </Link>
         </CardFooter>
       </Card>
     </div>

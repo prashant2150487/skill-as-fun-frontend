@@ -16,7 +16,9 @@ import { RootState } from "../../store";
 
 const Header: FC = () => {
   const location = useLocation();
-  const { isAuthenticated } = useSelector((state: RootState) => state.user);
+  const { isAuthenticated, user } = useSelector(
+    (state: RootState) => state.user
+  );
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
       <nav className="bg-white py-1 md:py-2 border-gray-200 dark:bg-gray-800">
@@ -66,14 +68,14 @@ const Header: FC = () => {
                 <span>Signin</span>
                 <ArrowUpRight />
               </Link>
-            ) : (
+            ) : user?.role === "admin" ? (
               <Link
                 to="/dashboard/all-users"
                 className="bg-[#2E31A6] px-5 py-3 rounded-3xl flex gap-1 shadow-sm text-white"
               >
                 <span>Dashboard</span>
               </Link>
-            )}
+            ) : null}
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

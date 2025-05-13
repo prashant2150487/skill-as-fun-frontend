@@ -11,7 +11,7 @@ import { useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -155,13 +155,19 @@ const SignupPage = () => {
               />
               {error.confirmPassword && <p className="text-red-500 text-sm mt-1">{error.confirmPassword}</p>}
             </div>
-            <CardFooter className="p-0 pt-4">
+            <CardFooter className="p-0 pt-1 flex flex-col gap-2">
               <Button
                 type="submit"
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
               >
                 Sign Up
               </Button>
+              <Link
+                to="/auth/signin"
+                className="w-ful text-blue-600 underline ml-auto font-semibold py-2 px-4 rounded-md transition duration-300 text-center"
+              >
+                Sign In
+              </Link>
             </CardFooter>
           </form>
         </CardContent>

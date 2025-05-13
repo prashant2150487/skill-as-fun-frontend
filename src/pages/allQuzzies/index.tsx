@@ -13,13 +13,18 @@ interface Quiz {
   title: string;
   category: string;
   description: string;
-  questions: any[];
+  questions: Question[];
+}
+type Question ={
+  text: string;
+  options: string[];
+  correctIndex: number;
 }
 const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
-  const [quizzePopup, setQuizzePopup] = useState(false);
+  const [quizzePopup, setQuizzePopup] = useState<boolean>(false);
   const [selectedQuiz, setSelectedQuiz] = useState<number>(0);
-  const [addAllQuestion, setAddAllQuestion] = useState({
+  const [addAllQuestion, setAddAllQuestion] = useState<Question>({
     text: "",
     options: [],
     correctIndex: 0,
