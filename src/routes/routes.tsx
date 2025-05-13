@@ -6,7 +6,8 @@ import Signin from "@/pages/auth/signin";
 import SignupPage from "@/pages/auth/signup";
 import Courses from "@/pages/Courses";
 import Home from "@/pages/home";
-import QuzziesQuestions from "@/pages/quzziesQuestions";
+import PlayQuizze from "@/pages/playQuizze";
+import Quizzes from "@/pages/quizzes";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
@@ -18,8 +19,20 @@ const router = createBrowserRouter([
     element: <About />,
   },
   {
-    path:"/quzzies",
-    element:<QuzziesQuestions/>,
+    path: "/quizzes",
+    element: (
+      <DefaultLayout>
+        <Quizzes />
+      </DefaultLayout>
+    ),
+  },
+  {
+    path: "/quizze/:quizzeId",
+    element: (
+      <DefaultLayout>
+        <PlayQuizze />
+      </DefaultLayout>
+    ),
   },
   {
     path: "dashboard/all-users",
@@ -27,11 +40,11 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard/all-quizzes",
-    element: <AllQuzzies/>,
+    element: <AllQuzzies />,
   },
   {
     path: "/auth/signup",
-    element: <SignupPage />,  
+    element: <SignupPage />,
   },
   {
     path: "/auth/signin",
@@ -46,7 +59,6 @@ const router = createBrowserRouter([
     ),
   },
 ]);
-
 function Routes() {
   return <RouterProvider router={router} />;
 }
