@@ -12,9 +12,15 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 
-const QuestionCard = ({question,index}) => {
+type Question ={
+  text: string;
+  options: string[];
+  correctIndex: number;
+}
+
+const QuestionCard = ({question,index} : {question: Question,index:number}) => {
   const [allOptions, setAllOptions] = useState([]);
   const [optionText, setOptionText] = useState("");
 

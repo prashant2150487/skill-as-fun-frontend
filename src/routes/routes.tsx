@@ -27,7 +27,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/quizze/:quizzeId",
+    path: "/quiz/:quizId",
     element: (
       <DefaultLayout>
         <PlayQuizze />

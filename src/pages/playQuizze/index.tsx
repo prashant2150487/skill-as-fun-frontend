@@ -1,3 +1,5 @@
+import axiosInstance from "@/api/axios";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,94 +9,137 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-const PlayQuizze = () => {
-  const [quizzeData, setQuizzeData] = useState("");
+interface Question {
+  _id: string;
+  quizId: string;
+  text: string;
+  options: string[];
+  correctIndex: number;
+}
 
-  const questions = [
-    {
-      id: 1,
-      question: "Which CSS property is used to set the text color?",
-      options: ["text-color", "color", "font-color", "text-style"],
-      correctAnswer: "color",
-    },
-    {
-      id: 2,
-      question: "Which property is used to change the background color?",
-      options: ["background", "background-color", "bg-color", "color-background"],
-      correctAnswer: "background-color",
-    },
-    {
-      id: 3,
-      question: "Which property is used to set the space between elements?",
-      options: ["margin", "padding", "spacing", "gap"],
-      correctAnswer: "margin",
-    },
-    {
-      id: 4,
-      question: "Which property is used to set the font of an element?",
-      options: ["font-style", "font-family", "text-font", "font-type"],
-      correctAnswer: "font-family",
-    },
-    {
-      id: 5,
-      question: "Which property is used to add space inside an element?",
-      options: ["margin", "padding", "spacing", "inner-space"],
-      correctAnswer: "padding",
-    },
-    {
-      id: 6,
-      question: "Which property is used to set the size of the font?",
-      options: ["font-size", "text-size", "font-height", "text-height"],
-      correctAnswer: "font-size",
-    },
-    {
-      id: 7,
-      question: "Which property is used to make text bold?",
-      options: ["font-weight", "text-bold", "font-style", "text-style"],
-      correctAnswer: "font-weight",
-    },
-  ];
+const PlayQuizze: React.FC = () => {
+  const [questionsData, setQuestionsData] = useState<Question[]>([]);
+  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
+  const { quizId } = useParams<{ quizId: string }>();
+  const navigate = useNavigate();
+
+  const getAllQuestions = async () => {
+    try {
+      const response = await axiosInstance.get(`/quizzes/${quizId}/getQuestion`);
+      setQuestionsData(response?.data?.questions || []);
+    } catch (error) {
+      console.error("Error while fetching questions from the database", error);
+    }
+  };
+
+  useEffect(() => {
+    if (quizId) {
+      getAllQuestions();
+    }
+  }, [quizId]);
+
+  const handleOptionChange = (questionId: string, selectedOption: string) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionId]: selectedOption,
+    }));
+  };
+
+  const handleSubmit = async () => {
+  try {
+    const answers = Object.entries(selectedAnswers).map(([questionId, selectedOption]) => {
+
+      const question = questionsData.find((q) => q._id === questionId);
+      const selectedIndex = question?.options.indexOf(selectedOption) ?? -1;
+
+      return {
+        questionId,
+        selectedIndex,
+      };
+    });
+
+    console.log("Submitting answers payload:", questionsData);
+
+    const response = await axiosInstance.post(`/quizzes/${quizId}/submitAnswers`, {
+      answers,
+    });
+
+    console.log("Submission Response:", response.data);
+    setIsSubmitted(true);
+  } catch (error) {
+    console.error("Error while submitting the quiz answers to the database", error);
+  }
+};
+  console.log(selectedAnswers, "selectedAnswers")
+  console.log(questionsData, "questionsData")
+
   return (
-    <div className="space-y-8">
-      {questions.map((question) => (
-        <Card key={question.id} className="shadow-md">
+    <div className="space-y-8 px-4 py-4">
+      {questionsData.map((question, index) => (
+        <Card key={question._id} className="shadow-md">
           <CardHeader>
-            <div className="flex justify-between items-center mb-2">
+            <div className="flex justify-start items-center mb-2">
               <CardTitle className="text-xl font-semibold">
-                Question {question.id}
+                Question {index + 1}
               </CardTitle>
             </div>
-            <CardDescription className="text-base">
-              {question.question}
-            </CardDescription>
+            <CardDescription className="text-base">{question.text}</CardDescription>
           </CardHeader>
           <CardContent>
-            <RadioGroup className="space-y-3">
-              {question.options.map((option, index) => (
-                <div
-                  key={index}
-                  className={"flex items-center space-x-2 rounded-lg border p-4 transition-colors"
+            <RadioGroup
+              className="space-y-3"
+              value={selectedAnswers[question._id] || ""}
+              onValueChange={(value) => handleOptionChange(question._id, value)}
+            >
+              {question.options.map((option, optIndex) => {
+                const isSelected = selectedAnswers[question._id] === option;
+                const isCorrect = optIndex === question.correctIndex;
+                let borderColor = "border";
+
+                if (isSubmitted) {
+                  if (isSelected) {
+                    borderColor = isCorrect ? "border-green-500" : "border-red-500";
+                  } else if (isCorrect) {
+                    borderColor = "border-green-500";
                   }
-                >
-                  <RadioGroupItem
-                    value={option}
-                    id={`q${question.id}-option-${index}`}
-                  />
-                  <Label
-                    htmlFor={`q${question.id}-option-${index}`}
-                    className="flex-1 cursor-pointer font-medium"
+                }
+
+                return (
+                  <div
+                    key={optIndex}
+                    className={`flex items-center space-x-2 rounded-lg p-4 transition-colors ${borderColor}`}
                   >
-                    {option}
-                  </Label>
-                  
-                </div>
-              ))}
+                    <RadioGroupItem
+                      value={option}
+                      id={`q${question._id}-option-${optIndex}`}
+                      disabled={isSubmitted}
+                    />
+                    <Label
+                      htmlFor={`q${question._id}-option-${optIndex}`}
+                      className="flex-1 cursor-pointer font-medium"
+                    >
+                      {option}
+                    </Label>
+                  </div>
+                );
+              })}
             </RadioGroup>
           </CardContent>
         </Card>
       ))}
+
+      {questionsData.length > 0 && !isSubmitted && (
+        <div className="flex justify-end">
+          <Button variant="outline" className="ml-auto" onClick={handleSubmit}>
+            Submit
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

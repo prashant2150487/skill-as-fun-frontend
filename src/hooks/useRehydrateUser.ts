@@ -10,7 +10,6 @@ const useRehydrateUser = () => {
   const init = async () => {
     try {
       const userProfile = await fetchUserProfile();
-      console.log("user++++", userProfile);
       if (user) {
         dispatch(
             setUser({

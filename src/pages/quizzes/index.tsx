@@ -22,25 +22,25 @@ export default function Quizzes() {
     fetchAllQuzzies();
   }, []);
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 p-4">
-      <div className="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <div className="min-h-screen p-10">
+      <div className="w-full grid grid-cols-2 sm:grid-cols-5 gap-4">
         {allQuzzies.map((item, index) => (  
           <Link
-          to={`/quizze/${item.id}`} 
+          to={`/quiz/${item.id}`} 
 
             key={index}
-            className="shadow-md border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+            className="shadow-md border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden p-4"
           >
-            <div className="p-6 pb-2">
-              <h2 className="text-2xl font-bold text-center">{item.title}</h2>
+            <div className="pb-2">
+              <h2 className="text-2xl font-bold">{item.title}</h2>
             </div>
-            <div className="p-3">
-              <p className="text-gray-600 dark:text-gray-300 text-center">
+            <div className="">
+              <p className="text-gray-600 dark:text-gray-300">
                 {item.description}
               </p>
             </div>
-            <div className="p-3">
-              <p className="text-gray-600 dark:text-gray-300 text-center">
+            <div className="">
+              <p className="text-gray-600 dark:text-gray-300 ">
                 {item.category}
               </p>
             </div>
