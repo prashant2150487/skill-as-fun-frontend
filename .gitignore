@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+// Updated override styles to center the loader on the screen
+
+# Ignore bundle analysis output
+stats.html
