@@ -10,7 +10,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 interface Question {
   _id: string;
@@ -26,7 +26,6 @@ const PlayQuizze: React.FC = () => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const { quizId } = useParams<{ quizId: string }>();
-  const navigate = useNavigate();
 
   const getAllQuestions = async () => {
     try {
@@ -63,23 +62,19 @@ const PlayQuizze: React.FC = () => {
       };
     });
 
-    console.log("Submitting answers payload:", questionsData);
 
-    const response = await axiosInstance.post(`/quizzes/${quizId}/submitAnswers`, {
+    await axiosInstance.post(`/quizzes/${quizId}/submitAnswers`, {
       answers,
     });
 
-    console.log("Submission Response:", response.data);
     setIsSubmitted(true);
   } catch (error) {
     console.error("Error while submitting the quiz answers to the database", error);
   }
 };
-  console.log(selectedAnswers, "selectedAnswers")
-  console.log(questionsData, "questionsData")
 
   return (
-    <div className="space-y-8 px-4 py-4">
+    <div className="space-y-8 px-4 py-5">
       {questionsData.map((question, index) => (
         <Card key={question._id} className="shadow-md">
           <CardHeader>

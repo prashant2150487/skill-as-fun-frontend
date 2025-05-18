@@ -14,15 +14,20 @@ import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
 import { useState } from "react";
 
-type Question ={
+type Question = {
   text: string;
   options: string[];
   correctIndex: number;
+};
+
+interface Props {
+  question: Question;
+  index: number;
 }
 
-const QuestionCard = ({question,index} : {question: Question,index:number}) => {
-  const [allOptions, setAllOptions] = useState([]);
-  const [optionText, setOptionText] = useState("");
+const QuestionCard: React.FC<Props> = ({ question, index }) => {
+  const [allOptions, setAllOptions] = useState<string[]>(question.options);
+  const [optionText, setOptionText] = useState<string>("");
 
   const handleAddOption = () => {
     setAllOptions([...allOptions, optionText]);
@@ -41,7 +46,7 @@ const QuestionCard = ({question,index} : {question: Question,index:number}) => {
           <div className="flex items-center justify-between p-4 border-b">
             <div className="flex items-center gap-2">
               <CircleHelp className="h-5 w-5 text-blue-500" />
-              <span className="font-medium">{index+1} </span>
+              <span className="font-medium">{index + 1} </span>
             </div>
             <div className="flex items-center gap-2">
               <Select>

@@ -30,11 +30,10 @@ import { logout } from "@/slices/userSlice";
 
 export function NavUser() {
   const { isMobile } = useSidebar();
-  const { user, token, isAuthenticated } = useSelector(
+  const { user } = useSelector(
     (state: RootState) => state.user
   );
   const dispatch = useDispatch();
-  console.log(user, "user", token, isAuthenticated);
   const handleLogOut = () => {
     dispatch(logout());
   };

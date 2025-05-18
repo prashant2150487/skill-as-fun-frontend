@@ -19,7 +19,6 @@ const CourseDescription = () => {
     );
   }
 
-  console.log(courseId);
   return (
     <div className="min-h-screen bg-gradient-to-b bg-white mt-4">
       {/* <header className="bg-white shadow-md">

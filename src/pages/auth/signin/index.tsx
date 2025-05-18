@@ -66,7 +66,6 @@ const Signin = () => {
         email: fromData.email,
         password: fromData.password,
       });
-      console.log(response.data, "Login successful!");
       dispatch(setUser(response.data));
       localStorage.setItem("Token", response.data?.token);
       toast("Login successful!");

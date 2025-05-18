@@ -1,5 +1,5 @@
 import { fetchUserProfile } from "@/api/user";
-import { logout, setUser } from "@/slices/userSlice";
+import { setUser } from "@/slices/userSlice";
 import { RootState } from "@/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +10,6 @@ const useRehydrateUser = () => {
   const init = async () => {
     try {
       const userProfile = await fetchUserProfile();
-      if (user) {
         dispatch(
             setUser({
               user: userProfile,
@@ -18,17 +17,15 @@ const useRehydrateUser = () => {
               isAuthenticated: true,
             })
           );
-      }
     } catch (error) {
       console.error("Error rehydrating user:", error);
-      dispatch(logout());
+      // dispatch(logout());
     }
 
     
   };
 
   useEffect(() => {
-    console.log("user++++", user);
     if(!user?.email){
         init();
 

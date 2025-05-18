@@ -4,7 +4,6 @@ import { Eye, HelpCircle, Plus, Trash2 } from "lucide-react";
 import DashboardLayout from "../dashboard";
 import { useEffect, useState } from "react";
 import axiosInstance from "@/api/axios";
-import { Input } from "@/components/ui/input";
 
 import AddQuzziePopup from "./AddQuzziePopup";
 import QuestionCard from "./QuestionCard";
@@ -15,24 +14,23 @@ interface Quiz {
   description: string;
   questions: Question[];
 }
-type Question ={
+type Question = {
   text: string;
   options: string[];
   correctIndex: number;
-}
+};
 const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
   const [quizzePopup, setQuizzePopup] = useState<boolean>(false);
   const [selectedQuiz, setSelectedQuiz] = useState<number>(0);
-  const [addAllQuestion, setAddAllQuestion] = useState<Question>({
-    text: "",
-    options: [],
-    correctIndex: 0,
-  });
+  // const [addAllQuestion, setAddAllQuestion] = useState<Question>({
+  //   text: "",
+  //   options: [],
+  //   correctIndex: 0,
+  // });
   const fetchAllQuzzies = async () => {
     try {
       const response = await axiosInstance.get("quizzes/getAllQuizzes");
-      console.log(response.data, "dgdfgfdgdf");
       setAllQuzzies(response?.data?.quizzes);
     } catch (error) {
       console.error("Error fetching quizzes:", error);
@@ -46,24 +44,22 @@ const AllQuzzies = () => {
   };
   const handleDeleteQuizze = async (quizID: string) => {
     try {
-      const responce = await axiosInstance.delete(`quizzes/${quizID}`);
+      await axiosInstance.delete(`quizzes/${quizID}`);
       fetchAllQuzzies();
-      console.log(responce.data, "vjdbfdjfskjfsdj");
     } catch (error) {
       console.log(error, "error");
     }
   };
-  const handleQuestion = async (quizID: string) => {
-    try {
-      const response = await axiosInstance.post(
-        `quizzes/${quizID}/addQuestion`,
-        { addAllQuestion }
-      );
-      console.log(response.data, "efefeff");
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  // const handleQuestion = async (quizID: string) => {
+  //   try {
+  //     await axiosInstance.post(
+  //       `quizzes/${quizID}/addQuestion`,
+  //       { addAllQuestion }
+  //     );
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
   return (
     <>
       <DashboardLayout>
@@ -72,7 +68,6 @@ const AllQuzzies = () => {
             <h2 className="text-xl font-medium mb-4">Quzzies</h2>
             <div className="flex flex-col gap-3">
               {allQuzzies.map((item: Quiz, index: number) => {
-                console.log(item, "item");
                 return (
                   <div
                     key={index}
@@ -143,17 +138,13 @@ const AllQuzzies = () => {
               </div>
               {allQuzzies[selectedQuiz]?.questions.map((item, index) => {
                 return (
-                  <QuestionCard
-                    key={index}
-                    question={item}
-                    index={index}
-                  />
+                  <QuestionCard key={index} question={item} index={index} />
                 );
               })}
 
               <div className="flex justify-start  p-4">
                 <Button
-                  onClick={handleQuestion}
+                  // onClick={() => handleQuestion()}
                   variant="outline"
                   className="text-blue-500 gap-2"
                 >

@@ -3,7 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { X } from "lucide-react";
 import React, { useState } from "react";
-const AddQuzziePopup = ({ setQuizzePopup, fetchAllQuzzies }) => {
+
+interface Props {
+  setQuizzePopup: (value: boolean) => void;
+  fetchAllQuzzies: () => void;
+}
+const AddQuzziePopup: React.FC<Props> = ({
+  setQuizzePopup,
+  fetchAllQuzzies,
+}) => {
   const [allInputs, setAllInputs] = useState({
     title: "",
     description: "",
@@ -15,10 +23,7 @@ const AddQuzziePopup = ({ setQuizzePopup, fetchAllQuzzies }) => {
   };
   const createQuzie = async () => {
     try {
-      const response = await axiosInstance.post(
-        "quizzes/createQuiz",
-        allInputs
-      );
+      await axiosInstance.post("quizzes/createQuiz", allInputs);
       setQuizzePopup(false);
       setAllInputs({
         title: "",
@@ -26,7 +31,6 @@ const AddQuzziePopup = ({ setQuizzePopup, fetchAllQuzzies }) => {
         category: "",
       });
       fetchAllQuzzies();
-      console.log(response.data, "response");
     } catch (error) {
       console.error("Error creating quiz:", error);
     }

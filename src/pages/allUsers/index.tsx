@@ -9,6 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
 
 interface User {
   _id: string;
@@ -22,10 +24,8 @@ interface User {
 }
 const AllUsers = () => {
   const [allData, setAllData] = useState<User[]>([]);
-  const [activeRow] = useState<string | null>(null); // Track the active row
+  // const [activeRow] = useState<string | null>(null);
 
-  console.log(activeRow, "activeRow");
-  console.log(allData, "allData");
   const userData = async () => {
     try {
       const response = await axiosInstance.get("auth/getAllUsers");
@@ -42,11 +42,10 @@ const AllUsers = () => {
   // };
   const handleDelete = async (id: string) => {
     try {
-      const response = await axiosInstance.delete(`auth/deleteUser/${id}`);
+      await axiosInstance.delete(`auth/deleteUser/${id}`);
       // Optionally, you can update the state to remove the deleted user from the list
       userData(); // Fetch updated user data
 
-      console.log(response.data, "response");
     } catch (error) {
       console.error("Error deleting user:", error);
     }
@@ -92,11 +91,8 @@ const AllUsers = () => {
               >
                 <td className="w-4 p-4">
                   <div className="flex items-center">
-                    <input
-                      id={`checkbox-table-search-${user._id}`}
-                      type="checkbox"
-                      className="w-4 h-4  bg-gray-100 border-gray-300 rounded-sm"
-                    />
+                 
+                    <Checkbox  id={`checkbox-table-search-${user._id}`} />
                   </div>
                 </td>
                 <th
@@ -119,7 +115,7 @@ const AllUsers = () => {
                     </div>
                   </div>
                 </th>
-                <td className="px-6 py-4">{user?.role}</td>
+                <td className="px-6 py-4 "><Badge className="">{user?.role}</Badge></td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div
