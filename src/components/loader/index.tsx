@@ -3,7 +3,6 @@ import { CSSProperties } from "react";
 import { useSelector } from "react-redux";
 import { PulseLoader } from "react-spinners";
 
-// Updated override styles to center the loader on the screen
 const override : CSSProperties = {
   position: "fixed",
   top: "50%",
