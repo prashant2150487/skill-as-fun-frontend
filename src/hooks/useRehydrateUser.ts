@@ -1,5 +1,5 @@
 import { fetchUserProfile } from "@/api/user";
-import { setUser } from "@/slices/userSlice";
+import { logout, setUser } from "@/slices/userSlice";
 import { RootState } from "@/store";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,8 @@ const useRehydrateUser = () => {
           );
     } catch (error) {
       console.error("Error rehydrating user:", error);
-      // dispatch(logout());
+    
+      dispatch(logout());
     }
 
     
