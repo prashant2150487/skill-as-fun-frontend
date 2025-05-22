@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { setLoading } from "@/slices/loaderSlice";
 import { setUser } from "@/slices/userSlice";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -62,6 +63,7 @@ const Signin = () => {
       return;
     }
     try {
+      dispatch(setLoading(true));
       const response = await axiosInstance.post("auth/login", {
         email: fromData.email,
         password: fromData.password,
@@ -73,6 +75,8 @@ const Signin = () => {
     } catch (error) {
       console.error("Error signing in:", error);
       toast.error("Error signing in. Please try again.");
+    } finally {
+      dispatch(setLoading(false));
     }
   };
   return (
