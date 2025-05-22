@@ -28,6 +28,7 @@ const Signin = () => {
     confirmPassword: "",
   });
   const dispatch = useDispatch();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFromData({
       ...fromData,
@@ -63,6 +64,7 @@ const Signin = () => {
       return;
     }
     try {
+      // debugger
       dispatch(setLoading(true));
       const response = await axiosInstance.post("auth/login", {
         email: fromData.email,
@@ -74,7 +76,14 @@ const Signin = () => {
       navigate("/");
     } catch (error) {
       console.error("Error signing in:", error);
-      toast.error("Error signing in. Please try again.");
+      //  toast("Event has been created", {
+      //     description: "Sunday, December 03, 2023 at 9:00 AM",
+      //     action: {
+      //       label: "Undo",
+      //       onClick: () => console.log("Undo"),
+      //     },
+      //   })
+      toast("Error signing in. Please try again.");
     } finally {
       dispatch(setLoading(false));
     }
@@ -136,6 +145,12 @@ const Signin = () => {
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
           >
             Sign In
+          </Button>
+          <Button
+            onClick={() => navigate(-1)}
+            className="w-full bg-gray-900 hover:bg-gray-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
+          >
+            GO BACK
           </Button>
           <Link
             to="/auth/signup"
