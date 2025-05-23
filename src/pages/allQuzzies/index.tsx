@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Eye, HelpCircle, Plus, Trash2 } from "lucide-react";
+import { CircleHelp, Copy, Eye, HelpCircle, Plus, Trash2 } from "lucide-react";
 
 import DashboardLayout from "../dashboard";
 import { useEffect, useState } from "react";
@@ -7,6 +7,8 @@ import axiosInstance from "@/api/axios";
 
 import AddQuzziePopup from "./AddQuzziePopup";
 import QuestionCard from "./QuestionCard";
+import AddQuestionPopup from "./AddQuestionPopup";
+
 interface Quiz {
   id: string;
   title: string;
@@ -23,11 +25,8 @@ const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
   const [quizzePopup, setQuizzePopup] = useState<boolean>(false);
   const [selectedQuiz, setSelectedQuiz] = useState<number>(0);
-  // const [addAllQuestion, setAddAllQuestion] = useState<Question>({
-  //   text: "",
-  //   options: [],
-  //   correctIndex: 0,
-  // });
+  const [showQuestionPopup, setShowQuestionPopup] = useState<boolean>(false);
+
   const fetchAllQuzzies = async () => {
     try {
       const response = await axiosInstance.get("quizzes/getAllQuizzes");
@@ -50,16 +49,7 @@ const AllQuzzies = () => {
       console.log(error, "error");
     }
   };
-  // const handleQuestion = async (quizID: string) => {
-  //   try {
-  //     await axiosInstance.post(
-  //       `quizzes/${quizID}/addQuestion`,
-  //       { addAllQuestion }
-  //     );
-  //   } catch (error) {
-  //     console.log("error", error);
-  //   }
-  // };
+
   return (
     <>
       <DashboardLayout>
@@ -126,6 +116,7 @@ const AllQuzzies = () => {
                 </p>
               </div>
               {/* Help and Preview */}
+
               <div className="flex justify-end mb-4 gap-2">
                 <Button variant="outline" size="sm" className="gap-2">
                   <HelpCircle className="h-4 w-4" />
@@ -145,6 +136,7 @@ const AllQuzzies = () => {
               <div className="flex justify-start  p-4">
                 <Button
                   // onClick={() => handleQuestion()}
+                  onClick={() => setShowQuestionPopup(true)}
                   variant="outline"
                   className="text-blue-500 gap-2"
                 >
@@ -152,6 +144,13 @@ const AllQuzzies = () => {
                   Add New Question
                 </Button>
               </div>
+              {showQuestionPopup && (
+                <AddQuestionPopup
+                  quizID={allQuzzies[selectedQuiz]?.id}
+                  setShowQuestionPopup={setShowQuestionPopup}
+                  fetchAllQuzzies={fetchAllQuzzies}
+                />
+              )}
             </div>
           </div>
         </div>
