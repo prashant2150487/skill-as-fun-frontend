@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ScorePopUp from "./ScorePopUp";
+import { fireworkConfetti } from "@/utils/confetti";
 
 interface Question {
   _id: string;
@@ -19,17 +21,32 @@ interface Question {
   options: string[];
   correctIndex: number;
 }
+interface SubmitResponse {
+  message: string;
+  score: {
+    userId: string;
+    quizId: string;
+    score: number;
+    takenAt: string;
+  };
+}
 
 const PlayQuizze: React.FC = () => {
   const [questionsData, setQuestionsData] = useState<Question[]>([]);
-  const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
+  const [selectedAnswers, setSelectedAnswers] = useState<
+    Record<string, string>
+  >({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+  const [showScore, setShowScore] = useState<boolean>(false);
 
   const { quizId } = useParams<{ quizId: string }>();
+  const [submitResponse, setSubmitResponse] = useState<SubmitResponse>();
 
   const getAllQuestions = async () => {
     try {
-      const response = await axiosInstance.get(`/quizzes/${quizId}/getQuestion`);
+      const response = await axiosInstance.get(
+        `/quizzes/${quizId}/getQuestion`
+      );
       setQuestionsData(response?.data?.questions || []);
     } catch (error) {
       console.error("Error while fetching questions from the database", error);
@@ -50,28 +67,39 @@ const PlayQuizze: React.FC = () => {
   };
 
   const handleSubmit = async () => {
-  try {
-    const answers = Object.entries(selectedAnswers).map(([questionId, selectedOption]) => {
+    try {
+      const answers = Object.entries(selectedAnswers).map(
+        ([questionId, selectedOption]) => {
+          const question = questionsData.find((q) => q._id === questionId);
+          const selectedIndex = question?.options.indexOf(selectedOption) ?? -1;
 
-      const question = questionsData.find((q) => q._id === questionId);
-      const selectedIndex = question?.options.indexOf(selectedOption) ?? -1;
+          return {
+            questionId,
+            selectedIndex,
+          };
+        }
+      );
 
-      return {
-        questionId,
-        selectedIndex,
-      };
-    });
+      const response= await axiosInstance.post(
+        `/quizzes/${quizId}/submitAnswers`,
+        answers
+      );
+      setSubmitResponse(response?.data);
+      setIsSubmitted(true);
+      setShowScore(true);
 
+      // 🎉 Fire confetti when submission is successful
+      fireworkConfetti();
+    } catch (error) {
+      console.error(
+        "Error while submitting the quiz answers to the database",
+        error
+      );
+      setShowScore(false);
+    }
+  };
+    console.log(submitResponse,"res")
 
-    await axiosInstance.post(`/quizzes/${quizId}/submitAnswers`, {
-      answers,
-    });
-
-    setIsSubmitted(true);
-  } catch (error) {
-    console.error("Error while submitting the quiz answers to the database", error);
-  }
-};
 
   return (
     <div className="space-y-8 px-4 py-5">
@@ -83,7 +111,9 @@ const PlayQuizze: React.FC = () => {
                 Question {index + 1}
               </CardTitle>
             </div>
-            <CardDescription className="text-base">{question.text}</CardDescription>
+            <CardDescription className="text-base">
+              {question.text}
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <RadioGroup
@@ -98,7 +128,9 @@ const PlayQuizze: React.FC = () => {
 
                 if (isSubmitted) {
                   if (isSelected) {
-                    borderColor = isCorrect ? "border-green-500" : "border-red-500";
+                    borderColor = isCorrect
+                      ? "border-green-500"
+                      : "border-red-500";
                   } else if (isCorrect) {
                     borderColor = "border-green-500";
                   }
@@ -128,13 +160,20 @@ const PlayQuizze: React.FC = () => {
         </Card>
       ))}
 
-      {questionsData.length > 0 && !isSubmitted && (
+      {questionsData.length > 0 && (
         <div className="flex justify-end">
-          <Button variant="outline" className="ml-auto" onClick={handleSubmit}>
+          <Button
+            variant="outline"
+            className="ml-auto"
+            onClick={handleSubmit}
+            disabled={isSubmitted}
+          >
             Submit
           </Button>
         </div>
       )}
+
+      {showScore && <ScorePopUp setShowScore={setShowScore} score={submitResponse?.score?.score ?? 0}/>}
     </div>
   );
 };

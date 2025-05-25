@@ -28,8 +28,8 @@ const AddQuestionPopup: React.FC<Props> = ({
   setShowQuestionPopup,
   fetchAllQuzzies,
 }) => {
-  const [question, setQuestion] = useState("");
-  const [description, setDescription] = useState("");
+  const [question, setQuestion] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
   const [options, setOptions] = useState<string[]>([]);
   const [optionText, setOptionText] = useState("");
   const dispatch=useDispatch();

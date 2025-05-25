@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { CircleHelp, Copy, Eye, HelpCircle, Plus, Trash2 } from "lucide-react";
+import { Eye, HelpCircle, Plus, Trash2 } from "lucide-react";
 
 import DashboardLayout from "../dashboard";
 import { useEffect, useState } from "react";
@@ -8,6 +8,8 @@ import axiosInstance from "@/api/axios";
 import AddQuzziePopup from "./AddQuzziePopup";
 import QuestionCard from "./QuestionCard";
 import AddQuestionPopup from "./AddQuestionPopup";
+import { useDispatch } from "react-redux";
+import { setLoading } from "@/slices/loaderSlice";
 
 interface Quiz {
   id: string;
@@ -26,7 +28,7 @@ const AllQuzzies = () => {
   const [quizzePopup, setQuizzePopup] = useState<boolean>(false);
   const [selectedQuiz, setSelectedQuiz] = useState<number>(0);
   const [showQuestionPopup, setShowQuestionPopup] = useState<boolean>(false);
-
+  const dispatch = useDispatch();
   const fetchAllQuzzies = async () => {
     try {
       const response = await axiosInstance.get("quizzes/getAllQuizzes");
@@ -43,10 +45,13 @@ const AllQuzzies = () => {
   };
   const handleDeleteQuizze = async (quizID: string) => {
     try {
+      dispatch(setLoading(true));
       await axiosInstance.delete(`quizzes/${quizID}`);
       fetchAllQuzzies();
     } catch (error) {
       console.log(error, "error");
+    } finally {
+      dispatch(setLoading(false));
     }
   };
 
@@ -55,7 +60,7 @@ const AllQuzzies = () => {
       <DashboardLayout>
         <div className="flex min-h-screen bg-gray-50">
           <div className="w-80 border-r bg-white p-6">
-            <h2 className="text-xl font-medium mb-4">Quzzies</h2>
+            <h2 className="text-xl font-medium mb-4">Quizzes</h2>
             <div className="flex flex-col gap-3">
               {allQuzzies.map((item: Quiz, index: number) => {
                 return (
@@ -107,7 +112,7 @@ const AllQuzzies = () => {
           <div className="flex-1 p-6">
             <div className="max-w-3xl mx-auto">
               {/* Form Title */}
-              <div className="mb-6">
+              <div className="">
                 <p className="text-xl font-bold border-none px-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                   {allQuzzies[selectedQuiz]?.title}
                 </p>
