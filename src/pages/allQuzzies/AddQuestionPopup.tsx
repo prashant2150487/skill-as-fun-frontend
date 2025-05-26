@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -29,10 +28,10 @@ const AddQuestionPopup: React.FC<Props> = ({
   fetchAllQuzzies,
 }) => {
   const [question, setQuestion] = useState<string>("");
-  const [description, setDescription] = useState<string>("");
   const [options, setOptions] = useState<string[]>([]);
+  const [correctIndex, setCorrectIndex] = useState<number>();
   const [optionText, setOptionText] = useState("");
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const handleAddOption = () => {
     if (optionText.trim() !== "") {
@@ -45,21 +44,26 @@ const AddQuestionPopup: React.FC<Props> = ({
     setOptions(options.filter((_, index) => index !== indexToRemove));
   };
   const handleAddQuestion = async (quizID: string) => {
+    if (correctIndex === undefined) {
+      return;
+    }
+
     try {
-        dispatch(setLoading(true))
+      dispatch(setLoading(true));
       await axiosInstance.post(`quizzes/${quizID}/addQuestion`, {
         text: question,
         options: options,
-        correctIndex: 0,
+        correctIndex: correctIndex as number,
       });
       fetchAllQuzzies();
       setShowQuestionPopup(false);
     } catch (error) {
       console.log("error", error);
-    }finally{
-        dispatch(setLoading(false))
+    } finally {
+      dispatch(setLoading(false));
     }
   };
+  console.log(correctIndex);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -106,14 +110,24 @@ const AddQuestionPopup: React.FC<Props> = ({
                 className="mb-2"
               />
               <Label className="text-sm text-gray-500 mb-1 block">
-                Description (optional)
+                Correct Index
               </Label>
-              <Textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-                placeholder="Type here"
-                className="resize-none"
-              />
+              <Select
+                onValueChange={(value: string) =>
+                  setCorrectIndex(Number(value))
+                }
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Select Correct Index"></SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {options.map((_, index) => (
+                    <SelectItem key={index} value={index.toString()}>
+                      {index + 1}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <div className="mb-4">
