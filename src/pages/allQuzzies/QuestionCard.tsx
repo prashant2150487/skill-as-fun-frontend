@@ -13,21 +13,29 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { CircleHelp, Copy, Plus, Trash2, X } from "lucide-react";
 import { useState } from "react";
+import DeleteQuestionPopup from "./DeleteQuestionPopup";
 
 type Question = {
   text: string;
   options: string[];
   correctIndex: number;
+  _id: string;
 };
 
 interface Props {
   question: Question;
   index: number;
+  fetchAllQuzzies: () => void;
 }
 
-const QuestionCard: React.FC<Props> = ({ question, index }) => {
+const QuestionCard: React.FC<Props> = ({ question, index ,fetchAllQuzzies}) => {
   const [allOptions, setAllOptions] = useState<string[]>(question.options);
   const [optionText, setOptionText] = useState<string>("");
+  const [deletePopup,setDeletePopup] = useState<boolean>(false);
+  const handleDeletePopup = () => {
+    setDeletePopup(true);
+  }
+  console.log("question", question);
 
   const handleAddOption = () => {
     setAllOptions([...allOptions, optionText]);
@@ -38,7 +46,6 @@ const QuestionCard: React.FC<Props> = ({ question, index }) => {
     const updatedOptions = allOptions.filter((_, i) => i !== index);
     setAllOptions(updatedOptions);
   };
-
   return (
     <>
       <Card className="mb-6">
@@ -65,9 +72,11 @@ const QuestionCard: React.FC<Props> = ({ question, index }) => {
                 <Button variant="outline" size="icon">
                   <Copy className="h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="icon">
+                <Button
+                onClick={handleDeletePopup}
+                 variant="outline" size="icon">
                   <Trash2 className="h-4 w-4" />
-                </Button>
+                </Button> 
               </div>
             </div>
           </div>
@@ -132,6 +141,9 @@ const QuestionCard: React.FC<Props> = ({ question, index }) => {
           </div>
         </CardContent>
       </Card>
+      {deletePopup && (
+        <DeleteQuestionPopup questionId={question?._id} setDeletePopup={setDeletePopup} fetchAllQuzzies={fetchAllQuzzies}/>
+      )}
     </>
   );
 };
