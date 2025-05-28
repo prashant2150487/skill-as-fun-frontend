@@ -82,7 +82,9 @@ const PlayQuizze: React.FC = () => {
 
       const response= await axiosInstance.post(
         `/quizzes/${quizId}/submitAnswers`,
-        answers
+        {
+          answers: answers,
+        }
       );
       setSubmitResponse(response?.data);
       setIsSubmitted(true);
