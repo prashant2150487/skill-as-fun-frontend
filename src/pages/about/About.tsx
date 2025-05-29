@@ -384,19 +384,19 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 gap-8 pt-12 sm:grid-cols-2 lg:grid-cols-3">
               {[
                 {
-                  name: "Dr. Sarah Chen",
+                  name: "Prashant Sachan",
                   role: "Co-Founder & Chief Executive Officer",
-                  bio: "Former high school principal with a Ph.D. in Educational Leadership. Sarah brings 15 years of classroom and administrative experience to her role guiding EduTech's strategic vision.",
+                  bio: "Senior Software engineer and alumni of IIT Kharagapur. Prashant brings 7 years of classroom and administrative experience to her role guiding SkillAsFun's strategic vision.",
                   gradient: "from-pink-500 to-rose-500",
                 },
                 {
-                  name: "Michael Rodriguez",
+                  name: "Arpan Sachan",
                   role: "Co-Founder & Chief Technology Officer",
                   bio: "Former computer science teacher with an MS in Educational Technology. Michael combines his technical expertise with classroom insight to lead our product development.",
                   gradient: "from-blue-500 to-cyan-500",
                 },
                 {
-                  name: "Dr. James Wilson",
+                  name: "Satyajeet Sachan",
                   role: "Co-Founder & Chief Learning Officer",
                   bio: "Educational psychologist with a Ph.D. in Learning Sciences. James ensures our products are grounded in research and designed to maximize learning outcomes.",
                   gradient: "from-purple-500 to-indigo-500",
