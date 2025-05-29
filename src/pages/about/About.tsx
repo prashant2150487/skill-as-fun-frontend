@@ -400,25 +400,8 @@ export default function AboutPage() {
                   role: "Co-Founder & Chief Learning Officer",
                   bio: "Educational psychologist with a Ph.D. in Learning Sciences. James ensures our products are grounded in research and designed to maximize learning outcomes.",
                   gradient: "from-purple-500 to-indigo-500",
-                },
-                // {
-                //   name: "Dr. Maya Patel",
-                //   role: "Chief Research Officer",
-                //   bio: "With a background in cognitive science and data analytics, Maya leads our research initiatives and ensures our products are evidence-based and effective.",
-                //   gradient: "from-amber-500 to-orange-500",
-                // },
-                // {
-                //   name: "David Kim",
-                //   role: "Chief Product Officer",
-                //   bio: "Former UX designer for educational applications, David ensures our products are intuitive, accessible, and deliver exceptional user experiences for all learners.",
-                //   gradient: "from-emerald-500 to-green-500",
-                // },
-                // {
-                //   name: "Elena Gonzalez",
-                //   role: "Chief Customer Success Officer",
-                //   bio: "With extensive experience in educational consulting, Elena leads our implementation and support teams, ensuring our clients achieve their educational goals with our technology.",
-                //   gradient: "from-violet-500 to-purple-500",
-                // },
+                }
+                
               ].map((member, index) => (
                 <Card
                   key={index}
