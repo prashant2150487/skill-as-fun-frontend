@@ -13,7 +13,6 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ScorePopUp from "./ScorePopUp";
 import { fireworkConfetti } from "@/utils/confetti";
-
 interface Question {
   _id: string;
   quizId: string;

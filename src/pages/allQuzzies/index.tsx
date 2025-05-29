@@ -55,6 +55,7 @@ const AllQuzzies = () => {
     }
   };
 
+
   return (
     <>
       <DashboardLayout>
@@ -134,7 +135,9 @@ const AllQuzzies = () => {
               </div>
               {allQuzzies[selectedQuiz]?.questions.map((item, index) => {
                 return (
-                  <QuestionCard key={index} question={item} index={index} />
+                  <QuestionCard
+                  fetchAllQuzzies={fetchAllQuzzies}
+                   key={index} question={item} index={index} />
                 );
               })}
 
