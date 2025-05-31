@@ -1,8 +1,10 @@
 import axiosInstance from "@/api/axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { setLoading } from "@/slices/loaderSlice";
 import { X } from "lucide-react";
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 interface Props {
   setQuizzePopup: (value: boolean) => void;
@@ -17,12 +19,14 @@ const AddQuzziePopup: React.FC<Props> = ({
     description: "",
     category: "",
   });
+  const dispatch = useDispatch();
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setAllInputs({ ...allInputs, [name]: value });
   };
   const createQuzie = async () => {
     try {
+      dispatch(setLoading(true));
       await axiosInstance.post("quizzes/createQuiz", allInputs);
       setQuizzePopup(false);
       setAllInputs({
@@ -33,6 +37,8 @@ const AddQuzziePopup: React.FC<Props> = ({
       fetchAllQuzzies();
     } catch (error) {
       console.error("Error creating quiz:", error);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
   return (

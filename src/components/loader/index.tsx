@@ -16,7 +16,7 @@ const Loader = () => {
   const color = "#ab1e56";
 
   return isLoading ? (
-    <div className="fixed inset-0 z-51 bg-white/50">
+    <div className="fixed inset-0 z-1000 bg-white/50">
       <PulseLoader
         color={color}
         loading={isLoading}

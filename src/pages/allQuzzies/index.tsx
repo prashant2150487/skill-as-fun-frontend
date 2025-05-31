@@ -10,6 +10,7 @@ import QuestionCard from "./QuestionCard";
 import AddQuestionPopup from "./AddQuestionPopup";
 import { useDispatch } from "react-redux";
 import { setLoading } from "@/slices/loaderSlice";
+import DeleteQuestionPopup from "./DeleteQuestionPopup";
 
 interface Quiz {
   id: string;
@@ -28,13 +29,17 @@ const AllQuzzies = () => {
   const [quizzePopup, setQuizzePopup] = useState<boolean>(false);
   const [selectedQuiz, setSelectedQuiz] = useState<number>(0);
   const [showQuestionPopup, setShowQuestionPopup] = useState<boolean>(false);
+  const [deleteQuizPopup, setDeleteQuizPopup] = useState<boolean>(false);
   const dispatch = useDispatch();
   const fetchAllQuzzies = async () => {
     try {
+      dispatch(setLoading(true));
       const response = await axiosInstance.get("quizzes/getAllQuizzes");
       setAllQuzzies(response?.data?.quizzes);
     } catch (error) {
       console.error("Error fetching quizzes:", error);
+    } finally {
+      dispatch(setLoading(false));
     }
   };
   useEffect(() => {
@@ -43,18 +48,18 @@ const AllQuzzies = () => {
   const handleClick = () => {
     setQuizzePopup(!quizzePopup);
   };
-  const handleDeleteQuizze = async (quizID: string) => {
-    try {
-      dispatch(setLoading(true));
-      await axiosInstance.delete(`quizzes/${quizID}`);
-      fetchAllQuzzies();
-    } catch (error) {
-      console.log(error, "error");
-    } finally {
-      dispatch(setLoading(false));
-    }
+  const handleDeleteQuizze = async () => {
+    setDeleteQuizPopup(true);
+    // try {
+    //   dispatch(setLoading(true));
+    //   await axiosInstance.delete(`quizzes/${quizID}`);
+    //   fetchAllQuzzies();
+    // } catch (error) {
+    //   console.log(error, "error");
+    // } finally {
+    //   dispatch(setLoading(false));
+    // }
   };
-
 
   return (
     <>
@@ -89,7 +94,7 @@ const AllQuzzies = () => {
                     </div>
                     <Trash2
                       className="mr-2"
-                      onClick={() => handleDeleteQuizze(item.id)}
+                      onClick={() => handleDeleteQuizze()}
                     />
                   </div>
                 );
@@ -107,6 +112,13 @@ const AllQuzzies = () => {
               <AddQuzziePopup
                 setQuizzePopup={setQuizzePopup}
                 fetchAllQuzzies={fetchAllQuzzies}
+              />
+            )}
+            {deleteQuizPopup && (
+              <DeleteQuestionPopup
+                setDeletePopup={setDeleteQuizPopup}
+                fetchAllQuzzies={fetchAllQuzzies}
+                quizId={allQuzzies[selectedQuiz]?.id}
               />
             )}
           </div>
@@ -136,8 +148,11 @@ const AllQuzzies = () => {
               {allQuzzies[selectedQuiz]?.questions.map((item, index) => {
                 return (
                   <QuestionCard
-                  fetchAllQuzzies={fetchAllQuzzies}
-                   key={index} question={item} index={index} />
+                    fetchAllQuzzies={fetchAllQuzzies}
+                    key={index}
+                    question={item}
+                    index={index}
+                  />
                 );
               })}
 
