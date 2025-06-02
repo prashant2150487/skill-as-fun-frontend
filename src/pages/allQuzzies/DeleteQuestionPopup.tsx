@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 interface Props {
   setDeletePopup: (value: boolean) => void;
   fetchAllQuzzies: () => void;
-  questionId?: number;
+  questionId?: string;
   quizId?: string;
 }
 

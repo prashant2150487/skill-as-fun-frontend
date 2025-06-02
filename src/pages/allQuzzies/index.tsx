@@ -23,6 +23,7 @@ type Question = {
   text: string;
   options: string[];
   correctIndex: number;
+  _id: string;
 };
 const AllQuzzies = () => {
   const [allQuzzies, setAllQuzzies] = useState<Quiz[]>([]);
