@@ -28,13 +28,17 @@ interface Props {
   fetchAllQuzzies: () => void;
 }
 
-const QuestionCard: React.FC<Props> = ({ question, index ,fetchAllQuzzies}) => {
+const QuestionCard: React.FC<Props> = ({
+  question,
+  index,
+  fetchAllQuzzies,
+}) => {
   const [allOptions, setAllOptions] = useState<string[]>(question.options);
   const [optionText, setOptionText] = useState<string>("");
-  const [deletePopup,setDeletePopup] = useState<boolean>(false);
+  const [deletePopup, setDeletePopup] = useState<boolean>(false);
   const handleDeletePopup = () => {
     setDeletePopup(true);
-  }
+  };
   console.log("question", question);
 
   const handleAddOption = () => {
@@ -73,10 +77,12 @@ const QuestionCard: React.FC<Props> = ({ question, index ,fetchAllQuzzies}) => {
                   <Copy className="h-4 w-4" />
                 </Button>
                 <Button
-                onClick={handleDeletePopup}
-                 variant="outline" size="icon">
+                  onClick={handleDeletePopup}
+                  variant="outline"
+                  size="icon"
+                >
                   <Trash2 className="h-4 w-4" />
-                </Button> 
+                </Button>
               </div>
             </div>
           </div>
@@ -142,7 +148,11 @@ const QuestionCard: React.FC<Props> = ({ question, index ,fetchAllQuzzies}) => {
         </CardContent>
       </Card>
       {deletePopup && (
-        <DeleteQuestionPopup questionId={question?._id} setDeletePopup={setDeletePopup} fetchAllQuzzies={fetchAllQuzzies}/>
+        <DeleteQuestionPopup
+          questionId={question?._id}
+          setDeletePopup={setDeletePopup}
+          fetchAllQuzzies={fetchAllQuzzies}
+        />
       )}
     </>
   );
