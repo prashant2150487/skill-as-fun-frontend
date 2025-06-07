@@ -1,6 +1,5 @@
  import { Card, CardContent } from '@/components/ui/card'
 import { MessageSquare } from 'lucide-react'
-import React from 'react'
  
  const ClientSections = () => {
    return (

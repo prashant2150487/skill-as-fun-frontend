@@ -1,5 +1,4 @@
 import { Award } from 'lucide-react'
-import React from 'react'
 
 const OurAchivements = () => {
   return (

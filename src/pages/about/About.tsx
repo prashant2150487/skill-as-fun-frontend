@@ -1,19 +1,7 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import {
-  BookOpen,
-  Award,
-  Users,
-  BarChart,
-  Globe,
-  Clock,
-  CheckCircle,
-  MessageSquare,
-  Building,
-  Mail,
-  Phone,
-  MapPin,
+
   Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";

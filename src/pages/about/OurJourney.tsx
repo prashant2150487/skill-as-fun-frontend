@@ -1,4 +1,3 @@
-import React from 'react'
 import founderImg from "@/assets/founder.webp";
 import { Star } from 'lucide-react';
 const OurJourney = () => {

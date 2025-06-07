@@ -20,7 +20,7 @@ const ContactTouch = () => {
     organization: "",
     message: "",
   });
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     setUserInfo((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,

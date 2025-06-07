@@ -1,5 +1,4 @@
 import { CheckCircle, Sparkles } from 'lucide-react'
-import React from 'react'
 
 const OurApporach = () => {
   return (

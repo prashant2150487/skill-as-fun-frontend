@@ -1,6 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Users } from 'lucide-react'
-import React from 'react'
 
 const LeadershipTeam = () => {
   return (

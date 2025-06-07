@@ -1,6 +1,5 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { BarChart, BookOpen, CheckCircle, Clock, Globe, Users, Zap } from 'lucide-react'
-import React from 'react'
 
 const OurCoreValue = () => {
   return (
