@@ -76,20 +76,20 @@ const ContactTouch = () => {
                   {
                     icon: <Mail className="h-5 w-5 text-white" />,
                     title: "Email",
-                    details: "info@edutechinnovations.com",
+                    details: " info@skillasfun.com",
                     gradient: "from-purple-500 to-violet-500",
                   },
                   {
                     icon: <Phone className="h-5 w-5 text-white" />,
                     title: "Phone",
-                    details: "(555) 123-4567",
+                    details: "7905644529",
                     gradient: "from-pink-500 to-rose-500",
                   },
                   {
                     icon: <MapPin className="h-5 w-5 text-white" />,
                     title: "Regional Offices",
                     details:
-                      "New York • Chicago • Austin • London • Singapore • Sydney",
+                      "India",
                     gradient: "from-amber-500 to-orange-500",
                   },
                 ].map((contact, index) => (

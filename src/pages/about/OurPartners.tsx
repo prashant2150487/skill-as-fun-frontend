@@ -27,7 +27,7 @@ const OurPartners = () => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 pt-12 md:grid-cols-3 lg:grid-cols-6">
-            {Array.from({ length: 6 }).map((_, i) => (
+            {/* {Array.from({ length: 6 }).map((_, i) => (
               <div
                 key={i}
                 className="flex items-center justify-center p-4 bg-white/80 backdrop-blur-sm rounded-xl shadow-md hover:shadow-lg transition-all duration-300 dark:bg-gray-800/80"
@@ -40,7 +40,7 @@ const OurPartners = () => {
                   className="aspect-[2/1] object-contain"
                 />
               </div>
-            ))}
+            ))} */}
           </div>
           <div className="mt-12 flex flex-col items-center justify-center space-y-4 text-center">
             <p className="mx-auto max-w-[700px] text-violet-700 dark:text-violet-300">

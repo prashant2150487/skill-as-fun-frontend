@@ -38,7 +38,7 @@ import { Link } from 'react-router-dom'
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-white/20"
+                  className=" text-indigo-600 hover:bg-blue-100 hover:text-black"
                   asChild
                 >
                   <Link to="/contact">Contact Sales</Link>

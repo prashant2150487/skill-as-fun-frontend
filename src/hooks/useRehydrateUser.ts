@@ -22,8 +22,6 @@ const useRehydrateUser = () => {
     
       dispatch(logout());
     }
-
-    
   };
 
   useEffect(() => {

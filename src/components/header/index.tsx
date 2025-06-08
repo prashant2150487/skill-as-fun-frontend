@@ -35,6 +35,15 @@ const Header: FC = () => {
             className={`hidden md:flex items-center gap-x-4 md:gap-x-14 cursor-pointer`}
           >
             <a
+            href="/"
+              className={` text-xl +${
+                location.pathname === "/"
+                  ? "text-blue-900 font-semibold"
+                  : "text-black"
+              }`}
+            > Home</a>
+
+            <a
               href="/about"
               className={` text-xl +${
                 location.pathname === "/about"
@@ -44,12 +53,17 @@ const Header: FC = () => {
             >
               About
             </a>
-            <a
+            {/* <a
               href="/courses"
-              className="text-black text-xl pointer-events-none"
+              className={`text-black text-xl +${
+                location.pathname === "/courses"
+                  ? "text-blue-900 font-semibold"
+                  : "text-black"
+              }`}
+              
             >
               Courses
-            </a>
+            </a> */}
             <a
               href="/quizzes"
               className="text-black text-xl"
