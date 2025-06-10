@@ -3,10 +3,10 @@ import { X } from "lucide-react";
 interface Props {
   setShowScore: (value: boolean) => void;
   score: number;
+  totalQuestions: number;
 }
 
-const ScorePopUp: React.FC<Props> = ({ setShowScore , score}) => {
-  console.log("caledd");
+const ScorePopUp: React.FC<Props> = ({ setShowScore , score , totalQuestions}) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden -top-8">
       <div className="relative p-4 w-full max-w-md">
@@ -23,7 +23,7 @@ const ScorePopUp: React.FC<Props> = ({ setShowScore , score}) => {
           <h2 className="text-xl font-bold mb-4">
             Congratulation Your Score is :{" "}
           </h2>
-          <p className="text-lg text-green-600 font-semibold">{score} / 10</p>
+          <p className="text-lg text-green-600 font-semibold">{score} / {totalQuestions}</p>
         </div>
       </div>
     </div>

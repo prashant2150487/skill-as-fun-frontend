@@ -64,7 +64,6 @@ const PlayQuizze: React.FC = () => {
       [questionId]: selectedOption,
     }));
   };
-
   const handleSubmit = async () => {
     try {
       const answers = Object.entries(selectedAnswers).map(
@@ -79,7 +78,7 @@ const PlayQuizze: React.FC = () => {
         }
       );
 
-      const response= await axiosInstance.post(
+      const response = await axiosInstance.post(
         `/quizzes/${quizId}/submitAnswers`,
         {
           answers: answers,
@@ -99,8 +98,6 @@ const PlayQuizze: React.FC = () => {
       setShowScore(false);
     }
   };
-    console.log(submitResponse,"res")
-
 
   return (
     <div className="space-y-8 px-4 py-5">
@@ -174,7 +171,13 @@ const PlayQuizze: React.FC = () => {
         </div>
       )}
 
-      {showScore && <ScorePopUp setShowScore={setShowScore} score={submitResponse?.score?.score ?? 0}/>}
+      {showScore && (
+        <ScorePopUp
+          setShowScore={setShowScore}
+          totalQuestions={questionsData?.length}
+          score={submitResponse?.score?.score ?? 0}
+        />
+      )}
     </div>
   );
 };
