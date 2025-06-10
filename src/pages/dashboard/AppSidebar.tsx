@@ -55,6 +55,10 @@ const data = {
           title: "Demo User",
           url: "Demo-users",
         },
+         {
+          title: "announcements",
+          url: "announcements",
+        },
       ],
     },
     {
