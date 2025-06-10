@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Facebook, Send, Twitter } from "lucide-react";
+import { Facebook, Send } from "lucide-react";
 import { Instagram } from "lucide-react";
 import { Linkedin } from "lucide-react";
 import bgFooterImg from "@/assets/footerImg.png";
@@ -44,10 +44,11 @@ export default function Footer() {
             {/* Contact Info */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-              <p>123 Learning Street</p>
-              <p>Education City, ED 12345</p>
+              <p>C - 951, VISHWA BANK COLONY, BARRA, KANPUR NAGAR, U.P.</p>
+             
               <p>Phone: (+91) 7905644529</p>
               <p>Email: info@skillasfun.com</p>
+
             </div>
             {/* Newsletter Signup */}
             <div>
