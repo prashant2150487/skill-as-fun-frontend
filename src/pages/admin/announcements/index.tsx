@@ -65,7 +65,7 @@ const Announcements = () => {
                 const responce=await axiosInstance.get("/announcement/all")
                 toast("Announcements fetched successfully!")
                 console.log(responce.data);
-                setAllAnnouncements(responce.data);
+                setAllAnnouncements(responce.data?.announcements);
             }
             catch(error){
                 console.error("Error fetching announcements:", error);
