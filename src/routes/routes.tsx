@@ -43,14 +43,7 @@ const router = createBrowserRouter([
     path: "dashboard/all-quizzes",
     element: <AllQuzzies />,
   },
-  {
-    path: "dashboard/announcements",
-    element: (
-   
-        <Announcements />
 
-    ),
-  },
   {
     path: "/auth/signup",
     element: <SignupPage />,
@@ -69,8 +62,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard/announcement-bar",
-    element: <AdminAnnouncementBar/>
-  }
+    element: <AdminAnnouncementBar />,
+  },
 ]);
 function Routes() {
   return <RouterProvider router={router} />;
