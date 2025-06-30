@@ -1,5 +1,6 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import About from "@/pages/about/About";
+import AdminAnnouncementBar from "@/pages/admin/announcementBar.tsx";
 import AllQuzzies from "@/pages/allQuzzies";
 import AllUsers from "@/pages/allUsers";
 import Signin from "@/pages/auth/signin";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       </DefaultLayout>
     ),
   },
+  {
+    path: "/dashboard/announcement-bar",
+    element: <AdminAnnouncementBar/>
+  }
 ]);
 function Routes() {
   return <RouterProvider router={router} />;
