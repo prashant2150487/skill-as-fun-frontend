@@ -44,6 +44,14 @@ const router = createBrowserRouter([
     element: <AllQuzzies />,
   },
   {
+    path: "dashboard/announcements",
+    element: (
+   
+        <Announcements />
+
+    ),
+  },
+  {
     path: "/auth/signup",
     element: <SignupPage />,
   },
