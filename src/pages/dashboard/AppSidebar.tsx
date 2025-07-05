@@ -49,15 +49,15 @@ const data = {
       items: [
         {
           title: "All Users",
-          url: "all-users",
+          url: "/dashboard/all-users",
         },
         {
           title: "Demo User",
-          url: "Demo-users",
+          url: "/dashboard/Demo-users",
         },
         {
           title: "Announcement",
-          url: "announcement-bar"
+          url: "/dashboard/announcement-bar"
         }
       ],
     },
@@ -69,7 +69,7 @@ const data = {
       items: [
         {
           title: "All Quizzes",
-          url: "all-quizzes",
+          url: "/dashboard/all-quizzes",
         },
         {
           title: "Student Dashboard",

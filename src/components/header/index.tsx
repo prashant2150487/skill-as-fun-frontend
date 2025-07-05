@@ -21,6 +21,10 @@ const Header: FC = () => {
   );
   return (
     <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
+       {/* Announcement Bar */}
+      <div className="bg-blue-600 text-white text-sm md:text-base py-2 px-4 text-center">
+        🚀 Welcome to SkillAsFun! Enroll now and get 20% off on all premium courses!
+      </div>
       <nav className="bg-white py-1 md:py-2 border-gray-200 dark:bg-gray-800">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
           <a href="/" className="flex items-center">
