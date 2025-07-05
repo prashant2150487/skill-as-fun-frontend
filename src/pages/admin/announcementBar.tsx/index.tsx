@@ -2,18 +2,27 @@ import axiosInstance from "@/api/axios";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import DashboardLayout from "@/pages/dashboard";
-import { EllipsisIcon, EllipsisVertical, Menu } from "lucide-react";
+import { EllipsisVertical } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const AdminAnnouncementBar = () => {
-  const [announcement, setAnnouncement] = useState([]);
+  const [announcement, setAnnouncement] = useState<
+    {
+      id: number;
+      title: string;
+      content: string;
+      targetAudience: string;
+      startDate: string;
+      endDate: string;
+      isActive: boolean;
+    }[]
+  >([]);
   const fetchAnnouncement = async () => {
     const response = await axiosInstance.get("/announcement/all");
     setAnnouncement(response.data?.announcements);
