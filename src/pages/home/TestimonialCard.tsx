@@ -7,6 +7,8 @@ import img5 from "../../assets/studentProfile/Tanvi.jpeg";
 import img6 from "../../assets/studentProfile/anaisha.jpeg";
 import img7 from "../../assets/studentProfile/arshit.jpeg";
 import img8 from "../../assets/studentProfile/medhansh.jpeg";
+import img9 from "../../assets/studentProfile/Astha.jpeg";
+import img10 from "../../assets/studentProfile/Rudransh.jpeg";
 
 import Autoplay from "embla-carousel-autoplay";
 
@@ -30,7 +32,7 @@ const testimonials = [
   {
     imageSrc: img1,
     quote:
-      "SkillAsFun transformed coding from a mystery to my superpower! I learned to create games and apps that I never thought I could build before.",
+      "SkillAsFun turned coding into something I actually look forward to! I’ve built games and apps that I once thought were impossible.",
     studentName: "Arav Sachan",
     studentClass: "Class 6",
     studentSchool: "Delhi Public School, Noida",
@@ -38,7 +40,7 @@ const testimonials = [
   {
     imageSrc: img2,
     quote:
-      "I used to think programming was complicated, but SkillAsFun made it fun and easy. Now I'm creating my own interactive projects!",
+      "I always thought programming was too hard, but SkillAsFun made it fun and understandable. Now I can bring my creative ideas to life!",
     studentName: "Darsh Sachan",
     studentClass: "Class 8",
     studentSchool: "Amity International School, Noida",
@@ -46,7 +48,7 @@ const testimonials = [
   {
     imageSrc: img3,
     quote:
-      "SkillAsFun made coding simple and engaging. I love how I can now build my own websites and animations with confidence!",
+      "Thanks to SkillAsFun, coding feels like storytelling with technology. I’ve built websites and animations I’m really proud of!",
     studentName: "Sarthak Sachan",
     studentClass: "Class 8",
     studentSchool: "Puranchandra Vidyaniketan, Kanpur",
@@ -54,7 +56,7 @@ const testimonials = [
   {
     imageSrc: img4,
     quote:
-      "I never thought coding could be this exciting! SkillAsFun helped me turn my ideas into working projects, and I enjoy every moment of learning.",
+      "Learning to code with SkillAsFun is so exciting! I’ve created projects that actually work—and it’s the best feeling ever.",
     studentName: "Akshaj Singh",
     studentClass: "Class 5",
     studentSchool: "Father Agnel School, Noida",
@@ -62,7 +64,7 @@ const testimonials = [
   {
     imageSrc: img5,
     quote:
-      "With SkillAsFun, I discovered my passion for coding. Now, I can build interactive stories and games that my friends love to play!",
+      "SkillAsFun helped me discover a new passion! I love designing games and stories that my friends enjoy playing.",
     studentName: "Tanvi Rajput",
     studentClass: "Class 7",
     studentSchool: "Apeejay School, Noida",
@@ -70,7 +72,7 @@ const testimonials = [
   {
     imageSrc: img6,
     quote:
-      "Coding was intimidating at first, but SkillAsFun made it so easy! Now, I can create apps and websites that bring my ideas to life.",
+      "Coding used to scare me, but not anymore! SkillAsFun made it simple and fun. Now I build apps and websites with confidence.",
     studentName: "Anaisha Niranjan",
     studentClass: "Class 6",
     studentSchool: "Delhi Public School, Noida",
@@ -78,7 +80,7 @@ const testimonials = [
   {
     imageSrc: img7,
     quote:
-      "Coding was intimidating at first, but SkillAsFun made it so easy! Now, I can create apps and websites that bring my ideas to life.",
+      "With SkillAsFun, I learned to code step-by-step and had a blast doing it. I’m now building apps I once only dreamed of!",
     studentName: "Arshit Sachan",
     studentClass: "Class 6",
     studentSchool: "The Millennium School, Noida",
@@ -86,11 +88,44 @@ const testimonials = [
   {
     imageSrc: img8,
     quote:
-      "Coding was intimidating at first, but SkillAsFun made it so easy! Now, I can create apps and websites that bring my ideas to life.",
+      "I thought coding was just typing stuff on a screen—but SkillAsFun showed me it’s a creative superpower. I love building my own digital creations!",
     studentName: "Medhansh Nagpal",
     studentClass: "Class 8",
-    studentSchool: "Ahlcon InternatAhlcon International School, Delhi",
+    studentSchool: "Ahlcon International School, Delhi",
   },
+  {
+    imageSrc: img9,
+    quote:
+      "Before SkillAsFun, I didn’t know where to start with coding. Now, I’ve created my own mini games and websites. It feels amazing!",
+    studentName: "Astha Sachan",
+    studentClass: "Class 6",
+    studentSchool: "Somerville School, Noida",
+  },
+  {
+    imageSrc: img10,
+    quote:
+      "SkillAsFun made coding feel like a fun challenge, not a boring subject. Every session feels like unlocking a new superpower!",
+    studentName: "Rudransh Sachan",
+    studentClass: "Class 6",
+    studentSchool: "Cambridge School, Noida",
+  },
+  // }
+  // {
+  //   imageSrc: img11,
+  //   quote:"",
+  //   studentName: "",
+  //   studentClass: "",
+  //   studentSchool: "",
+
+  // },
+  // {
+  //   imageSrc: img11,
+  //   quote:"",
+  //   studentName: "",
+  //   studentClass: "",
+  //   studentSchool: "",
+
+  // }
 ];
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
