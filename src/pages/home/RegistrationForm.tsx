@@ -11,12 +11,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import { useState } from "react";
 import HarshLoader from "react-spinners/BeatLoader";
 import { toast } from "sonner";
-
-// Zod schema for form validation
+import axiosInstance from "@/api/axios";
 const signupSchema = z.object({
   childName: z
     .string()
@@ -24,14 +22,12 @@ const signupSchema = z.object({
   guardianName: z
     .string()
     .min(2, { message: "Guardian name must be at least 2 characters long" }),
-  whatsUpNo: z
+  whatsAppNumber: z
     .string()
     .min(10, { message: "Whatsapp number must be at least 10 digits long" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
 });
-
 type SignupFormData = z.infer<typeof signupSchema>;
-
 export default function HeroSection() {
   const [loading, setLoading] = useState(false);
   const form = useForm<SignupFormData>({
@@ -39,18 +35,18 @@ export default function HeroSection() {
     defaultValues: {
       childName: "",
       guardianName: "",
-      whatsUpNo: "",
+      whatsAppNumber: "",
       email: "",
     },
   });
-
   const onSubmit = async (data: SignupFormData) => {
     try {
       setLoading(true);
-      const response= await axios.post<{message: string}>(
-        "https://skill-as-fun-back-end.vercel.app/api/auth/signup",
+      const response = await axiosInstance.post<{ message: string }>(
+        "/demo",
         data
       );
+      console.log(data, "jkgdk ");
       form.reset();
       toast.success(response?.data?.message, {
         description: `Submitted at: ${new Date().toLocaleString()}`,
@@ -77,7 +73,7 @@ export default function HeroSection() {
       </div>
     );
   }
-
+  console.log(form,"form")
   return (
     <section className="w-full py-12 md:py-20 lg:py-20 xl:py-30 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
@@ -98,16 +94,7 @@ export default function HeroSection() {
 
           {/* Right Section: Registration Form */}
           <Card className="w-full max-w-md ml-auto shadow-2xl">
-            <CardHeader className="py-5 relative">
-              {/* <div className="max-w-fit flex flex-col items-center justify-center row-gap-10">
-                <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal">
-                  Register Now
-                </CardTitle>
-                <CardTitle className="border border-neutral-700 w-fit text-3xl rounded-full px-4 py-2 font-normal -rotate-12 bg-white -mr-52">
-                  Today
-                </CardTitle>
-              </div> */}
-            </CardHeader>
+            <CardHeader className="py-5 relative"></CardHeader>
             <CardContent>
               <Form {...form}>
                 <form
@@ -131,7 +118,6 @@ export default function HeroSection() {
                       </FormItem>
                     )}
                   />
-
                   {/* Guardian Name */}
                   <FormField
                     control={form.control}
@@ -149,11 +135,10 @@ export default function HeroSection() {
                       </FormItem>
                     )}
                   />
-
                   {/* Whatsapp Number */}
                   <FormField
                     control={form.control}
-                    name="whatsUpNo"
+                    name="whatsAppNumber"
                     render={({ field }) => (
                       <FormItem>
                         <FormControl>
