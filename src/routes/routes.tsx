@@ -1,6 +1,6 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
 import About from "@/pages/about/About";
-import Announcements from "@/pages/admin/announcements";
+import AdminAnnouncementBar from "@/pages/admin/announcementBar.tsx";
 import AllQuzzies from "@/pages/allQuzzies";
 import AllUsers from "@/pages/allUsers";
 import Signin from "@/pages/auth/signin";
@@ -43,14 +43,7 @@ const router = createBrowserRouter([
     path: "dashboard/all-quizzes",
     element: <AllQuzzies />,
   },
-  {
-    path: "dashboard/announcements",
-    element: (
-   
-        <Announcements />
 
-    ),
-  },
   {
     path: "/auth/signup",
     element: <SignupPage />,
@@ -66,6 +59,10 @@ const router = createBrowserRouter([
         <Courses />
       </DefaultLayout>
     ),
+  },
+  {
+    path: "/dashboard/announcement-bar",
+    element: <AdminAnnouncementBar />,
   },
 ]);
 function Routes() {

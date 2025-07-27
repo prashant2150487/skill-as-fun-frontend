@@ -82,7 +82,7 @@ export default function HeroSection() {
           <div className="flex space-y-4">
             <div className="space-y-4 flex flex-col justify-center pb-3">
               <h1 className="text-4xl text-left font-bold tracking-tighter sm:text-5xl xl:text-6xl md:text-left">
-                From Spells to Scripts: Where Fun Fuels Future-Ready{" "}
+                From Spells to Scripts: Where Fun Fuels{" "}
                 <span className="text-blue-900">Future-Ready </span>Skills!
               </h1>
               <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left ">
