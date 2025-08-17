@@ -9,6 +9,8 @@ import img7 from "../../assets/studentProfile/arshit.jpeg";
 import img8 from "../../assets/studentProfile/medhansh.jpeg";
 import img9 from "../../assets/studentProfile/Astha.jpeg";
 import img10 from "../../assets/studentProfile/Rudransh.jpeg";
+import img11 from "../../assets/studentProfile/ritvik.jpeg";
+import img12 from "../../assets/studentProfile/tejasva.jpeg";
 
 import Autoplay from "embla-carousel-autoplay";
 
@@ -99,7 +101,7 @@ const testimonials = [
       "Before SkillAsFun, I didn’t know where to start with coding. Now, I’ve created my own mini games and websites. It feels amazing!",
     studentName: "Astha Sachan",
     studentClass: "Class 6",
-    studentSchool: "Somerville School, Noida",
+    studentSchool: "The Jain World School, Kanpur Dehat",
   },
   {
     imageSrc: img10,
@@ -107,25 +109,25 @@ const testimonials = [
       "SkillAsFun made coding feel like a fun challenge, not a boring subject. Every session feels like unlocking a new superpower!",
     studentName: "Rudransh Sachan",
     studentClass: "Class 6",
-    studentSchool: "Cambridge School, Noida",
+    studentSchool: "The Jain World School, Kanpur Dehat",
   },
-  // }
-  // {
-  //   imageSrc: img11,
-  //   quote:"",
-  //   studentName: "",
-  //   studentClass: "",
-  //   studentSchool: "",
+  {
+    imageSrc: img11,
+    quote:
+      "SkillAsFun turned coding into something I actually look forward to! I’ve built games and apps that I once thought were impossible.",
+    studentName: "Ritvik Sachan",
+    studentClass: "Class 6",
+    studentSchool: "The Jain World School, Kanpur Dehat",
+  },
+  {
+    imageSrc: img12,
+    quote:
+      "SkillAsFun turned coding into something I actually look forward to! I’ve built games and apps that I once thought were impossible.",
 
-  // },
-  // {
-  //   imageSrc: img11,
-  //   quote:"",
-  //   studentName: "",
-  //   studentClass: "",
-  //   studentSchool: "",
-
-  // }
+    studentName: "Tejasva Sachan",
+    studentClass: "Class 6",
+    studentSchool: "The Jain World School, Kanpur Dehat",
+  },
 ];
 
 const TestimonialCard: React.FC<TestimonialCardProps> = ({
