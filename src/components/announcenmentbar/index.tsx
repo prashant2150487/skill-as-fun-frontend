@@ -58,7 +58,7 @@ const Announcementbar: React.FC = () => {
           opts={{
             loop: true,
             align: "start",
-            duration: 3000,
+            duration:1000,
           }}
         >
           <CarouselContent className="w-full animate-scroll">

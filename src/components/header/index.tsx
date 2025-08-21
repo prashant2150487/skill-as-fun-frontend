@@ -25,19 +25,19 @@ const Header: FC = () => {
       <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
         <nav className="bg-white py-1 md:py-2 border-gray-200 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
-            <a href="/" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src={desktopLogo} alt="logo" className="hidden md:flex" />
               <img
                 src={logo}
                 alt="logo"
                 className="size-14 md:size-20 md:hidden"
               />
-            </a>
+            </Link>
             <div
               className={`hidden md:flex items-center gap-x-4 md:gap-x-14 cursor-pointer`}
             >
-              <a
-                href="/"
+              <Link
+                to="/"
                 className={` text-xl +${
                   location.pathname === "/"
                     ? "text-blue-900 font-semibold"
@@ -46,10 +46,10 @@ const Header: FC = () => {
               >
                 {" "}
                 Home
-              </a>
+              </Link>
 
-              <a
-                href="/about"
+              <Link
+                to="/about"
                 className={` text-xl +${
                   location.pathname === "/about"
                     ? "text-blue-900 font-semibold"
@@ -57,7 +57,7 @@ const Header: FC = () => {
                 }`}
               >
                 About
-              </a>
+              </Link>
               {/* <a
               href="/courses"
               className={`text-black text-xl +${
@@ -69,9 +69,9 @@ const Header: FC = () => {
             >
               Courses
             </a> */}
-              <a href="/quizzes" className="text-black text-xl">
+              <Link to="/quizzes" className="text-black text-xl">
                 Quizzes
-              </a>
+              </Link>
               <a
                 href="/courses"
                 className="text-black text-xl pointer-events-none"

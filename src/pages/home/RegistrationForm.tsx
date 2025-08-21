@@ -15,6 +15,7 @@ import { useState } from "react";
 import HarshLoader from "react-spinners/BeatLoader";
 import { toast } from "sonner";
 import axiosInstance from "@/api/axios";
+import { SplitText } from "@/components/SplitTextMotion";
 const signupSchema = z.object({
   childName: z
     .string()
@@ -73,7 +74,6 @@ export default function HeroSection() {
       </div>
     );
   }
-  console.log(form,"form")
   return (
     <section className="w-full py-12 md:py-20 lg:py-20 xl:py-30 bg-background">
       <div className="container mx-auto max-w-screen-xl px-4">
@@ -81,10 +81,14 @@ export default function HeroSection() {
           {/* Left Section */}
           <div className="flex space-y-4">
             <div className="space-y-4 flex flex-col justify-center pb-3">
-              <h1 className="text-4xl text-left font-bold tracking-tighter sm:text-5xl xl:text-6xl md:text-left">
+              <SplitText
+                text={`From Spells to Scripts: Where Fun Fuels Future-Ready  `}
+                className="text-4xl text-left font-bold tracking-tighter sm:text-5xl xl:text-6xl md:text-left"
+              />
+              {/* <h1 className="text-4xl text-left font-bold tracking-tighter sm:text-5xl xl:text-6xl md:text-left">
                 From Spells to Scripts: Where Fun Fuels{" "}
                 <span className="text-blue-900">Future-Ready </span>Skills!
-              </h1>
+              </h1> */}
               <p className="max-w-[600px] text-black md:text-xl dark:text-zinc-400 text-center md:text-left ">
                 Master coding fundamentals with us as fun, hands-on programs
                 designed just for kids.
