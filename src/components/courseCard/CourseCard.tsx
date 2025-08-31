@@ -6,9 +6,16 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Book, Calculator, Code, Layout, Music } from "lucide-react";
+import { Book, Calculator, Code, CodeIcon, Layout, Music } from "lucide-react";
 import { Button } from "../ui/button";
 import { Link } from "react-router-dom";
+import { Badge } from "../ui/badge";
+import frontEndImage from "../../assets/frontend.jpeg"
+import musicImage from "../../assets/music.jpg"
+import pythonImage from "../../assets/pyhton.png"
+import vedicImage from "../../assets/Vedic-Maths-01.jpg"
+import mathImage from "../../assets/mathematics.jpeg"
+
 type Course = {
   id: number;
   title: string;
@@ -16,6 +23,8 @@ type Course = {
   modules: string[];
   icon: keyof typeof courseIcons;
   linkNavigation: string;
+  badgeText?: string;
+  image: string;
 };
 const courseIcons = {
   Math: Calculator,
@@ -34,6 +43,9 @@ export default function CourseCards() {
       modules: ["Algebra", "Geometry", "Calculus"],
       icon: "Math",
       linkNavigation: "/course/math",
+      badgeText: "Mathematics",
+      image: frontEndImage
+
     },
     {
       id: 2,
@@ -43,6 +55,8 @@ export default function CourseCards() {
       modules: ["Basics", "OOP", "Data Structures"],
       icon: "Python",
       linkNavigation: "/course/python",
+      badgeText: "Programming",
+         image: pythonImage
     },
     {
       id: 3,
@@ -52,6 +66,8 @@ export default function CourseCards() {
       modules: ["Mental Calculation", "Vedic Squares", "Divisibility"],
       icon: "Vedic Math",
       linkNavigation: "/course/vedicMath",
+      badgeText: "Mathematics",
+         image: vedicImage
     },
     {
       id: 4,
@@ -66,9 +82,14 @@ export default function CourseCards() {
         "Strumming & Rhythm",
         "Barre & Power Chords",
         "Performance & Next Steps",
+        
+          
+
       ],
       icon: "Music",
       linkNavigation: "/course/guitar",
+      badgeText: "Music",
+      image: musicImage
     },
     {
       id: 5,
@@ -78,12 +99,20 @@ export default function CourseCards() {
       modules: ["HTML & CSS", "JavaScript", "React"],
       icon: "Frontend Development",
       linkNavigation: "/course/frontend",
+      badgeText: "Web Development",
+      image: mathImage
     },
   ]);
 
   return (
-    <div className="container mx-auto p-4" id="our-courses">
-      <h1 className="text-3xl font-bold mb-6 text-center">Course Catalog</h1>
+    <div className="container mx-auto p-4 " id="our-courses">
+      <h2 className="text-4xl font-bold mb-3 text-center">
+        Innovative Learning Programs
+      </h2>
+      <p className="text-xl text-muted-foreground max-w-4xl mx-auto mb-10">
+        Project-based curriculum with real-world applications and hands-on
+        learning experiences
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {courses.map((course) => (
           <CourseCard key={course.id} course={course} />
@@ -95,13 +124,25 @@ export default function CourseCards() {
 function CourseCard({ course }: { course: Course }) {
   const Icon = courseIcons[course.icon];
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300 relative">
       <CardHeader className={`p-6 ${getGradientClass(course.icon)}`}>
+        <img
+          src={course.image}
+          alt={course.title}
+          className="w-full h-52 object-cover rounded mb-4"
+        />
         <div className="flex justify-between items-center">
+          
           <CardTitle className="text-2xl font-bold text-white">
             {course.title}
           </CardTitle>
           <Icon className="w-8 h-8 text-white" />
+          <div className="absolute top-0 left-0">
+            <Badge className="text-white">
+              <CodeIcon className="w-4 h-4 mr-1" />
+              {course?.badgeText}
+            </Badge>
+          </div>
         </div>
       </CardHeader>
       <CardContent className="p-6">
