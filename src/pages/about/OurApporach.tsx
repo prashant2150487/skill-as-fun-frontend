@@ -1,5 +1,5 @@
 import { CheckCircle, Sparkles } from 'lucide-react'
-
+import eduImage from "../../assets/edu.png"
 const OurApporach = () => {
   return (
    <>
@@ -61,9 +61,7 @@ const OurApporach = () => {
                 <div className="absolute -inset-1 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-1000"></div>
                 <div className="relative">
                   <img
-                    src="/placeholder.svg?height=500&width=500"
-                    width={500}
-                    height={500}
+                    src={eduImage}
                     alt="Educational technology development process"
                     className="mx-auto aspect-square overflow-hidden rounded-xl object-cover object-center"
                   />
