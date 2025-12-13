@@ -8,7 +8,9 @@ import SignupPage from "@/pages/auth/signup";
 import Courses from "@/pages/Courses";
 import Home from "@/pages/home";
 import PlayQuizze from "@/pages/playQuizze";
-import Quizzes from "@/pages/quizzes";
+// import { QuizGame } from "@/pages/quizGame";
+import { QuizPage } from "@/pages/quizPage";
+// import Quizzes from "@/pages/quizzes";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
@@ -23,7 +25,7 @@ const router = createBrowserRouter([
     path: "/quizzes",
     element: (
       <DefaultLayout>
-        <Quizzes />
+        <QuizPage />
       </DefaultLayout>
     ),
   },
