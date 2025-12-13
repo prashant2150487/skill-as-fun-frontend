@@ -123,3 +123,19 @@ h1 {
     @apply bg-background text-foreground;
   }
 }
+.animate-slide-in-down {
+  animation: slide-in-down 0.5s ease-out;
+}
+
+@layer utilities{
+  @keyframes slide-in-down {
+    from {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
