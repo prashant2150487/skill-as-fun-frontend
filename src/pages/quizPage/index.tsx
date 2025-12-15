@@ -19,7 +19,7 @@ export function QuizPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <section className="pt-2 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
+      <section className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-20 animate-fade-in-up">
             <h1 className="text-5xl lg:text-6xl font-bold text-gray-900">
