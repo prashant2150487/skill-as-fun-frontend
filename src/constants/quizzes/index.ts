@@ -1,3 +1,19 @@
+export interface Question {
+  id: number;
+  question: string;
+  options: string[];
+  correctAnswer: number;
+  explanation: string;
+}
+
+export interface QuizCategory {
+  id: string;
+  name: string;
+  description: string;
+  icon: string;
+  questions: Question[];
+}
+
 export interface Quiz {
   id: string;
   title: string;
@@ -5,19 +21,7 @@ export interface Quiz {
   icon: string;
   color: string;
   difficulty: string;
-  categories: {
-    id: string;
-    name: string;
-    description: string;
-    icon: string;
-    questions: {
-      id: number;
-      question: string;
-      options: string[];
-      correctAnswer: number;
-      explanation: string;
-    }[];
-  }[];
+  categories: QuizCategory[];
 }
 
 export const quizzes: Quiz[] = [

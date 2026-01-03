@@ -49,7 +49,7 @@ export function QuizDifficultyPage() {
                     </div>
 
                     <div className="grid md:grid-cols-2 gap-6">
-                        {quiz.categories.map((category, index) => (
+                        {quiz.categories.map((category) => (
                             <button
                                 key={category.id}
                                 onClick={() => navigate(`/quiz/${quizId}/${category.id}`)}
