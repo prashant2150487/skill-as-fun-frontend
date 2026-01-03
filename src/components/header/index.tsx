@@ -38,11 +38,10 @@ const Header: FC = () => {
             >
               <Link
                 to="/"
-                className={` text-xl +${
-                  location.pathname === "/"
+                className={` text-xl +${location.pathname === "/"
                     ? "text-blue-900 font-semibold"
                     : "text-black"
-                }`}
+                  }`}
               >
                 {" "}
                 Home
@@ -50,25 +49,14 @@ const Header: FC = () => {
 
               <Link
                 to="/about"
-                className={` text-xl +${
-                  location.pathname === "/about"
+                className={` text-xl +${location.pathname === "/about"
                     ? "text-blue-900 font-semibold"
                     : "text-black"
-                }`}
+                  }`}
               >
                 About
               </Link>
-              {/* <a
-              href="/courses"
-              className={`text-black text-xl +${
-                location.pathname === "/courses"
-                  ? "text-blue-900 font-semibold"
-                  : "text-black"
-              }`}
-              
-            >
-              Courses
-            </a> */}
+
               <Link to="/quizzes" className="text-black text-xl">
                 Quizzes
               </Link>
@@ -101,16 +89,21 @@ const Header: FC = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="mr-4">
                 <DropdownMenuLabel className="font-normal">
-                  About
+                  <Link to="/about">
+                    About
+                  </Link>
+                </DropdownMenuLabel>
+                <DropdownMenuLabel className="font-normal">
+                  <Link to="/quizzes">
+                    Quizzes
+                  </Link>
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuLabel className="font-normal">
-                  Our Courses
-                </DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuLabel className="font-normal">
+
+                {/* <DropdownMenuSeparator /> */}
+                {/* <DropdownMenuLabel className="font-normal">
                   <Button variant="secondary">Register Now!</Button>
-                </DropdownMenuLabel>
+                </DropdownMenuLabel> */}
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
