@@ -1,22 +1,13 @@
-import { useState } from 'react';
-// import { QuizGame } from '../components/QuizGame';
-// import { quizzes } from '../data/quizzes';
 import { ArrowRight, Zap } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 import { quizzes } from '@/constants/quizzes';
-import { QuizGame } from '@/components/quizGame';
+import { useNavigate } from 'react-router-dom';
 
 export function QuizPage() {
-  const [selectedQuiz, setSelectedQuiz] = useState<string | null>(null);
   const { ref, isInView } = useInView();
+  const navigate = useNavigate()
 
-  if (selectedQuiz) {
-    const quiz = quizzes.find(q => q.id === selectedQuiz);
-    if (quiz) {
-      return <QuizGame quiz={quiz} onBack={() => setSelectedQuiz(null)} />;
-    }
-  }
-
+  console.log(quizzes, "asd")
   return (
     <div className="min-h-screen bg-white">
       <section className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
@@ -37,15 +28,15 @@ export function QuizPage() {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-8">Choose Your Quiz</h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {quizzes.map((quiz, index) => (
+                {quizzes?.map((quiz, index) => (
                   <div
                     key={quiz.id}
-                    className={`group cursor-pointer ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}
+                    className={`group  cursor-pointer ${isInView ? 'animate-fade-in-up' : 'opacity-0'}`}
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <button
-                      onClick={() => setSelectedQuiz(quiz.id)}
-                      className={`w-full h-full bg-gradient-to-br ${quiz.color} rounded-2xl p-8 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden relative group`}
+                      onClick={() => navigate(`/quiz/${quiz.id}`)}
+                      className={`w-full h-full bg-gradient-to-br ${quiz?.color} rounded-2xl p-8 text-white hover:shadow-2xl hover:scale-105 transition-all duration-300 overflow-hidden relative group`}
                     >
                       <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
                       <div className="relative z-10 space-y-6 text-left h-full flex flex-col justify-between">
@@ -61,7 +52,7 @@ export function QuizPage() {
                             <div className="font-bold">{quiz.difficulty}</div>
                           </div>
                           <div className="flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg group-hover:bg-white/30 transition-all">
-                            <span className="text-sm font-semibold">{quiz.questions.length} Q's</span>
+                            <span className="text-sm font-semibold">{quiz?.categories?.length} Categories</span>
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                           </div>
                         </div>

@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { ChevronRight, RotateCcw, Home } from 'lucide-react';
-import { Quiz } from '../../../src/constants/quizzes';
+import { QuizCategory } from '../../../src/constants/quizzes';
 
 interface QuizGameProps {
-  quiz: Quiz;
+  quiz: QuizCategory;
   onBack: () => void;
+  title: string;
+  color?: string;
 }
 
-export function QuizGame({ quiz, onBack }: QuizGameProps) {
+export function QuizGame({ quiz, onBack, title, color = "from-blue-500 to-cyan-500" }: QuizGameProps) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -64,7 +66,7 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
         <div className="max-w-2xl w-full">
           <div className="bg-white rounded-3xl shadow-2xl p-8 lg:p-12 text-center space-y-8 animate-fade-in-up">
             <div className="space-y-4">
-              <div className="text-7xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
+              <div className={`text-7xl font-bold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>
                 {getScorePercentage()}%
               </div>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900">
@@ -87,7 +89,7 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
             <div className="flex flex-col sm:flex-row gap-4 pt-8">
               <button
                 onClick={handleRestart}
-                className="flex-1 group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-2"
+                className={`flex-1 group bg-gradient-to-r ${color} text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-2`}
               >
                 <RotateCcw className="w-5 h-5" />
                 <span>Retake Quiz</span>
@@ -97,7 +99,7 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
                 className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center space-x-2"
               >
                 <Home className="w-5 h-5" />
-                <span>Back to Quizzes</span>
+                <span>Back to Levels</span>
               </button>
             </div>
           </div>
@@ -114,7 +116,7 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
             <div className="flex items-center space-x-3">
               <div className="text-4xl">{quiz.icon}</div>
               <div>
-                <h1 className="text-2xl lg:text-3xl font-bold text-white">{quiz.title}</h1>
+                <h1 className="text-2xl lg:text-3xl font-bold text-white">{title} - {quiz.name}</h1>
                 <p className="text-gray-400">Question {currentQuestionIndex + 1} of {quiz.questions.length}</p>
               </div>
             </div>
@@ -128,7 +130,7 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
 
           <div className="bg-gray-700 rounded-full h-3 overflow-hidden">
             <div
-              className="bg-gradient-to-r from-blue-500 to-cyan-500 h-full transition-all duration-500"
+              className={`bg-gradient-to-r ${color} h-full transition-all duration-500`}
               style={{ width: `${progress}%` }}
             ></div>
           </div>
@@ -141,20 +143,19 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
             </h2>
 
             <div className="space-y-4">
-              {currentQuestion.options.map((option:string, index: number) => (
+              {currentQuestion.options.map((option: string, index: number) => (
                 <button
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={selectedAnswer !== null}
-                  className={`w-full p-5 lg:p-6 rounded-xl font-semibold text-lg transition-all text-left ${
-                    selectedAnswer === null
-                      ? 'bg-gray-100 hover:bg-gray-200 text-gray-900 cursor-pointer'
-                      : index === currentQuestion.correctAnswer
+                  className={`w-full p-5 lg:p-6 rounded-xl font-semibold text-lg transition-all text-left ${selectedAnswer === null
+                    ? 'bg-gray-100 hover:bg-gray-200 text-gray-900 cursor-pointer'
+                    : index === currentQuestion.correctAnswer
                       ? 'bg-green-500 text-white'
                       : index === selectedAnswer
-                      ? 'bg-red-500 text-white'
-                      : 'bg-gray-100 text-gray-900'
-                  }`}
+                        ? 'bg-red-500 text-white'
+                        : 'bg-gray-100 text-gray-900'
+                    }`}
                 >
                   <div className="flex items-center justify-between">
                     <span>{option}</span>
@@ -179,7 +180,7 @@ export function QuizGame({ quiz, onBack }: QuizGameProps) {
           {showExplanation && (
             <button
               onClick={handleNextQuestion}
-              className="w-full group bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-2"
+              className={`w-full group bg-gradient-to-r ${color} text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all flex items-center justify-center space-x-2`}
             >
               <span>{currentQuestionIndex === quiz.questions.length - 1 ? 'See Results' : 'Next Question'}</span>
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
