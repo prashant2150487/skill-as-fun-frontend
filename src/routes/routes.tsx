@@ -11,6 +11,7 @@ import Home from "@/pages/home";
 import { QuizPage } from "@/pages/quizPage";
 import { QuizDifficultyPage } from "@/pages/quizDifficultyPage";
 import { QuizGameLocal } from "@/pages/quizGameLocal";
+import BookMyDemo from "@/pages/bookDemo";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
   {
     path: "dashboard/announcement-bar",
     element: <AdminAnnouncementBar />,
+  },
+  {
+    path: "/book-demo",
+    element: (
+      <DefaultLayout>
+        <BookMyDemo />
+      </DefaultLayout>
+    ),
   },
 ]);
 function Routes() {

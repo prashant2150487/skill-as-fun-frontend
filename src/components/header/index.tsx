@@ -22,7 +22,7 @@ const Header: FC = () => {
   return (
     <>
       <Announcementbar />
-      <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md animate-slide-in-down">
+      <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-md">
         <nav className="bg-white py-1 md:py-2 border-gray-200 dark:bg-gray-800">
           <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5">
             <Link to="/" className="flex items-center">
@@ -57,7 +57,12 @@ const Header: FC = () => {
                 About
               </Link>
 
-              <Link to="/quizzes" className="text-black text-xl">
+              <Link
+                to="/quizzes"
+                className={` text-xl +${location.pathname === "/quizzes"
+                  ? "text-blue-900 font-semibold"
+                  : "text-black"
+                  }`}>
                 Quizzes
               </Link>
               <a
