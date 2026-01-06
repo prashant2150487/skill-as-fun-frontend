@@ -84,11 +84,19 @@ const BookMyDemo = () => {
         e.preventDefault();
         if (!validate()) return;
 
+        const payload = {
+            childName: formData.childName,
+            guardianName: formData.name,
+            whatsAppNumber: formData.phone,
+            email: formData.email,
+            bookingDate: formData.preferredDate,
+            childAge: formData.childAge
+        };
+        dispatch(setLoading(true));
         try {
-            dispatch(setLoading(true));
-            // Replace with actual API endpoint
-            await axiosInstance.post("/book-demo", formData);
-            toast("Demo booked successfully!");
+            const res=await axiosInstance.post("/api/demo", payload);
+
+            toast.success(res.data?.message || "Demo booked successfully!");
             setFormData({
                 name: "",
                 email: "",
@@ -99,7 +107,7 @@ const BookMyDemo = () => {
             });
         } catch (error) {
             console.error("Error booking demo:", error);
-            toast("Error booking demo. Please try again.");
+            toast.error("Error booking demo. Please try again.");
         } finally {
             dispatch(setLoading(false));
         }
