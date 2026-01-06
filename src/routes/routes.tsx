@@ -12,6 +12,7 @@ import { QuizPage } from "@/pages/quizPage";
 import { QuizDifficultyPage } from "@/pages/quizDifficultyPage";
 import { QuizGameLocal } from "@/pages/quizGameLocal";
 import BookMyDemo from "@/pages/bookDemo";
+import DemoUsers from "@/pages/demoUsers";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "dashboard/all-quizzes",
     element: <AllQuzzies />,
+  },
+  {
+    path: "dashboard/demo-users",
+    element: <DemoUsers />,
   },
 
   {
