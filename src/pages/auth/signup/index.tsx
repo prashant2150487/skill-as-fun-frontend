@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import SEO from "@/components/SEO/SEO";
 import {
   Card,
   CardContent,
@@ -27,6 +28,15 @@ const SignupPage = () => {
     password: "",
     confirmPassword: "",
   });
+
+  return (
+    <>
+      <SEO
+        title="Sign Up - Skill as Fun | Create Your Learning Account"
+        description="Join Skill as Fun today! Create an account to access gamified courses, interactive quizzes, and start your personalized learning journey."
+        keywords="sign up, registration, create account, join learning platform"
+        url="https://skill-as-fun.com/auth/signup"
+      />
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
@@ -172,7 +182,8 @@ const SignupPage = () => {
           </form>
         </CardContent>
       </Card>
-    </div>
+      </div>
+    </>
   );
 };
 

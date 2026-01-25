@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import SEO from '@/components/SEO/SEO';
 import { quizzes } from '@/constants/quizzes';
 import { QuizGame } from '@/components/quizGame';
 
@@ -26,11 +27,19 @@ export function QuizGameLocal() {
     }
 
     return (
-        <QuizGame
+        <>
+          <SEO
+            title={`${quiz.title} - ${category.name} | Skill as Fun Quiz Challenge`}
+            description={`Play ${quiz.title} ${category.name} difficulty quiz. Challenge yourself and earn points!`}
+            keywords={`quiz game, ${quiz.title}, ${category.name}, learning challenge`}
+            url={`https://skill-as-fun.com/quiz/${quizId}/${difficultyId}`}
+          />
+          <QuizGame
             quiz={category}
             title={quiz.title}
             color={quiz.color}
             onBack={() => navigate(`/quiz/${quizId}`)}
-        />
+          />
+        </>
     );
 }

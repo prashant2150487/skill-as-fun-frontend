@@ -1,4 +1,5 @@
 import axiosInstance from "@/api/axios";
+import SEO from "@/components/SEO/SEO";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,6 +29,15 @@ const Signin = () => {
     confirmPassword: "",
   });
   const dispatch = useDispatch();
+
+  return (
+    <>
+      <SEO
+        title="Sign In - Skill as Fun | Access Your Learning Dashboard"
+        description="Sign in to your Skill as Fun account to access gamified courses, quizzes, and track your learning progress."
+        keywords="sign in, login, account access, learning dashboard"
+        url="https://skill-as-fun.com/auth/signin"
+      />
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFromData({
@@ -164,6 +174,7 @@ const Signin = () => {
         </CardFooter>
       </Card>
     </div>
+    </>
   );
 };
 export default Signin;

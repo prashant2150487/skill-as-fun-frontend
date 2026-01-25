@@ -1,4 +1,5 @@
 import { ArrowRight, Zap } from 'lucide-react';
+import SEO from '@/components/SEO/SEO';
 import { useInView } from '@/hooks/useInView';
 import { quizzes } from '@/constants/quizzes';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,14 @@ export function QuizPage() {
 
   console.log(quizzes, "asd")
   return (
-    <div className="min-h-screen bg-white">
+    <>
+      <SEO
+        title="Interactive Quiz Challenge - Test Your Knowledge | Skill as Fun"
+        description="Challenge yourself with our interactive quizzes across different tech topics. Track your progress and compete with others on the leaderboard!"
+        keywords="quizzes, tech challenges, interactive learning, knowledge test, leaderboard"
+        url="https://skill-as-fun.com/quizzes"
+      />
+      <div className="min-h-screen bg-white">
       <section className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-6 mb-20 animate-fade-in-up">
@@ -92,5 +100,6 @@ export function QuizPage() {
         </div>
       </section>
     </div>
+    </>
   );
 }

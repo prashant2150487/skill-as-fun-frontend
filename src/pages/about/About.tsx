@@ -1,4 +1,5 @@
 import DefaultLayout from "@/components/layouts/DefaultLayout";
+import SEO from "@/components/SEO/SEO";
 import { Button } from "@/components/ui/button";
 import {
 
@@ -18,7 +19,14 @@ import ContactTouch from "./ContactTouch";
 import CTA from "./CTA";
 export default function AboutPage() {
   return (
-    <DefaultLayout>
+    <>
+      <SEO
+        title="About Skill as Fun - Our Mission & Vision"
+        description="Learn about Skill as Fun's mission to transform education through gamified learning. Discover our innovative approach, team, and achievements."
+        keywords="about us, educational platform, gamified learning, team, mission, vision"
+        url="https://skill-as-fun.com/about"
+      />
+      <DefaultLayout>
       <div className="flex flex-col min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-950">
         {/* Hero Section */}
         <section className="w-full py-12 md:py-24 lg:py-32 bg-gradient-to-r from-violet-500 to-indigo-600 text-white">
@@ -81,5 +89,6 @@ export default function AboutPage() {
       <CTA/>
       </div>
     </DefaultLayout>
+    </>
   );
 }

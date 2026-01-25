@@ -1,4 +1,5 @@
 import axiosInstance from "@/api/axios";
+import SEO from "@/components/SEO/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -28,6 +29,15 @@ const BookMyDemo = () => {
     studentClass: "",
   });
   const dispatch = useDispatch();
+
+  return (
+    <>
+      <SEO
+        title="Book a Demo - Skill as Fun | Free Trial Session"
+        description="Schedule a free demo session to experience Skill as Fun. Discover how gamified learning can transform your child's educational journey."
+        keywords="book demo, free trial, education demo, learning session, schedule"
+        url="https://skill-as-fun.com/book-demo"
+      />
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -323,6 +333,7 @@ const BookMyDemo = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

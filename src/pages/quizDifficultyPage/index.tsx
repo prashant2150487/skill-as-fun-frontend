@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
+import SEO from '@/components/SEO/SEO';
 import { ArrowLeft, Star, Zap } from 'lucide-react';
 import { quizzes } from '@/constants/quizzes';
 
@@ -25,7 +26,14 @@ export function QuizDifficultyPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white">
+        <>
+          <SEO
+            title={`${quiz.title} Quiz - Select Difficulty Level | Skill as Fun`}
+            description={`Challenge yourself with ${quiz.title} quiz. Choose from different difficulty levels and test your knowledge.`}
+            keywords={`${quiz.title}, quiz difficulty, learning challenge, knowledge test`}
+            url={`https://skill-as-fun.com/quiz/${quizId}`}
+          />
+          <div className="min-h-screen bg-white">
             <section className="pt-10 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-blue-50 to-white">
                 <div className="max-w-4xl mx-auto">
                     <button
@@ -86,5 +94,6 @@ export function QuizDifficultyPage() {
                 </div>
             </section>
         </div>
+        </>
     );
 }
